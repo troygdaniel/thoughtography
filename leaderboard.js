@@ -1,7 +1,6 @@
 // Set up a collection to contain player information. On the server,
 // it is backed by a MongoDB collection named "players".
-
-Players = new Meteor.Collection("players");
+var Players = new Meteor.Collection("players");
 
 if (Meteor.isClient) {
   Template.leaderboard.players = function () {

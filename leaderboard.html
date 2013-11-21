@@ -6,6 +6,11 @@
   <div id="outer">
     {{> leaderboard}}
   </div>
+  <div class="centered">
+    <center>
+    <textarea class="braindump"></textarea>
+      </center>
+  </div>
 </body>
 
 <template name="leaderboard">
@@ -21,10 +26,6 @@
     <input type="button" class="inc" value="Give 5 points" />
   </div>
   {{/if}}
-
-  {{#unless selected_name}}
-  <div class="none">Click a player to select</div>
-  {{/unless}}
 </template>
 
 <template name="player">

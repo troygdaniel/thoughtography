@@ -1,0 +1,528 @@
+<!--
+
+Welcome to the
+
+
+ **      ** ********** ****     **** **       ******           **          **             **               
+/**     /**/////**/// /**/**   **/**/**      /*////           ****        /**            //                
+/**     /**    /**    /**//** ** /**/**      /*****          **//**       /** **********  ** *******       
+/**********    /**    /** //***  /**/**      ///// *        **  //**   ******//**//**//**/**//**///**      
+/**//////**    /**    /**  //*   /**/**           /*       ********** **///** /** /** /**/** /**  /**      
+/**     /**    /**    /**   /    /**/**       *   /*      /**//////**/**  /** /** /** /**/** /**  /**      
+/**     /**    /**    /**        /**/********/ ****       /**     /**//****** *** /** /**/** ***  /** *****
+//      //     //     //         // ////////  ////        //      //  ////// ///  //  // // ///   // ///// 
+
+
+Dashboard (http://html5admin.dev/demo/)
+
+-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- META TAGS → All you meta tags go here -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="HTML5 Admin is an HTML5 Administration template easy to modify and maintain based on Bootstrap 3">
+        <meta name="author" content="HTML5 Admin">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <!-- Favicon → Yes, the favicon -->
+        <link rel="shortcut icon" href="images/favicon.png">
+
+        <!-- Title → Yes, the title of the page -->
+        <title>HTML5 Admin</title>
+
+        <!-- CSS → Bootstrap core -->
+        <link rel="stylesheet" href="css/vendor/bootstrap.css" />
+        
+        <!-- CSS → Font Awesome -->
+        <!-- dependencies: bootstrap -->
+        <link rel="stylesheet" href="css/vendor/font-awesome.css" />
+        <link rel="stylesheet" href="css/vendor/font-awesome-ie7.css" />
+        
+        <!-- CSS → Bootstrap Overrides (changing main bootstrap CSS) -->
+        <!-- dependencies: bootstrap3 -->
+        <link rel="stylesheet" href="css/overrides/bootstrap-overrides.css" />
+
+        <!-- CSS → HTML5 Admin_ core -->
+        <!-- dependencies: bootstrap3, font-awesome + others depending on which plugins are used in the page -->
+        <link rel="stylesheet" href="css/html5admin.css" />
+        
+
+<!-- **************************************************************************** -->
+        <!-- ************************************************** -->
+        <!-- ************************ CSS → E X T R A S ******** -->
+
+        <!-- CSS → HTML5 Admin_ core -->
+        <!-- dependencies: bootstrap (soft dependency) -->
+        <link rel="stylesheet" href="css/vendor/jquery.fileupload-ui-noscript.css" />
+        <link rel="stylesheet" href="css/vendor/jquery.fileupload-ui.css" />
+        
+        <!-- **************** CSS → E N D    E X T R A S ******** -->
+        <!-- *************************************************** -->
+<!-- **************************************************************************** -->
+
+        
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="js/utils/html5shiv.js"></script>
+          <script src="js/utils/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+
+
+
+
+
+
+
+
+
+    <body>
+
+        <!-- Fixed navbar -->
+        <header class="navbar navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img src="images/logo_A_black.png" alt="Brand Name Here"/>
+                        <span class="text"><!-- Brand Name Here --></span>
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" id="h5a-navbar">
+                        <li><a href="index.html"><i class="icon-dashboard"></i> Dashboard</a></li>
+                        <li class="active"><a href="ui.html"><i class="icon-laptop"></i> User Interface</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-bell shake"></i> <span class="badge red">42</span></a>
+                            <ul class="dropdown-menu" id="notifications">
+                                <li class="dropdown-header"><i class="icon-bell"></i> Notifications</li>
+                                <li>
+                                    <a href="#">
+                                        <i class="image icon-cog"></i>
+                                        <p><i class="icon-time"></i> <small>2 hours ago<br></small>This could be a system notification</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="image icon-flag"></i>
+                                        <p><i class="icon-time"></i> <small>06/02/2015 14:30<br></small>This could be a system Error/Flag notification</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>You have no notifications.</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-envelope-alt shake"></i> <span class="badge blue">2</span></a>
+                            <ul class="dropdown-menu" id="messages">
+                                <li class="dropdown-header"><i class="icon-envelope-alt"></i> Messages</li>
+                                <li>
+                                    <a href="#">
+                                        <img class="img-circle" alt="Can you please do..." src="http://placezombies.com/48x48" >
+                                        <p><i class="icon-time"></i> <small>2 hours ago<br></small>Can you please do this message very very long so we can see how it breaks? thanks!</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img class="img-circle" alt="Can you please do..." src="http://placezombies.com/48x49" >
+                                        <p><i class="icon-time"></i> <small>4 hours ago<br></small>This can be another message, but it's a shorter one..</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>You have no messages.</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="http://placekitten.com/20/20" style="display:inline;" class="img-circle img-responsive"/> User Name <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><i class="icon-edit"></i> Profile</a></li>
+                                <li><a href="#"><i class="icon-lock"></i> Security</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Quick Adds</li>
+                                <li><a href="#"><i class="icon-tag"></i> Add Product</a></li>
+                                <li><a href="#"><i class="icon-user"></i> Add User</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Settings</li>
+                                <li><a href="#"><i class="icon-signout"></i> Log out</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img height="13" width="20" src="http://www.geonames.org/flags/x/uk.gif" style="display:inline;" class=""/><b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">icons: GeoNames.org</li>
+                                <li><a href="#"><img height="13" width="20" src="http://www.geonames.org/flags/x/es.gif" style="display:inline;" class=""/> Español </a></li>
+                                <li><a href="#"><img height="13" width="20" src="http://www.geonames.org/flags/x/it.gif" style="display:inline;" class=""/> Italiano </a></li>
+                                <li><a href="#"><img height="13" width="20" src="http://www.geonames.org/flags/x/de.gif" style="display:inline;" class=""/> Deutsch </a></li>
+                                <li><a href="#"><img height="13" width="20" src="http://www.geonames.org/flags/x/fr.gif" style="display:inline;" class=""/> Français </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+
+                    <div class="h5a-sidebar hidden-print affix-top">
+
+                        <span class="breadcrumb row"> <a href="index.html">/ Dashboard</a> / Upload /</span>
+
+                        <ul class="nav h5a-sidenav nav-list accordion">
+                            <li class="active" data-toggle="in" data-target="#nav-ui">
+                                <a>
+                                    <i class="icon-laptop"></i> Forms
+                                </a>
+                                <ul class="nav nav-list in" id="nav-ui">
+                                    <li><a href="ui.html"><i class="icon-wrench"></i> Style &amp; Utilities</a></li>
+                                    <li><a href="ui_validation.html"><i class="icon-check"></i> Validation</a></li>
+                                    <li><a href="icons.html"><i class="icon-edit"></i> Icons</a></li>
+                                    <li class="active"><a href="ui_uploader.html"><i class="icon-upload"></i> Uploader</a></li>
+                                </ul>
+                            </li>
+                            <li data-toggle="collapse" data-target="#nav-pages">
+                                <a>
+                                    <i class="icon-file-text-alt"></i> Pages
+                                </a>
+                                <ul class="nav nav-list collapse" id="nav-pages">
+                                    <li><a href="pages/boilerplate.html"><i class="icon-star"></i> Boilerplate</a></li>
+                                    <li><a href="pages/invoice.html"><i class="icon-money"></i> Invoice</a></li>
+                                    <li><a href="pages/card.html"><i class="icon-tag"></i> Card</a></li>
+                                    <li><a href="pages/search_results.html"><i class="icon-search"></i> Search Results</a></li>
+                                    <li><a href="pages/calendar.html"><i class="icon-calendar"></i> Calendar</a></li>
+                                    <li><a href="pages/stackers.html"><i class="icon-stackexchange"></i> Stackers</a></li>
+                                    <li><a href="pages/tables.html"><i class="icon-euro"></i> Tables</a></li>
+                                    <li><a href="pages/errors.html"><i class="icon-exclamation-sign"></i> Login/Errors</a></li>
+                                </ul>
+                            </li>
+                            <li data-toggle="collapse" data-target="#nav-emails">
+                                <a>
+                                    <i class="icon-envelope-alt"></i> Emails
+                                </a>
+                                <ul class="nav nav-list collapse" id="nav-emails">
+                                    <li><a href="emails/system.html" target="_blank"><i class="icon-envelope-alt"></i> System <sup><i class="icon-external-link"></i></sup></a></li>
+                                    <li><a href="emails/call_to_action.html" target="_blank"><i class="icon-info-sign"></i> Call-To-Action <sup><i class="icon-external-link"></i></sup></a></a></li>
+                                    <li><a href="emails/news.html" target="_blank"><i class="icon-globe"></i> News <sup><i class="icon-external-link"></i></sup></a></a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a data-toggle="collapse" data-target="#nav-menu">
+                                    <i class="icon-sitemap"></i> Pure CSS Menu
+                                </a>
+                                <ul class="nav nav-list collapse" id="nav-menu">
+                                    <li>
+                                        <a data-toggle="collapse" data-target="#nav-menu-2">
+                                            With
+                                        </a>
+                                        <ul class="nav nav-list collapse" id="nav-menu-2">
+                                            <li>
+                                                <a data-toggle="collapse" data-target="#nav-menu-3"> Infinite</a>
+                                                <ul class="nav nav-list collapse" id="nav-menu-3">
+                                                    <li>
+                                                        <a href="#"><i class="icon-gift"></i> Levels</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-10" role="main">
+                    <div class="page-header">
+                        <div id="tip">
+                            <div class="tip red">
+                                <span class="boxes_right pull-right" id="removeTip"><i class="icon-remove"></i></span>
+                                <i class="icon-exclamation-sign"></i> <strong>HAVE YOU NOTICED?</strong>
+                                <p>The menu on the left is not "fixed" because we did not run:</p> 
+                                <pre class="text-left">$('.h5a-sidebar').affix</pre>
+                                <p>
+                                    You can change this property for every page to have a <strong>fixed or non-fixed sidebar</strong>
+                                    <br>
+                                    (doesn't have to be a global setting)
+                                </p> 
+                            </div>
+                        
+                            <br><br>
+                        </div>
+
+                        <h1>
+                            <span class="breadcrumb"> <a href="index.html">/ Dashboard</a> / Upload /</span> 
+                            jQuery File Upload <small>Demo Basic Plus UI</small>
+                        </h1>
+                        
+                        <br>
+                        
+                        <blockquote>
+                            <p>File Upload widget with multiple file selection, drag&amp;drop support, progress bars, validation and preview images, audio and video for jQuery.<br>
+                            Supports cross-domain, chunked and resumable file uploads and client-side image resizing.<br>
+                            Works with any server-side platform (PHP, Python, Ruby on Rails, Java, Node.js, Go etc.) that supports standard HTML form file uploads.</p>
+                        </blockquote>
+                        <br>
+                        <!-- The file upload form used as target for the file upload widget -->
+                        <form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data">
+                            <!-- Redirect browsers with JavaScript disabled to the origin page -->
+                            <noscript><input type="hidden" name="redirect" value="http://blueimp.github.io/jQuery-File-Upload/"></noscript>
+                            <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                            <div class="row fileupload-buttonbar">
+                                <div class="col-lg-7">
+                                    <!-- The fileinput-button span is used to style the file input field as button -->
+                                    <span class="btn btn-success h5a-btn fileinput-button">
+                                        <i class="icon-upload"></i> Add files...
+                                        <input type="file" name="files[]" multiple>
+                                    </span>
+                                    <button type="submit" class="btn  h5a-btn btn-primary start">
+                                        <i class="glyphicon glyphicon-upload"></i>
+                                        <span>Start upload</span>
+                                    </button>
+                                    <button type="reset" class="btn btn-warning h5a-btn cancel">
+                                        <i class="glyphicon glyphicon-ban-circle"></i>
+                                        <span>Cancel upload</span>
+                                    </button>
+                                    <button type="button" class="btn btn-danger h5a-btn delete">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                        <span>Delete</span>
+                                    </button>
+                                    <input type="checkbox" class="toggle">
+                                    <!-- The loading indicator is shown during file processing -->
+                                    <span class="fileupload-loading"></span>
+                                </div>
+                                <!-- The global progress information -->
+                                <div class="col-lg-5 fileupload-progress fade">
+                                    <!-- The global progress bar -->
+                                    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                                    </div>
+                                    <!-- The extended global progress information -->
+                                    <div class="progress-extended">&nbsp;</div>
+                                </div>
+                            </div>
+                            <!-- The table listing the files available for upload/download -->
+                            <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+                        </form>
+                        <div class="tip orange">
+                            <i class="icon-exclamation-sign"></i> Server Side
+                            <p>This demonstration won't work after having clicked on "Start upload"<br>because there is no server-side linked to it</p> 
+                        </div>
+                        <br>
+                        <div class="panel h5a panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Demo Notes
+                                    <a href="#"><i class="pull-right icon-remove"></i></a>
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul>
+                                    <li>The maximum file size for uploads in this demo is <strong>5 MB</strong> (default file size is unlimited).</li>
+                                    <li>Only image files (<strong>JPG, GIF, PNG</strong>) are allowed in this demo (by default there is no file type restriction).</li>
+                                    <li>Uploaded files will be deleted automatically after <strong>5 minutes</strong> (demo setting).</li>
+                                    <li>You can <strong>drag &amp; drop</strong> files from your desktop on this webpage (see <a href="https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support">Browser support</a>).</li>
+                                    <li>Please refer to the <a href="https://github.com/blueimp/jQuery-File-Upload">project website</a> and <a href="https://github.com/blueimp/jQuery-File-Upload/wiki">documentation</a> for more information.</li>
+                                    <li>Built with Twitter's <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> CSS framework and Icons from <a href="http://glyphicons.com/">Glyphicons</a>.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+<hr>
+
+                        <h1>UPLOADING <small> with ink file picker.</small></h1>
+                        
+                        <form>
+                            <div class="form-group">
+                                <label for="filePicker">Upload Picture <small><a role="button" class="popover-test" title="" data-placement="right" data-content="This is INK File picker. It's an AWESOME filepicker that allows you to upload files from anywhere (Computer, Facebook, Twitter, DropBox, etc.)" data-original-title="Pick a File"><i class="icon-question-sign"></i> Help</a></small></label><br>
+
+                                <input type="filepicker" data-fp-button-text="<i class='icon-cloud-upload'></i> Select a Photo from ANYWERE" data-fp-apikey="fakeAPIkey" name="filePicker" id="filePicker" class="h5a-btn btn  btn-success">
+                            </div>
+                        </form>
+
+                        <div class="tip orange">
+                            <i class="icon-exclamation-sign"></i> Ink FilePicker
+                            <p>
+                                Ink file picker is a new cool (and extremely easy) way of uploading files.<br/>
+                                They have a large FREE option (see <a href="https://www.inkfilepicker.com/pricing/" target="_blank">https://www.inkfilepicker.com/pricing/</a>)<br/><br/>
+                                More info on <a href="https://www.inkfilepicker.com/">https://www.inkfilepicker.com/</a>
+                            </p> 
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>            
+        </div> <!-- /container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- JS → jQuery core (from cdn) -->
+        <!-- dependencies: none -->
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        
+        <!-- JS → Bootstrap core -->
+        <!-- dependencies: jquery -->
+        <script src="js/vendor/bootstrap.min.js"></script>
+        
+        
+        
+<!-- **************************************************************************** -->
+        <!-- ************************************************** -->
+        <!-- ************************ JS → E X T R A S ******** -->
+
+        <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+        <script src="js/vendor/jquery.ui.widget.js"></script>
+        <!-- The Templates plugin is included to render the upload/download listings -->
+        <script src="http://blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
+        <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+        <script src="http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js"></script>
+        <!-- The Canvas to Blob plugin is included for image resizing functionality -->
+        <script src="http://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+        <!-- blueimp Gallery script -->
+        <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+        <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+        <script src="js/vendor/jquery.iframe-transport.js"></script>
+        <!-- The basic File Upload plugin -->
+        <script src="js/vendor/jquery.fileupload.js"></script>
+        <!-- The File Upload processing plugin -->
+        <script src="js/vendor/jquery.fileupload-process.js"></script>
+        <!-- The File Upload image preview & resize plugin -->
+        <script src="js/vendor/jquery.fileupload-image.js"></script>
+        <!-- The File Upload audio preview plugin -->
+        <script src="js/vendor/jquery.fileupload-audio.js"></script>
+        <!-- The File Upload video preview plugin -->
+        <script src="js/vendor/jquery.fileupload-video.js"></script>
+        <!-- The File Upload validation plugin -->
+        <script src="js/vendor/jquery.fileupload-validate.js"></script>
+        <!-- The File Upload user interface plugin -->
+        <script src="js/vendor/jquery.fileupload-ui.js"></script>
+        <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
+        <!--[if (gte IE 8)&(lt IE 10)]>
+        <script src="js/cors/jquery.xdr-transport.js"></script>
+        <![endif]-->
+
+        <!-- The template to display files available for upload -->
+        <script id="template-upload" type="text/x-tmpl">
+        {% for (var i=0, file; file=o.files[i]; i++) { %}
+            <tr class="template-upload fade">
+                <td>
+                    <span class="preview"></span>
+                </td>
+                <td>
+                    <p class="name">{%=file.name%}</p>
+                    {% if (file.error) { %}
+                        <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+                    {% } %}
+                </td>
+                <td>
+                    <p class="size">{%=o.formatFileSize(file.size)%}</p>
+                    {% if (!o.files.error) { %}
+                        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+                    {% } %}
+                </td>
+                <td>
+                    {% if (!o.files.error && !i && !o.options.autoUpload) { %}
+                        <button class="btn h5a-btn btn-primary start">
+                            <i class="glyphicon glyphicon-upload"></i>
+                            <span>Start</span>
+                        </button>
+                    {% } %}
+                    {% if (!i) { %}
+                        <button class="btn btn-warning h5a-btn cancel">
+                            <i class="glyphicon glyphicon-ban-circle"></i>
+                            <span>Cancel</span>
+                        </button>
+                    {% } %}
+                </td>
+            </tr>
+        {% } %}
+        </script>
+        <!-- The template to display files available for download -->
+        <script id="template-download" type="text/x-tmpl">
+        {% for (var i=0, file; file=o.files[i]; i++) { %}
+            <tr class="template-download fade">
+                <td>
+                    <span class="preview">
+                        {% if (file.thumbnailUrl) { %}
+                            <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                        {% } %}
+                    </span>
+                </td>
+                <td>
+                    <p class="name">
+                        {% if (file.url) { %}
+                            <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                        {% } else { %}
+                            <span>{%=file.name%}</span>
+                        {% } %}
+                    </p>
+                    {% if (file.error) { %}
+                        <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+                    {% } %}
+                </td>
+                <td>
+                    <span class="size">{%=o.formatFileSize(file.size)%}</span>
+                </td>
+                <td>
+                    {% if (file.deleteUrl) { %}
+                        <button class="btn h5a-btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                            <i class="glyphicon glyphicon-trash"></i>
+                            <span>Delete</span>
+                        </button>
+                        <input type="checkbox" name="delete" value="1" class="toggle">
+                    {% } else { %}
+                        <button class="btn h5a-btn btn-warning cancel">
+                            <i class="glyphicon glyphicon-ban-circle"></i>
+                            <span>Cancel</span>
+                        </button>
+                    {% } %}
+                </td>
+            </tr>
+        {% } %}
+        </script>
+
+        <!-- JS → ink file picker ( http://inkfilepicker.com/ ) -->
+        <script type="text/javascript">
+        (function(a){if(window.filepicker){return}var b=a.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===a.location.protocol?"https:":"http:")+"//api.filepicker.io/v1/filepicker.js";var c=a.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d={};d._queue=[];var e="pick,pickMultiple,pickAndStore,read,write,writeUrl,export,convert,store,storeUrl,remove,stat,setKey,constructWidget,makeDropPane".split(",");var f=function(a,b){return function(){b.push([a,arguments])}};for(var g=0;g<e.length;g++){d[e[g]]=f(e[g],d._queue)}window.filepicker=d})(document); 
+        </script>
+
+
+        <!-- **************** JS → E N D    E X T R A S ******** -->
+        <!-- *************************************************** -->
+<!-- **************************************************************************** -->
+        
+        
+        <!-- JS → HTML5Admin core -->
+        <script src="js/ui_uploader.js"></script>
+        
+    </body>
+</html>

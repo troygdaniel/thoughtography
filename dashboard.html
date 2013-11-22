@@ -1,0 +1,1017 @@
+<!--
+
+Welcome to the
+
+
+ **      ** ********** ****     **** **       ******           **          **             **               
+/**     /**/////**/// /**/**   **/**/**      /*////           ****        /**            //                
+/**     /**    /**    /**//** ** /**/**      /*****          **//**       /** **********  ** *******       
+/**********    /**    /** //***  /**/**      ///// *        **  //**   ******//**//**//**/**//**///**      
+/**//////**    /**    /**  //*   /**/**           /*       ********** **///** /** /** /**/** /**  /**      
+/**     /**    /**    /**   /    /**/**       *   /*      /**//////**/**  /** /** /** /**/** /**  /**      
+/**     /**    /**    /**        /**/********/ ****       /**     /**//****** *** /** /**/** ***  /** *****
+//      //     //     //         // ////////  ////        //      //  ////// ///  //  // // ///   // ///// 
+
+
+Dashboard (http://html5admin.dev/demo/)
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- META TAGS → All you meta tags go here -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="HTML5 Admin is an HTML5 Administration template easy to modify and maintain based on Bootstrap 3">
+        <meta name="author" content="HTML5 Admin">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <!-- Favicon → Yes, the favicon -->
+        <link rel="shortcut icon" href="images/favicon.png">
+
+        <!-- Title → Yes, the title of the page -->
+        <title>HTML5 Admin</title>
+
+        <!-- CSS → Bootstrap core -->
+        <link rel="stylesheet" href="css/vendor/bootstrap.css" />
+        
+        <!-- CSS → Font Awesome -->
+        <!-- dependencies: bootstrap -->
+        <link rel="stylesheet" href="css/vendor/font-awesome.css" />
+        <link rel="stylesheet" href="css/vendor/font-awesome-ie7.css" />
+        
+        <!-- CSS → Bootstrap Overrides (changing main bootstrap CSS) -->
+        <!-- dependencies: bootstrap3 -->
+        <link rel="stylesheet" href="css/overrides/bootstrap-overrides.css" />
+
+        <!-- CSS → HTML5 Admin_ core -->
+        <!-- dependencies: bootstrap3, font-awesome + others depending on which plugins are used in the page -->
+        <link rel="stylesheet" href="css/html5admin.css" />
+        
+
+<!-- **************************************************************************** -->
+        <!-- ************************************************** -->
+        <!-- ************************ CSS → E X T R A S ******** -->
+        
+        <!-- CSS → Datatables (http://www.datatables.net/)  -->
+        <!-- dependencies: none | used for styling dataTables -->
+        <link rel="stylesheet" href="css/vendor/jquery.dataTables.css" />
+        <!-- CSS → Datatables Overrides  -->
+        <!-- dependencies: dataTables.css | used to override styling dataTables -->
+        <link rel="stylesheet" href="css/overrides/datatables-overrides.css" />
+
+        <!-- CSS → Animate.css (to handle CSS cool animations) -->
+        <!-- dependencies: none | used to css animate -->
+        <link rel="stylesheet" href="css/vendor/animate.min.css" />
+        
+        <!-- **************** CSS → E N D    E X T R A S ******** -->
+        <!-- *************************************************** -->
+<!-- **************************************************************************** -->
+
+        
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="js/utils/html5shiv.js"></script>
+          <script src="js/utils/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+
+
+
+
+
+
+
+
+
+    <body data-offset="250" data-target=".h5a-sidebar" data-spy="scroll">
+
+        <!-- Fixed navbar -->
+        <header class="navbar navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img src="images/logo_A_black.png" alt="Brand Name Here"/>
+                        <span class="text"><!-- Brand Name Here --></span>
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" id="h5a-navbar">
+                        <li class="active"><a href=""><i class="icon-dashboard"></i> Dashboard</a></li>
+                        <li><a href="ui.html"><i class="icon-laptop"></i> User Interface</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-bell shake"></i> <span class="badge red">42</span></a>
+                            <ul class="dropdown-menu" id="notifications">
+                                <li class="dropdown-header"><i class="icon-bell"></i> Notifications</li>
+                                <li>
+                                    <a href="#">
+                                        <i class="image icon-cog"></i>
+                                        <p><i class="icon-time"></i> <small>2 hours ago<br></small>This could be a system notification</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="image icon-flag"></i>
+                                        <p><i class="icon-time"></i> <small>06/02/2015 14:30<br></small>This could be a system Error/Flag notification</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>You have no notifications.</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-envelope-alt shake"></i> <span class="badge blue">2</span></a>
+                            <ul class="dropdown-menu" id="messages">
+                                <li class="dropdown-header"><i class="icon-envelope-alt"></i> Messages</li>
+                                <li>
+                                    <a href="#">
+                                        <img class="img-circle" alt="Can you please do..." src="http://placezombies.com/48x48" >
+                                        <p><i class="icon-time"></i> <small>2 hours ago<br></small>Can you please do this message very very long so we can see how it breaks? thanks!</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img class="img-circle" alt="Can you please do..." src="http://placezombies.com/48x49" >
+                                        <p><i class="icon-time"></i> <small>4 hours ago<br></small>This can be another message, but it's a shorter one..</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>You have no messages.</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="http://placekitten.com/20/20" style="display:inline;" class="img-circle img-responsive"/> User Name <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><i class="icon-edit"></i> Profile</a></li>
+                                <li><a href="#"><i class="icon-lock"></i> Security</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Quick Adds</li>
+                                <li><a href="#"><i class="icon-tag"></i> Add Product</a></li>
+                                <li><a href="#"><i class="icon-user"></i> Add User</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Settings</li>
+                                <li><a href="#"><i class="icon-signout"></i> Log out</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img height="13" width="20" src="http://www.geonames.org/flags/x/uk.gif" style="display:inline;" class=""/><b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">icons: GeoNames.org</li>
+                                <li><a href="#"><img height="13" width="20" src="http://www.geonames.org/flags/x/es.gif" style="display:inline;" class=""/> Español </a></li>
+                                <li><a href="#"><img height="13" width="20" src="http://www.geonames.org/flags/x/it.gif" style="display:inline;" class=""/> Italiano </a></li>
+                                <li><a href="#"><img height="13" width="20" src="http://www.geonames.org/flags/x/de.gif" style="display:inline;" class=""/> Deutsch </a></li>
+                                <li><a href="#"><img height="13" width="20" src="http://www.geonames.org/flags/x/fr.gif" style="display:inline;" class=""/> Français </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </header>
+        
+        <div class="h5a-header" id="content">
+          <div class="container h5a-container">
+              <h1><span class="breadcrumb"> <a href="/">/ BS3 HTML5 Admin Template</a> / dashboard /</span> DASHBOARD</h1>
+            <div class="row">
+                  <div class="col-sm-3">
+                    <div class="box">
+                        <div class="icon blue">
+                            <i class="icon-user"></i>
+                        </div>
+                        <div class="content-right">
+                            <div class="title blue">Subscriptions/Month</div>
+                            <div class="value">594</div>
+                            <div class="title blue">Visits/Month</div>
+                            <div class="value">66780</div>
+                            <div class="title blue">Users/Goal</div>
+                            <div class="value">122</div>
+                            <div class="title green">New</div>
+                            <div class="value green">223*</div>
+                            <div class="title red">Deleted</div>
+                            <div class="value red">3</div><br/>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="box">
+                        <div class="minichart green">
+                            <span class="inlinebar">1,3,4,5,3,5</span>
+                        </div>
+                        <div class="content-right">
+                            <div class="title black">Products <a href="#">See All &raquo;</a></div>
+                            <div class="value">9564</div>
+                            <div class="title black">Revenues <i>(+22.8%)</i></div>
+                            <div class="value green">56.073,50 &euro;</div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="minichart orange">
+                            <span class="inlinebar">4,8,6,5,6,9</span>
+                        </div>
+                        <div class="content-right">
+                            <div class="title black">Accidents</div>
+                            <div class="value">2 <a href="#">See All &raquo;</a></div>
+                            <div class="title black">Loss <i>(-13.4%)</i></div>
+                            <div class="value red">67,00 &euro;</div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="box">
+                        <div class="icon blue">
+                            <i class="icon-globe"></i>
+                        </div>
+                        <div class="content-right">
+                            <div class="title blue">Indexed_Pages</div>
+                            <div class="value">98347</div>
+                            <div class="title black">Sitemap.xml</div>
+                            <div class="value"><a href="#"><i class="icon-download"></i> Download</a></div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="box">
+                        <div class="icon red">
+                            <i class="icon-exclamation-sign"></i>
+                        </div>
+                        <div class="content-right">
+                            <div class="title red">Fatal_Errors</div>
+                            <div class="value red">12</div>
+                            <div class="title black">Warnings</div>
+                            <div class="value black">23</div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="box">
+                        <div id="examplePie"></div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="box">
+                        <div id="exampleStacking"></div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </div>
+            
+
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="h5a-sidebar dashboard hidden-print affix-top">
+                        <ul class="nav h5a-sidenav">
+                            <li>
+                                <a href="#big-graph"><i class="icon-tasks"></i> Big Graph Example</a>
+                            </li>
+                            <li>
+                                <a href="#widgets"><i class="icon-dashboard"></i> More Dashboard Widgets</a>
+                                <ul class="nav">
+                                    <li><a href="#more-widgets"><i class="icon-group"></i> Latest Users</a></li>
+                                    <li><a href="#knobs"><i class="icon-eye-open"></i> Server Status</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#quick-adds"><i class="icon-edit"></i> Quick Adds</a>
+                            </li>
+                            <li class="sidenav-stuff">
+                                <span class="pull-right"><i class="icon-remove"></i></span>
+                                <h4 class="underline blue">Time to deploy!</h4>
+                                <input type="text" class="h5a-input form-control" placeholder="Revision #"></input><br>
+                                <button class="h5a-btn btn  btn-primary full"><i class="icon-rocket"></i> PUBLISH</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9" role="main">
+                    <!-- Charts! ================================================== -->
+                    
+                    <div class="h5a-docs-section">
+                        <div class="page-header">
+                            <h1 id="big-graph">Big Graph Example</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="btn-group pull-right" data-toggle="buttons">
+                                  <label class="h5a-btn btn btn-default">
+                                    <input type="radio"> Today
+                                  </label>
+                                  <label class="h5a-btn btn btn-default active">
+                                    <input type="radio"> Yesterday
+                                  </label>
+                                  <label class="h5a-btn btn btn-default">
+                                    <input type="radio"> Last 30 days
+                                  </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="exampleChart"></div>
+                        <div class="row scoreboard">
+                            <div class="col-xs-3">
+                                <div class="scoreboard">
+                                    <h4>Blue Number</h4>
+                                    <div class="score blue">455,77</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="scoreboard">
+                                    <h4>A Number</h4>
+                                    <div class="score">455,77</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="scoreboard">
+                                    <h4 class="">Minimum</h4>
+                                    <div class="score red">566,03</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="scoreboard last">
+                                    <h4>Maximum</h4>
+                                    <div class="score green">46543,44</div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3>More chart examples?</h3>
+                        <p>
+                            HTML5 Admin includes 2 amazing libraries to make any sort of chart.<br/>
+                            They are both <strong>extremely easy to understand and use</strong>.
+                        </p>
+                        <div class="btn-group">
+                            <a class="h5a-btn btn  btn-primary" target="_blank" href="http://omnipotent.net/jquery.sparkline/#examples">jQuery Sparklines <i class="icon-external-link"></i></a>
+                            <a class="h5a-btn btn  btn-primary" target="_blank" href="http://www.flotcharts.org/flot/examples/">Flot Charts <i class="icon-external-link"></i></a>
+                        </div>
+                        <a class="h5a-btn btn  btn-success" data-toggle="modal" href="#sampleModal">Demo modal <i class="icon-expand"></i></a>
+                        <br/><br/>
+                        
+                        <div class="page-header">
+                            <h1 id="widgets">Other Boxes Example</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                              <div class="box">
+                                  <h4 class="underline">Week Most Popular <small><a href="#" class="tooltip-test" title="" data-original-title="These are the most popular items sold last week"><i class="icon-info-sign"></i> Help</a></small>
+                                      <a class="close_box" href="#"><span class="pull-right boxes_right"><i class="icon-remove"></i></span></a>
+                                  </h4>
+                                  
+                                    <div id="demoProds">
+                                        <table cellpadding="0" cellspacing="0" border="0" class="display" id="demoProducts">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Price (EUR)</th>
+                                                    <th>Sold</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><button type="button" class="h5a-btn btn  btn-xs btn-default"><i class="icon-eye-open"></i></button> Nexus 4</td>
+                                                    <td>299,00</td>
+                                                    <td>422</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" class="h5a-btn btn  btn-xs btn-default"><i class="icon-eye-open"></i></button> Nexus 7</td>
+                                                    <td>499,00</td>
+                                                    <td>120</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" class="h5a-btn btn  btn-xs btn-default"><i class="icon-eye-open"></i></button> iPhone 5C</td>
+                                                    <td>799,00</td>
+                                                    <td>90</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" class="h5a-btn btn  btn-xs btn-default"><i class="icon-eye-open"></i></button> iPhone 4S</td>
+                                                    <td>399,00</td>
+                                                    <td>67</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" class="h5a-btn btn  btn-xs btn-default"><i class="icon-eye-open"></i></button> Random Tablet</td>
+                                                    <td>169,00</td>
+                                                    <td>33</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                  
+                              </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="box hidden-print">
+                                  <h4 class="underline">Motivational Box</h4>
+                                  <p class="small">
+                                      Subtitle for a widget with <a role="button" class="popover-test" title="" data-placement="left" data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A Title">Popover Help</a>
+                                  </p>
+                                  <p>
+                                      Jujubes chupa chups candy canes dessert. Jelly cookie oat cake toffee. 
+                                      Dessert cupcake gummies cookie. Lemon drops soufflé apple pie danish. 
+                                      Unerdwear.com Bootstrap3 chups apple pie cheesecake. 
+                                      Caramels macaroon candy canes cotton candy apple pie jelly-o. 
+                                      Carrot cake biscuit gingerbread BS3 pudding wafer. 
+                                      Dragée sweet roll soufflé bear claw. Admin Motivational candy dessert danish.
+                                        <blockquote>
+                                          <p>Time heals what reason cannot</p>
+                                          <small>This is <cite title="Seneca">Seneca</cite></small>
+                                        </blockquote>
+                                  </p>
+                              </div>
+                            </div>
+                        </div>
+                        <hr id="more-widgets"/><br/><br/>
+                        <div class="row">
+                            <div class="col-sm-3">
+                              <div class="box hidden-print">
+                                  <h4 class="underline">The most cool users</h4>
+                                  <p class="small">This is some small text that might help you understand the table that you have on your right. All this is using bootstrap3 scaffolding and HTML5...</p>
+                                  <ul class="list-unstyled small">                                                    
+                                      <li>
+
+                                          <div class="badge green btn-xs"><i class="icon-eye-open"></i></div> View User
+                                      </li>
+                                      <li>
+                                          <div class="badge blue btn-xs"><i class="icon-pencil"></i></div> Edit User
+                                      </li>
+                                      <li>
+                                          <div class="badge red btn-xs"><i class="icon-remove"></i></div> Delete User
+                                      </li>
+                                  </ul>
+                                  <p class="small">This box has been proven very helpful to users that will need to update a backend of their website.<br><br></p>
+
+                              </div>
+                            </div>
+                            <div class="col-sm-9">
+                              <div class="box">
+                                <table cellpadding="0" cellspacing="0" border="0" class="display" id="demoUsers">
+                                    <thead>
+                                        <tr>
+                                            <th>Pic</th>
+                                            <th>Name</th>
+                                            <th class="html">Website</th>
+                                            <th>Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="tooltip-test" title="" data-placement="right" data-original-title="These images are responsive!">
+                                                    <img src="http://placekitten.com/46/44" class="img-circle img-responsive"/>
+                                                </a>
+                                            </td>
+                                            <td>Enrico Icardi</td>
+                                            <td><a href="http://www.sharedesk.net/">Shared Office Website</a></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="h5a-btn btn  btn-success btn-xs"><i class="icon-eye-open"></i></button>
+                                                    <button type="button" class="h5a-btn btn  btn-primary btn-xs"><i class="icon-pencil"></i></button>
+                                                    <button type="button" class="h5a-btn btn  btn-danger btn-xs"><i class="icon-remove"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="tooltip-test" title="" data-placement="right" data-original-title="These images are responsive!">
+                                                    <img src="http://placekitten.com/45/46" class="img-circle img-responsive"/>
+                                                </a>
+                                            </td>
+                                            <td>Administrator</td>
+                                            <td><a href="http://www.html5admin.com/demo/">Admin Template</a></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="h5a-btn btn  btn-success btn-xs"><i class="icon-eye-open"></i></button>
+                                                    <button type="button" class="h5a-btn btn  btn-primary btn-xs"><i class="icon-pencil"></i></button>
+                                                    <button type="button" class="h5a-btn btn  btn-danger btn-xs"><i class="icon-remove"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="tooltip-test" title="" data-placement="right" data-original-title="These images are responsive!">
+                                                    <img src="http://placekitten.com/44/44" class="img-circle img-responsive"/>
+                                                </a>
+                                            </td>
+                                            <td>Administration</td>
+                                            <td><a href="http://www.html5admin.com/">Modèle d'administration</a></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="h5a-btn btn  btn-success btn-xs"><i class="icon-eye-open"></i></button>
+                                                    <button type="button" class="h5a-btn btn  btn-primary btn-xs"><i class="icon-pencil"></i></button>
+                                                    <button type="button" class="h5a-btn btn  btn-danger btn-xs"><i class="icon-remove"></i></button>                                                
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="tooltip-test" title="" data-placement="right" data-original-title="These images are responsive!">
+                                                    <img src="http://placekitten.com/44/45" class="img-circle img-responsive"/>
+                                                </a>
+                                            </td>
+                                            <td>HTML5 Admin</td>
+                                            <td><a href="http://www.html5admin.com/demo/ui.html">Plantilla de administración</a></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="h5a-btn btn  btn-success btn-xs"><i class="icon-eye-open"></i></button>
+                                                    <button type="button" class="h5a-btn btn  btn-primary btn-xs"><i class="icon-pencil"></i></button>
+                                                    <button type="button" class="h5a-btn btn  btn-danger btn-xs"><i class="icon-remove"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                </table>
+                              </div>
+                            </div>
+                        </div>
+                        
+                        <div id="knobs" class="titleDivider"><span>This is The Knobs Section</span></div>
+                        
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="box hp_knob">
+                                    <h5 class="underline">RAM</h5>
+                                    <input type="text" value="45" class="dial" data-readOnly="true" data-width="80" data-height="80" data-fgColor="#6033a3" data-skin="tron" data-thickness=".2" data-displayPrevious="true">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="box hp_knob">
+                                    <h5 class="underline">CPU</h5>
+                                    <input type="text" value="35" class="dial" data-readOnly="true" data-width="80" data-height="80" data-fgColor="#6033a3" data-skin="tron" data-thickness=".2" data-displayPrevious="true">                                    
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="box hp_knob">
+                                    <h5 class="underline">MySQL <small><a href="#" class="tooltip-test" title="" data-original-title="MySQL usage is at 15%"><i class="icon-info-sign"></i></a></small></h5>
+                                    <input type="text" value="15" class="dial" data-readOnly="true" data-width="80" data-height="80" data-fgColor="#6033a3" data-skin="tron" data-thickness=".2" data-displayPrevious="true">                                    
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="box hp_knob">
+                                    <h5 class="underline">Disk</h5>
+                                    <input type="text" value="05" class="dial" data-readOnly="true" data-width="80" data-height="80" data-fgColor="#6033a3" data-skin="tron" data-thickness=".2" data-displayPrevious="true">                                                                        
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="box hp_knob">
+                                    <h5 class="underline">Fan</h5>
+                                    <input type="text" value="35" class="dial" data-readOnly="true" data-width="80" data-height="80" data-fgColor="#6033a3" data-skin="tron" data-thickness=".2" data-displayPrevious="true">                                                                        
+                                </div>                                    
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="box hp_knob">
+                                    <h5 class="underline">Fun <small><a href="#" class="tooltip-test" title="" data-original-title="This is the FUN"><i class="icon-info-sign"></i></a></small></h5>
+                                    <input type="text" value="93" class="dial" data-readOnly="true" data-width="80" data-height="80" data-fgColor="#EB2626" data-skin="tron" data-thickness=".2" data-displayPrevious="true">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="quick-adds" class="titleDivider"><span>end of The Knobs Section</span></div>
+                        
+                    </div> <!-- /h5a-docs-section -->
+
+                </div>
+            </div>            
+        </div> <!-- /container -->
+
+        
+        <div class="container h5a-container blue" id="colorChanger">
+            <div class="row">
+                <div class="col-md-3"></div> <!-- better than using offset -->
+                <div class="col-md-9">
+                    <h1>COLORED Containers <small> can Emphasize Content</small></h1>
+
+                    <p>
+                        This is an example box to showcase tabs and "quick add" forms <strong><u>with Validation</u></strong>
+                        <br>
+                        that might be used from one of your backend users to quickly add content from the dashboard.<br><br>
+                    </p>
+                    <div class="tip">
+                        <i class="icon-info-sign"></i> <strong>NOTE:</strong><br>
+                        <p>
+                        Wanna see another <strong>RANDOMIZED COLOR (CLASS)? <a href="#" id="changeColor">CLICK HERE!</a></strong><br>
+                        The available color classes are "blue", "orange", "gray", "violet", "green" and "red".<br><br>
+                        Some may not be appropriate with the tabs below so...just use them in a better way! ;)
+                        </p>
+                    </div>
+                    <hr/>
+                    <ul id="homeTabs" class="nav nav-tabs">
+                        <li class="active"><a href="#new_user" data-toggle="tab"><i class="icon-user"></i> Add User</a></li>
+                        <li class=""><a href="#new_product" data-toggle="tab"><i class="icon-tag"></i> Add Product</a></li>
+                        <li class="dropdown">
+                            <a href="#" id="homeTabsDrop1" class="dropdown-toggle" data-toggle="dropdown"><strong>Latest</strong> <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="homeTabsDrop1">
+                                <li><a href="#latest_users" tabindex="-1" data-toggle="tab">Users</a></li>
+                                <li><a href="#latest_products" tabindex="-1" data-toggle="tab">Products</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div id="homeTabsContent" class="tab-content">
+                        <div class="tab-pane fade active in" id="new_user">
+                            <form id="userForm">
+                                <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="box">
+                                                <h4 class="underline">Account Information</h4>
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Email address</label>
+                                                    <input type="email" class="form-control required email" id="exampleInputEmail1" placeholder="Enter email">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1">Password <small><a role="button" class="popover-test" title="" data-placement="right" data-content="Password must be at least 6 alphanumeric character" data-original-title="Password"><i class="icon-question-sign"></i> Help</a></small></label>
+                                                    <input minlength="6" type="password" class="form-control required" id="exampleInputPassword1" placeholder="Password">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="filePicker">Upload Picture <small><a role="button" class="popover-test" title="" data-placement="right" data-content="This is INK File picker. It's an AWESOME filepicker that allows you to upload files from anywhere (Computer, Facebook, Twitter, DropBox, etc.)" data-original-title="Pick a File"><i class="icon-question-sign"></i> Help</a></small></label><br>
+                                                    <input type="filepicker" data-fp-button-text="<i class='icon-cloud-upload'></i> Select a Photo from ANYWERE" data-fp-apikey="fakeAPIkey" name="filePicker" id="filePicker" class="h5a-btn btn  btn-success">
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="box">
+                                                <h4 class="underline">Contact Information</h4>
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputName">Name</label>
+                                                    <input type="text" title="Enter your name!" class="form-control required" id="exampleInputName" placeholder="Enter Name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputSurname">Surname</label>
+                                                    <input type="text" title="Hey! ...your Surname please." class="form-control required" id="exampleInputSurname" placeholder="Enter Surname">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputAddress">Address</label>
+                                                    <input type="text" class="form-control required" id="exampleInputAddress" placeholder="Enter Address">
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="pull-right btn-large h5a-btn btn  btn-primary"><i class="icon-save"></i> Save User</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="new_product">
+                            <form role="form" id="productForm">
+                                <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="box">
+                                                <h4 class="underline">General Info</h4>
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputProdName">Item Name</label>
+                                                    <input type="text" class="form-control required" id="exampleInputProdName" placeholder="Product Name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputCode">Description <small><a role="button" class="popover-test" title="" data-placement="right" data-content="Description must be descriptive. Really descriptive." data-original-title="Product Description"><i class="icon-question-sign"></i> Help</a></small></label>
+                                                    <textarea rows="5" class="form-control required" id="exampleInputCode" placeholder="Product Description"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="box">
+                                                <h4 class="underline">Stock Information</h4>
+
+                                                <div class="form-group">
+                                                    <label for="exampleItems">Nr. of Items</label>
+                                                    <input type="text" class="form-control required number" id="exampleItems" placeholder="00">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleBarcode">Barcode</label>
+                                                    <input type="text" class="form-control required number" id="exampleBarcode" placeholder="Enter Barcode">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleStock">Stock Nr.</label>
+                                                    <input type="text" class="form-control required number" id="exampleStock" placeholder="Enter Stock ID">
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="pull-right btn-large h5a-btn btn  btn-primary"><i class="icon-save"></i> Save Product</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="latest_users">
+                            <h4>Latest Users</h4>
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <a href="#" class="thumbnail">
+                                        <img src="http://placekitten.com/200/150" class="img-responsive"/>
+                                    </a>
+                                    <div class="caption">
+                                        <h4>A label</h4>
+                                        <p class="responsive">Sweet cotton candy pastry.</p>
+                                        <p>
+                                            <a href="#" class="h5a-btn btn  btn-primary btn-sm">Button</a> 
+                                            <a href="#" class="h5a-btn btn  btn-default btn-sm">Button</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <a href="#" class="thumbnail">
+                                        <img src="http://placekitten.com/202/150" class="img-responsive"/>
+                                    </a>
+                                    <div class="caption">
+                                        <h4>A label</h4>
+                                        <p class="responsive">Sweet cotton candy pastry.</p>
+                                        <p>
+                                            <a href="#" class="h5a-btn btn  btn-primary btn-sm">Button</a> 
+                                            <a href="#" class="h5a-btn btn  btn-default btn-sm">Button</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <a href="#" class="thumbnail">
+                                        <img src="http://placekitten.com/201/150" class="img-responsive"/>
+                                    </a>
+                                    <div class="caption">
+                                        <h4>A label</h4>
+                                        <p class="responsive">Sweet cotton candy pastry.</p>
+                                        <p>
+                                            <a href="#" class="h5a-btn btn  btn-primary btn-sm">Button</a> 
+                                            <a href="#" class="h5a-btn btn  btn-default btn-sm">Button</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <a href="#" class="thumbnail">
+                                        <img src="http://placekitten.com/204/150" class="img-responsive"/>
+                                    </a>
+                                    <div class="caption">
+                                        <h4>A label</h4>
+                                        <p class="responsive">Sweet cotton candy pastry.</p>
+                                        <p>
+                                            <a href="#" class="h5a-btn btn  btn-primary btn-sm">Button</a> 
+                                            <a href="#" class="h5a-btn btn  btn-default btn-sm">Button</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="latest_products">
+                            <h4>Latest Products</h4>
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <a href="#" class="thumbnail">
+                                        <img src="http://dummyimage.com/200x150/dddddd/ffffff.jpg" class="img-responsive"/>
+                                    </a>
+                                    <div class="caption">
+                                        <h4>A label</h4>
+                                        <p class="responsive">Sweet cotton candy pastry.</p>
+                                        <p>
+                                            <a href="#" class="h5a-btn btn  btn-primary btn-sm">Button</a> 
+                                            <a href="#" class="h5a-btn btn  btn-default btn-sm">Button</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <a href="#" class="thumbnail">
+                                        <img src="http://dummyimage.com/200x150/dddddd/ffffff.jpg" class="img-responsive"/>
+                                    </a>
+                                    <div class="caption">
+                                        <h4>A label</h4>
+                                        <p class="responsive">Sweet cotton candy pastry.</p>
+                                        <p>
+                                            <a href="#" class="h5a-btn btn  btn-primary btn-sm">Button</a> 
+                                            <a href="#" class="h5a-btn btn  btn-default btn-sm">Button</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <a href="#" class="thumbnail">
+                                        <img src="http://dummyimage.com/200x150/dddddd/ffffff.jpg" class="img-responsive"/>
+                                    </a>
+                                    <div class="caption">
+                                        <h4>A label</h4>
+                                        <p class="responsive">Sweet cotton candy pastry.</p>
+                                        <p>
+                                            <a href="#" class="h5a-btn btn  btn-primary btn-sm">Button</a> 
+                                            <a href="#" class="h5a-btn btn  btn-default btn-sm">Button</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <a href="#" class="thumbnail">
+                                        <img src="http://dummyimage.com/200x150/dddddd/ffffff.jpg" class="img-responsive"/>
+                                    </a>
+                                    <div class="caption">
+                                        <h4>A label</h4>
+                                        <p class="responsive">Sweet cotton candy pastry.</p>
+                                        <p>
+                                            <a href="#" class="h5a-btn btn  btn-primary btn-sm">Button</a> 
+                                            <a href="#" class="h5a-btn btn  btn-default btn-sm">Button</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr/>
+            <div class="row">
+                <div class="col-md-3"></div> <!-- better than using offset -->
+                <div class="col-md-9">
+                    <h1 id="best-users">Best Users <small>Last Week</small></h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div> <!-- better than using offset -->
+                <div class="col-md-3">
+                    <div class="box">
+                        <h4 class="text-center underline">Nicey Blondee - CEO</h4>
+                        <img src="http://placezombies.com/150x150" class="img-circle center img-responsive"/>
+
+                        <div class="text-center">
+                            <p class="blue">
+                                <a href="#" class="tooltip-test" title="" data-original-title="Blond Expert Zombie"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-half-empty"></i></a>
+                            </p>
+                            <div class="btn-group text-center">
+                                <a class="h5a-btn btn  btn-sm btn-primary"><i class="icon-eye-open"></i></a>
+                                <a class="h5a-btn btn  btn-sm btn-primary"><i class="icon-edit"></i></a>
+                                <a class="h5a-btn btn  btn-sm btn-primary"><i class="icon-envelope"></i></a>
+                            </div>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="box">
+                        <h4 class="text-center underline">Grab Eat - CPO</h4>
+                        <img src="http://placezombies.com/149x149" class="img-circle center img-responsive"/>
+
+                        <div class="text-center">
+                            <p class="blue">
+                                <a href="#" class="tooltip-test" title="" data-original-title="Eating Monster"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-empty"></i></a>
+                                </p>
+                            <div class="btn-group text-center">
+                                <a class="h5a-btn btn  btn-sm btn-primary"><i class="icon-eye-open"></i></a>
+                                <a class="h5a-btn btn  btn-sm btn-primary"><i class="icon-edit"></i></a>
+                                <a class="h5a-btn btn  btn-sm btn-primary"><i class="icon-envelope"></i></a>
+                            </div>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="box">
+                        <h4 class="text-center underline">Eary Eaty - CTO</h4>
+                        <img src="http://placezombies.com/151x151" class="img-circle center img-responsive"/>
+
+                        <div class="text-center">
+                            <p class="blue">
+                                <a href="#" class="tooltip-test" title="" data-original-title="Gimme that ear"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-empty"></i></a>
+                            </p>
+                            <div class="btn-group text-center">
+                                <a class="h5a-btn btn  btn-sm btn-primary"><i class="icon-eye-open"></i></a>
+                                <a class="h5a-btn btn  btn-sm btn-primary"><i class="icon-edit"></i></a>
+                                <a class="h5a-btn btn  btn-sm btn-primary"><i class="icon-envelope"></i></a>
+                            </div>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- Following is the Markup of the Sample modal used in this file with every Modal show/hide action -->
+        <div id="sampleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 class="modal-title" id="myModalLabel">Modal Heading</h3>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Text in a modal</h4>
+                        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+
+                        <h4>Popover in a modal</h4>
+                        <p>This <a role="button" class="h5a-btn btn  btn-default popover-test" title="" data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A Title">button</a> should trigger a popover on click.</p>
+
+                        <h4>Tooltips in a modal</h4>
+                        <p><a href="#" class="tooltip-test" title="" data-original-title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="" data-original-title="Tooltip">that link</a> should have tooltips on hover.</p>
+
+                        <hr>
+
+                        <h4>Overflowing text to show scroll behavior</h4>
+                        Bacon ipsum dolor sit amet biltong spare ribs corned beef, pork chop pork loin pig frankfurter doner venison boudin drumstick kielbasa pancetta t-bone shankle. Shoulder spare ribs short ribs andouille jerky bacon. Chicken brisket ham hock, doner drumstick salami biltong. Filet mignon meatball fatback ground round jerky chicken.
+
+                        Brisket ham hock meatball prosciutto, tongue corned beef kevin shank venison. T-bone capicola andouille, biltong jerky tail kevin chicken fatback pork tongue jowl tenderloin venison. Kielbasa ham hock short loin andouille. Kielbasa shankle hamburger salami tri-tip tenderloin. Ham pig meatball chuck tri-tip chicken. Doner bresaola tongue, cow drumstick rump kielbasa.
+
+                        Brisket hamburger shank pig bacon short ribs pancetta tri-tip beef ribs spare ribs. Turkey jerky drumstick, doner corned beef tail swine boudin shankle chicken flank ribeye short loin pork. Tenderloin flank strip steak, ball tip short ribs rump boudin salami drumstick jerky. Shankle doner prosciutto meatball, bresaola tongue t-bone rump shank tenderloin kielbasa ham.
+
+                        Brisket flank tongue, doner corned beef bresaola pig sausage andouille tenderloin chicken. Doner pork cow tongue ball tip pork loin beef ribs chicken tri-tip ground round biltong salami andouille. Ribeye biltong drumstick swine chuck jerky cow tongue pig frankfurter ground round rump venison. Cow pork chop flank, swine brisket tail tongue filet mignon salami pig meatball. Tenderloin tail pork loin chicken meatloaf, ball tip pastrami pancetta short ribs andouille pork. Pastrami ribeye flank, bresaola bacon pork leberkas salami ham short ribs.
+
+                        Boudin pork pork loin t-bone prosciutto jowl doner spare ribs drumstick tongue biltong kevin andouille shank. Doner kielbasa short ribs prosciutto pork chop cow swine. Turducken swine pastrami andouille, rump tail chicken chuck strip steak leberkas drumstick boudin meatball. Andouille doner tail, filet mignon flank cow pork belly spare ribs. Bacon fatback bresaola, ball tip ham hock brisket ham tenderloin flank shank venison.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="h5a-btn btn  btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="h5a-btn btn  btn-primary">Save changes</button>
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+
+        <!-- Following is the Markup of the Sample modal used for the clicks on the graphs of the dashboard -->
+        <div id="chartsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 class="modal-title" id="myModalLabel">Graph Modal</h3>
+                        <small>This is the Modal Head with 
+                            <a class="tooltip-test" data-html="true" data-toggle="tooltip" data-placement="right" title="<h5>Tips</h5><p>This might be a good place for old good <u>HTML</u> <em>tips</em></p>">
+                                Some Tips <i class="icon-info-sign"></i>
+                            </a> 
+                        </small>
+                    </div>
+                    <div class="modal-body">
+                        <p>Why not showing a modal after a graph click?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="h5a-btn btn  btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="h5a-btn btn  btn-primary">Save changes</button>
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+
+        
+        <!-- JS → jQuery core (from cdn) -->
+        <!-- dependencies: none -->
+        <script src="js/vendor/jquery.min.js"></script>
+        
+        <!-- JS → Bootstrap core -->
+        <!-- dependencies: jquery -->
+        <script src="js/vendor/bootstrap.min.js"></script>
+        
+        
+        
+<!-- **************************************************************************** -->
+        <!-- ************************************************** -->
+        <!-- ************************ JS → E X T R A S ******** -->
+        
+        <!-- JS → jquery sparkline (for small graphs) -->
+        <!-- dependencies: jquery -->
+        <script src="js/vendor/jquery.sparkline.min.js"></script>
+
+        <!-- JS → Flot Charts (http://www.flotcharts.org/)  -->
+        <!-- dependencies: jquery -->
+        <script src="js/vendor/flot/jquery.flot.min.js"></script>
+        <!-- JS → Flot Charts Pie (used for Pie graph)  -->
+        <!-- dependencies: jquery, jquery.flot -->
+        <script src="js/vendor/flot/jquery.flot.pie.js"></script>
+        <!-- JS → Flot Charts Stack (used for Stacking graph)  -->
+        <!-- dependencies: jquery, jquery.flot -->
+        <script src="js/vendor/flot/jquery.flot.stack.js"></script>
+        <!-- JS → Flot Resize (used for all flot graphs on win resize)  -->
+        <!-- dependencies: jquery, jquery.flot -->
+        <script src="js/vendor/flot/jquery.flot.resize.js"></script>
+        
+        <!-- JS → Datatables (http://www.datatables.net/)  -->
+        <!-- dependencies: jquery -->
+        <script src="js/vendor/jquery.dataTables.min.js"></script>
+        
+        <!-- JS → jQuery Knob (http://anthonyterrien.com/knob/)  -->
+        <!-- dependencies: jquery -->
+        <script src="js/vendor/jquery.knob.min.js"></script>
+
+        <!-- JS → jQuery Validation (to validate form http://jqueryvalidation.org/)  -->
+        <!-- dependencies: jquery -->
+        <script src="js/vendor/jquery.validate.min.js"></script>
+
+        <!-- JS → ink file picker ( http://inkfilepicker.com/ ) -->
+        <script type="text/javascript">
+        (function(a){if(window.filepicker){return}var b=a.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===a.location.protocol?"https:":"http:")+"//api.filepicker.io/v1/filepicker.js";var c=a.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d={};d._queue=[];var e="pick,pickMultiple,pickAndStore,read,write,writeUrl,export,convert,store,storeUrl,remove,stat,setKey,constructWidget,makeDropPane".split(",");var f=function(a,b){return function(){b.push([a,arguments])}};for(var g=0;g<e.length;g++){d[e[g]]=f(e[g],d._queue)}window.filepicker=d})(document); 
+        </script>
+        
+        <!-- **************** JS → E N D    E X T R A S ******** -->
+        <!-- *************************************************** -->
+<!-- **************************************************************************** -->
+        
+        
+        <!-- JS → HTML5Admin core -->
+        <script src="js/dashboard.js"></script>
+        
+    </body>
+</html>

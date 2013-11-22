@@ -1,0 +1,878 @@
+<!--
+
+Welcome to the
+
+
+ **      ** ********** ****     **** **       ******           **          **             **               
+/**     /**/////**/// /**/**   **/**/**      /*////           ****        /**            //                
+/**     /**    /**    /**//** ** /**/**      /*****          **//**       /** **********  ** *******       
+/**********    /**    /** //***  /**/**      ///// *        **  //**   ******//**//**//**/**//**///**      
+/**//////**    /**    /**  //*   /**/**           /*       ********** **///** /** /** /**/** /**  /**      
+/**     /**    /**    /**   /    /**/**       *   /*      /**//////**/**  /** /** /** /**/** /**  /**      
+/**     /**    /**    /**        /**/********/ ****       /**     /**//****** *** /** /**/** ***  /** *****
+//      //     //     //         // ////////  ////        //      //  ////// ///  //  // // ///   // ///// 
+
+
+BOILERPLATE! (http://html5admin.dev/demo/)
+
+-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- META TAGS → All you meta tags go here -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="HTML5 Admin is an HTML5 Administration template easy to modify and maintain based on Bootstrap 3">
+        <meta name="author" content="HTML5 Admin">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <!-- Favicon → Yes, the favicon -->
+        <link rel="shortcut icon" href="images/favicon.png">
+
+        <!-- Title → Yes, the title of the page -->
+        <title>HTML5 Admin</title>
+
+        <!-- CSS → Bootstrap core -->
+        <link rel="stylesheet" href="../css/vendor/bootstrap.css" />
+        
+        <!-- CSS → Font Awesome -->
+        <!-- dependencies: bootstrap -->
+        <link rel="stylesheet" href="../css/vendor/font-awesome.css" />
+        <link rel="stylesheet" href="../css/vendor/font-awesome-ie7.css" />
+        
+        <!-- CSS → Bootstrap Overrides (changing main bootstrap CSS) -->
+        <!-- dependencies: bootstrap3 -->
+        <link rel="stylesheet" href="../css/overrides/bootstrap-overrides.css" />
+
+        <!-- CSS → HTML5 Admin_ core -->
+        <!-- dependencies: bootstrap3, font-awesome + others depending on which plugins are used in the page -->
+        <link rel="stylesheet" href="../css/html5admin.css" />
+        
+
+<!-- **************************************************************************** -->
+        <!-- ************************************************** -->
+        <!-- ************************ CSS → E X T R A S ******** -->
+
+        <!-- all your extra CSS will go here -->
+        
+        <!-- **************** CSS → E N D    E X T R A S ******** -->
+        <!-- *************************************************** -->
+<!-- **************************************************************************** -->
+
+        
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="../js/utils/html5shiv.js"></script>
+          <script src="../js/utils/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+
+
+
+
+
+
+
+
+
+    <body>
+
+        <!-- Fixed navbar -->
+        <header class="navbar navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img src="../images/logo_A_black.png" alt="Brand Name Here"/>
+                        <span class="text"><!-- Brand Name Here --></span>
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" id="h5a-navbar">
+                        <li><a href="../index.html"><i class="icon-dashboard"></i> Dashboard</a></li>
+                        <li class="active"><a href="../ui.html"><i class="icon-laptop"></i> User Interface</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-bell shake"></i> <span class="badge red">42</span></a>
+                            <ul class="dropdown-menu" id="notifications">
+                                <li class="dropdown-header"><i class="icon-bell"></i> Notifications</li>
+                                <li>
+                                    <a href="#">
+                                        <i class="image icon-cog"></i>
+                                        <p><i class="icon-time"></i> <small>2 hours ago<br></small>This could be a system notification</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="image icon-flag"></i>
+                                        <p><i class="icon-time"></i> <small>06/02/2015 14:30<br></small>This could be a system Error/Flag notification</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>You have no notifications.</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-envelope-alt shake"></i> <span class="badge blue">2</span></a>
+                            <ul class="dropdown-menu" id="messages">
+                                <li class="dropdown-header"><i class="icon-envelope-alt"></i> Messages</li>
+                                <li>
+                                    <a href="#">
+                                        <img class="img-circle" alt="Can you please do..." src="http://placezombies.com/48x48" >
+                                        <p><i class="icon-time"></i> <small>2 hours ago<br></small>Can you please do this message very very long so we can see how it breaks? thanks!</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img class="img-circle" alt="Can you please do..." src="http://placezombies.com/48x49" >
+                                        <p><i class="icon-time"></i> <small>4 hours ago<br></small>This can be another message, but it's a shorter one..</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>You have no messages.</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="http://placekitten.com/20/20" style="display:inline;" class="img-circle img-responsive"/> User Name <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><i class="icon-edit"></i> Profile</a></li>
+                                <li><a href="#"><i class="icon-lock"></i> Security</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Quick Adds</li>
+                                <li><a href="#"><i class="icon-tag"></i> Add Product</a></li>
+                                <li><a href="#"><i class="icon-user"></i> Add User</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Settings</li>
+                                <li><a href="#"><i class="icon-signout"></i> Log out</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img height="13" width="20" src="http://www.geonames.org/flags/x/uk.gif" style="display:inline;" class=""/><b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">icons: GeoNames.org</li>
+                                <li><a href="#"><img height="13" width="20" src="http://www.geonames.org/flags/x/es.gif" style="display:inline;" class=""/> Español </a></li>
+                                <li><a href="#"><img height="13" width="20" src="http://www.geonames.org/flags/x/it.gif" style="display:inline;" class=""/> Italiano </a></li>
+                                <li><a href="#"><img height="13" width="20" src="http://www.geonames.org/flags/x/de.gif" style="display:inline;" class=""/> Deutsch </a></li>
+                                <li><a href="#"><img height="13" width="20" src="http://www.geonames.org/flags/x/fr.gif" style="display:inline;" class=""/> Français </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+
+                    <div class="h5a-sidebar hidden-print affix-top">
+
+                        <span class="breadcrumb row"> <a href="../index.html">/ Dashboard</a> / CARD(s) /</span>
+
+                        <ul class="nav h5a-sidenav nav-list accordion">
+                            <li data-toggle="collapse" data-target="#nav-ui">
+                                <a>
+                                    <i class="icon-laptop"></i> Forms
+                                </a>
+                                <ul class="nav nav-list collapse" id="nav-ui">
+                                    <li><a href="../ui.html"><i class="icon-wrench"></i> Style &amp; Utilities</a></li>
+                                    <li><a href="../ui_validation.html"><i class="icon-check"></i> Validation</a></li>
+                                    <li><a href="../icons.html"><i class="icon-edit"></i> Icons</a></li>
+                                    <li><a href="../ui_uploader.html"><i class="icon-upload"></i> Uploader</a></li>
+                                </ul>
+                            </li>
+                            <li data-toggle="in" class="active" data-target="#nav-pages">
+                                <a>
+                                    <i class="icon-file-text-alt"></i> Pages
+                                </a>
+                                <ul class="nav nav-list in" id="nav-pages">
+                                    <li><a href="../pages/boilerplate.html"><i class="icon-star"></i> Boilerplate</a></li>
+                                    <li><a href="../pages/invoice.html"><i class="icon-money"></i> Invoice</a></li>
+                                    <li class="active"><a href="../pages/card.html"><i class="icon-tag"></i> Card</a></li>
+                                    <li><a href="../pages/search_results.html"><i class="icon-search"></i> Search Results</a></li>
+                                    <li><a href="../pages/calendar.html"><i class="icon-calendar"></i> Calendar</a></li>
+                                    <li><a href="../pages/stackers.html"><i class="icon-stackexchange"></i> Stackers</a></li>
+                                    <li><a href="../pages/tables.html"><i class="icon-euro"></i> Tables</a></li>
+                                    <li><a href="../pages/errors.html"><i class="icon-exclamation-sign"></i> Login/Errors</a></li>
+                                </ul>
+                            </li>
+                            <li data-toggle="collapse" data-target="#nav-emails">
+                                <a>
+                                    <i class="icon-envelope-alt"></i> Emails
+                                </a>
+                                <ul class="nav nav-list collapse" id="nav-emails">
+                                    <li><a href="../emails/system.html" target="_blank"><i class="icon-envelope-alt"></i> System <sup><i class="icon-external-link"></i></sup></a></li>
+                                    <li><a href="../emails/call_to_action.html" target="_blank"><i class="icon-info-sign"></i> Call-To-Action <sup><i class="icon-external-link"></i></sup></a></a></li>
+                                    <li><a href="../emails/news.html" target="_blank"><i class="icon-globe"></i> News <sup><i class="icon-external-link"></i></sup></a></a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a data-toggle="collapse" data-target="#nav-menu">
+                                    <i class="icon-sitemap"></i> Pure CSS Menu
+                                </a>
+                                <ul class="nav nav-list collapse" id="nav-menu">
+                                    <li>
+                                        <a data-toggle="collapse" data-target="#nav-menu-2">
+                                            With
+                                        </a>
+                                        <ul class="nav nav-list collapse" id="nav-menu-2">
+                                            <li>
+                                                <a data-toggle="collapse" data-target="#nav-menu-3"> Infinite</a>
+                                                <ul class="nav nav-list collapse" id="nav-menu-3">
+                                                    <li>
+                                                        <a href="#"><i class="icon-gift"></i> Levels</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-10" role="main">
+                    <!-- PAGE HEADER -->
+                    <div class="page-header">
+                        <h1>
+                            <span class="breadcrumb"> <a href="../index.html">/ Dashboard</a> / CARD(s) /</span> 
+                            CARDS <small> for product, user and other content</small>
+                        </h1>
+                    </div>
+                    <!-- /PAGE HEADER -->
+
+                    <!-- content -->
+                    <p>
+                        This is a template that works perfectly for Users or Product or any other "Content Page" (edit/view).<br><br>
+                        HTML5 Administation Template in the <em><a href="http://en.wikipedia.org/wiki/KISS_principle" target="_blank">KISS Principle</a></em><br>
+                        and suggests you to use <u>ONLY ONE</u> way of representing data in your backend<br>
+                        to help your user focus on functionalities instead of confusing him with a complex GUI.<br><br>
+                    </p>
+                    <!-- /content -->
+                </div>
+            </div>
+        </div> <!-- /container -->
+
+
+        <!-- NEW CONTAINERS - For New Content -->
+        <div class="container h5a-container gray">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-2"> <!-- offset (because of side nav) --> 
+                    <h1><img class="pull-left img-circle" src="http://lorempixel.com/40/40/food/" alt=""/> Simple John XXL <small> 55°C</small></h1>
+
+                    <div class="btn-group pull-right">
+                        <a class="btn h5a-btn btn-danger btn-xs"><i class="icon-remove"></i> Remove Item</a>
+                        <a class="btn h5a-btn btn-primary btn-xs"><i class="icon-refresh"></i> Refresh Item</a>
+                    </div>
+                    <p>
+                        Tenderloin pastrami shank filet mignon sirloin jerky leberkas meatball pork tail <br>
+                        rump capicolameatball capicola turkey fatback kielbasa brisket.<br><br>
+                    </p>
+
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#pane1" data-toggle="tab"><i class="icon-eye-open"></i> View</a></li>
+                            <li><a href="#pane2" data-toggle="tab"><i class="icon-edit"></i> Edit</a></li>
+                            <li><a href="#pane3" data-toggle="tab"><i class="icon-link"></i> Related Items</a></li>
+                            <li><a href="#pane4" data-toggle="tab"><i class="icon-user"></i> User Activity</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="pane1" class="tab-pane active">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="thumbnail">
+                                            <img class="img-responsive" src="http://lorempixel.com/1650/1400/food/An%20Item/" alt="Whatever Item"/>
+                                            <div class="caption">
+                                                <h4>Simple Johnx XXL</h4>
+                                                <p>This is a picture caption</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4>This can be anything</h4>
+                                        <p>
+                                            Bacon ipsum dolor sit amet pork chop drumstick meatloaf pork loin, shankle turducken filet mignon shank short loin tongue ham salami cow. Shank ball tip DESCRIPTION, capicola prosciutto hamburger ribeye pork loin fatback short loin boudin. Kevin kielbasa capicola, pig pork chop ribeye corned bee. Turkey spare ribs filet mignon chicken boudin sirloin, t-bone shankle chuck turducken. Corned beef sausage rump pork loin. Doner pork biltong pork loin salami.<br><br>
+
+                                            <h4 class="underline">More Info</h4>
+
+                                            <table class="item">
+                                                <tr>
+                                                    <td><i class="icon-key"></i> ID</td>
+                                                    <td>556</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Company-Code</td>
+                                                    <td>33223-556H-TT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="icon-move"></i> Size</td>
+                                                    <td class="red">-556 mm/hh</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="icon-user"></i> Niceness</td>
+                                                    <td class="green">Super Kewl</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="icon-tag"></i> TAGS</td>
+                                                    <td>Super, Kewl, 556, wow, <br>nice, hop, html5, admin, responsive<br>more, lines</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="icon-edit"></i> Colors</td>
+                                                    <td>
+                                                        <span class="badge green"> </span> <span class="badge red"> </span> <span class="badge orange"> </span> <span class="badge blue"> </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="icon-cog"></i> Type</td>
+                                                    <td>556H-TT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="icon-globe"></i> Website</td>
+                                                    <td><a href="http://www.sharedesk.net">ShareDesk - Shared Offices</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="icon-twitter"></i> Twitter</td>
+                                                    <td><a href="http://www.twitter.com/sharedesk">@sharedesk</a></td>
+                                                </tr>
+                                            </table>
+                                        </p>
+                                    </div>
+                                </div>
+<br><br><br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="tip">
+                                            <h4><i class="icon-info-sign"></i> The most common view/edit content page.</h4>
+                                            <p>
+                                                Here you could add WHATEVER you want using the grid...but we're just going to add an image gallery<br>
+                                                to try to build the most common layout for a view/edit back-end content page (and to KISS).<br><br>
+                                                Like you would do for your users: <strong>Keep It Simple and Straightforward.</strong>
+                                            </p>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+<br><br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br>
+                                        <h4>GALLERY (using BS3 carousel)</h4>
+
+                                        <div id="carousel-example-generic" class="carousel slide">
+                                            <!-- Indicators -->
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner">
+                                               <!-- Slide -->
+                                                <div class="item active">
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-xs-6">
+                                                            <img src="http://lorempixel.com/281/180/food/" alt=""/>
+                                                            <div class="carousel-caption">This is a caption</div>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-6">
+                                                            <img src="http://lorempixel.com/283/180/food/" alt=""/>
+                                                            <div class="carousel-caption">This is a caption</div>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-6">
+                                                            <img src="http://lorempixel.com/281/180/food/" alt=""/>
+                                                            <div class="carousel-caption">This is a caption</div>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-6">
+                                                            <img src="http://lorempixel.com/282/180/food/" alt=""/>
+                                                            <div class="carousel-caption">This is a caption</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Slide -->
+                                                <div class="item">
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-xs-6">
+                                                            <img src="http://lorempixel.com/280/180/food/" alt=""/>
+                                                            <div class="carousel-caption">This is a caption</div>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-6">
+                                                            <img src="http://lorempixel.com/280/180/food/" alt=""/>
+                                                            <div class="carousel-caption">This is a caption</div>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-6">
+                                                            <img src="http://lorempixel.com/280/180/food/" alt=""/>
+                                                            <div class="carousel-caption">This is a caption</div>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-6">
+                                                            <img src="http://lorempixel.com/280/180/food/" alt=""/>
+                                                            <div class="carousel-caption">This is a caption</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               <!-- Slide -->
+                                                <div class="item">
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-xs-6">
+                                                            <img src="http://lorempixel.com/285/180/food/" alt=""/>
+                                                            <div class="carousel-caption">This is a caption</div>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-6">
+                                                            <img src="http://lorempixel.com/283/180/food/" alt=""/>
+                                                            <div class="carousel-caption">This is a caption</div>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-6">
+                                                            <img src="http://lorempixel.com/280/180/food/" alt=""/>
+                                                            <div class="carousel-caption">This is a caption</div>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-6">
+                                                            <img src="http://lorempixel.com/281/180/food/" alt=""/>
+                                                            <div class="carousel-caption">This is a caption</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Controls -->
+                                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                                <span class="icon-prev"></span>
+                                            </a>
+                                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                                <span class="icon-next"></span>
+                                            </a>
+                                        </div><!-- close carousel -->
+
+                                    </div> <!-- close col-12 -->
+                                </div>
+
+                            </div>
+                            <div id="pane2" class="tab-pane">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form>
+                                            <input type="text" class="form-control h5a-input" placeholder="Title?" value="This can be anything"></input>
+                                            <p>
+                                                <textarea placeholder="description here" name="longtext" class="form-control h5a-input" rows="6">Bacon ipsum dolor sit amet pork chop drumstick meatloaf pork loin, shankle turducken filet mignon shank short loin tongue ham salami cow. Shank ball tip DESCRIPTION, capicola prosciutto hamburger ribeye pork loin fatback short loin boudin. Kevin kielbasa capicola, pig pork chop ribeye corned bee. Turkey spare ribs filet mignon chicken boudin sirloin, t-bone shankle chuck turducken. Corned beef sausage rump pork loin. Doner pork biltong pork loin salami.
+                                                </textarea>
+                                                <br><br>
+
+                                                <h4 class="underline">More Info</h4>
+
+                                                <table class="item">
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>556 <a href="#" class="tooltip-test" title="" data-original-title="You cannot change it! Call the System Administrator"><i class="icon-info-sign"></i> Need to change this?</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>CompanyCode</td>
+                                                        <td><input type="text" class="form-control h5a-input" placeholder="CompanyCode?" value="33223-556H-TT"></input></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Size</td>
+                                                        <td class="red"><input type="text" class="form-control h5a-input" placeholder="Size?" value="-556 mm/hh"></input></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Niceness</td>
+                                                        <td class="green"><input type="text" class="form-control h5a-input" placeholder="Niceness?" value="Super Kewl"></input></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>TAGS</td>
+                                                        <td>
+                                                            <span class="tm-tag" id="SCZrC_1"><span>Super</span><a href="#" class="tm-tag-remove" id="SCZrC_Remover_1" tagidtoremove="1">x</a></span>
+                                                            <span class="tm-tag" id="SCZrC_1"><span>Kewl</span><a href="#" class="tm-tag-remove" id="SCZrC_Remover_1" tagidtoremove="1">x</a></span>
+                                                            <span class="tm-tag" id="SCZrC_1"><span>wow</span><a href="#" class="tm-tag-remove" id="SCZrC_Remover_1" tagidtoremove="1">x</a></span>
+                                                            <div class="form-group">
+                                                                <input type="text" name="tags" placeholder="Tags" id="tags-input" class="h5a-input form-control"/>
+                                                                <label for="exampleInputEmail1"><small>Comma Separated tags</small></label>
+                                                            </div>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Colors</td>
+                                                        <td>
+                                                             <select multiple="multiple" id="select-colors" name="my-select[]">
+                                                                <option value='elem_1'>blue</option>
+                                                                <option value='elem_2'>red</option>
+                                                                <option value='elem_3'>orange</option>
+                                                                <option value='elem_4'>yellow</option>
+                                                                <option value='elem_100'>green</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Type</td>
+                                                        <td><input type="text" class="form-control h5a-input" placeholder="Type?" value="556H-TT"></input></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <br>
+                                                            <a class="full btn h5a-btn btn-success"> SAVE THIS ITEM </a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </p>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <br>
+                                        <div class="tip blue">
+                                            <h4><i class="icon-question-sign"></i> <strong>DID YOU NOTICE?</strong></h4>
+                                            <p>
+                                                This section has just become the right spot to tell your users how to edit things.<br>
+                                                There's even enough space to show a Video help!<br><br>
+                                                The rest of the page is obsiously dedicated to the forms!
+                                            </p>
+                                            <br><br>
+                                        </div>
+                                        <br><br>
+                                        <div class="tip red">
+                                            <h4><i class="icon-question-sign"></i> <strong>NEED MORE FIELDS?</strong></h4>
+                                            <p>
+                                            this page is super simple...but you could add as many forms (or Tabs) as needed.<br>
+                                            Everything really depends on what type of item you are displaying (user, product, blog post, text, etc.) and how many fields you need to allow your user to modify.
+                                            </p>
+                                            <br><br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br>
+                                        <h4>MANAGE GALLERY</h4>
+
+
+                                            <div class="col-xs-3 col-sm-3 col-md-2">
+                                                <div class="thumbnail text-center">
+                                                    <div class="btn-group pull-right">
+                                                        <a href="#" class="h5a-btn btn btn-default btn-xs"><i class="icon-move"></i></a>
+                                                        <a href="#" class="h5a-btn btn btn-default btn-xs"><i class="icon-eye-open"></i></a>
+                                                        <a href="#" class="h5a-btn btn btn-danger btn-xs"><i class="icon-remove"></i></a>
+                                                    </div>
+                                                    <br>
+                                                    <img src="http://lorempixel.com/240/150/food/" class="img-responsive"/>
+                                                    <div class="caption text-center">
+                                                        <div class="input-group">
+                                                              <input placeholder="Caption?" value="This is a caption" type="text" class="form-control input-xs">
+                                                              <span class="input-group-btn">
+                                                                <button class="btn btn-default btn-xs" type="button"><i class="icon-save"></i></button>
+                                                              </span>
+                                                        </div><!-- /input-group -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3 col-sm-3 col-md-2">
+                                                <div class="thumbnail text-center">
+                                                    <div class="btn-group pull-right">
+                                                        <a href="#" class="h5a-btn btn btn-default btn-xs"><i class="icon-move"></i></a>
+                                                        <a href="#" class="h5a-btn btn btn-default btn-xs"><i class="icon-eye-open"></i></a>
+                                                        <a href="#" class="h5a-btn btn btn-danger btn-xs"><i class="icon-remove"></i></a>
+                                                    </div>
+                                                    <br>
+                                                    <img src="http://lorempixel.com/240/150/food/" class="img-responsive"/>
+                                                    <div class="caption text-center">
+                                                        <div class="input-group">
+                                                              <input placeholder="Caption?" value="This is a caption" type="text" class="form-control input-xs">
+                                                              <span class="input-group-btn">
+                                                                <button class="btn btn-default btn-xs" type="button"><i class="icon-save"></i></button>
+                                                              </span>
+                                                        </div><!-- /input-group -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3 col-sm-3 col-md-2">
+                                                <div class="thumbnail text-center">
+                                                    <div class="btn-group pull-right">
+                                                        <a href="#" class="h5a-btn btn btn-default btn-xs"><i class="icon-move"></i></a>
+                                                        <a href="#" class="h5a-btn btn btn-default btn-xs"><i class="icon-eye-open"></i></a>
+                                                        <a href="#" class="h5a-btn btn btn-danger btn-xs"><i class="icon-remove"></i></a>
+                                                    </div>
+                                                    <br>
+                                                    <img src="http://lorempixel.com/240/150/food/" class="img-responsive"/>
+                                                    <div class="caption text-center">
+                                                        <div class="input-group">
+                                                              <input placeholder="Caption?" value="This is a caption" type="text" class="form-control input-xs">
+                                                              <span class="input-group-btn">
+                                                                <button class="btn btn-default btn-xs" type="button"><i class="icon-save"></i></button>
+                                                              </span>
+                                                        </div><!-- /input-group -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3 col-sm-3 col-md-2">
+                                                <div class="thumbnail text-center">
+                                                    <div class="btn-group pull-right">
+                                                        <a href="#" class="h5a-btn btn btn-default btn-xs"><i class="icon-move"></i></a>
+                                                        <a href="#" class="h5a-btn btn btn-default btn-xs"><i class="icon-eye-open"></i></a>
+                                                        <a href="#" class="h5a-btn btn btn-danger btn-xs"><i class="icon-remove"></i></a>
+                                                    </div>
+                                                    <br>
+                                                    <img src="http://lorempixel.com/240/150/food/" class="img-responsive"/>
+                                                    <div class="caption text-center">
+                                                        <div class="input-group">
+                                                              <input placeholder="Caption?" value="This is a caption" type="text" class="form-control input-xs">
+                                                              <span class="input-group-btn">
+                                                                <button class="btn btn-default btn-xs" type="button"><i class="icon-save"></i></button>
+                                                              </span>
+                                                        </div><!-- /input-group -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3 col-sm-3 col-md-2">
+                                                <div class="thumbnail text-center">
+                                                    <div class="btn-group pull-right">
+                                                        <a href="#" class="h5a-btn btn btn-default btn-xs"><i class="icon-move"></i></a>
+                                                        <a href="#" class="h5a-btn btn btn-default btn-xs"><i class="icon-eye-open"></i></a>
+                                                        <a href="#" class="h5a-btn btn btn-danger btn-xs"><i class="icon-remove"></i></a>
+                                                    </div>
+                                                    <br>
+                                                    <img src="http://lorempixel.com/240/150/food/" class="img-responsive"/>
+                                                    <div class="caption text-center">
+                                                        <div class="input-group">
+                                                              <input placeholder="Caption?" value="This is a caption" type="text" class="form-control input-xs">
+                                                              <span class="input-group-btn">
+                                                                <button class="btn btn-default btn-xs" type="button"><i class="icon-save"></i></button>
+                                                              </span>
+                                                        </div><!-- /input-group -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3 col-sm-3 col-md-2">
+                                                <div class="thumbnail text-center">
+                                                    <div class="btn-group pull-right">
+                                                        <a href="#" class="h5a-btn btn btn-default btn-xs"><i class="icon-move"></i></a>
+                                                        <a href="#" class="h5a-btn btn btn-default btn-xs"><i class="icon-eye-open"></i></a>
+                                                        <a href="#" class="h5a-btn btn btn-danger btn-xs"><i class="icon-remove"></i></a>
+                                                    </div>
+                                                    <br>
+                                                    <img src="http://lorempixel.com/240/150/food/" class="img-responsive"/>
+                                                    <div class="caption text-center">
+                                                        <div class="input-group">
+                                                              <input placeholder="Caption?" value="This is a caption" type="text" class="form-control input-xs">
+                                                              <span class="input-group-btn">
+                                                                <button class="btn btn-default btn-xs" type="button"><i class="icon-save"></i></button>
+                                                              </span>
+                                                        </div><!-- /input-group -->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                    </div> <!-- close col-12 -->
+                                </div>
+
+
+                            </div>
+
+                            <div id="pane3" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 class="underline">Friends</h4>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                <img class="img-circle media-object" alt="thumb 64x64" src="http://placezombies.com/64x64">
+                                            </a>
+                                            <div class="media-body">
+                                                  <h4 class="media-heading">Admin Friend</h4>
+                                                  <h6 class="media-heading">Web Developer</h6>
+                                            </div>
+                                        </div>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                <img class="img-circle media-object" alt="thumb 64x64" src="http://placezombies.com/63x64">
+                                            </a>
+                                            <div class="media-body">
+                                                  <h4 class="media-heading">Evil Him</h4>
+                                                  <h6 class="media-heading">Dull boy</h6>
+                                            </div>
+                                        </div>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                <img class="img-circle media-object" alt="thumb 64x64" src="http://placezombies.com/64x63">
+                                            </a>
+                                            <div class="media-body">
+                                                  <h4 class="media-heading">Albert Mindstein</h4>
+                                                  <h6 class="media-heading">Genius</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     <div class="col-md-6">
+                                        <h4 class="underline">Articles</h4>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                <img class="img-circle media-object" alt="thumb 64x64" src="http://placezombies.com/64x65">
+                                            </a>
+                                            <div class="media-body">
+                                                  <h4 class="media-heading">Media heading</h4>
+                                                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo...<br>
+                                            </div>
+                                        </div>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                <img class="img-circle media-object" alt="thumb 64x64" src="http://placezombies.com/65x65">
+                                            </a>
+                                            <div class="media-body">
+                                                  <h4 class="media-heading">Media heading</h4>
+                                                  Cras sit amet nibh rinchiuso, in gravida tanto. Tutto vel fetus scelerisque ante sollicitudine comoda...<br>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <h4 class="underline">Reviews</h4>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                <img class="img-circle media-object" alt="thumb 64x64" src="http://placezombies.com/64x65">
+                                            </a>
+                                            <div class="media-body">
+                                                  <h4 class="media-heading">
+                                                    <i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-empty"></i><i class="icon-star-empty"></i>
+                                                  </h4>
+                                                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo...<br>
+                                            </div>
+                                        </div>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                <img class="img-circle media-object" alt="thumb 64x64" src="http://placezombies.com/65x65">
+                                            </a>
+                                            <div class="media-body">
+                                                  <h4 class="media-heading">
+                                                      <i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-half-empty"></i><i class="icon-star-empty"></i>
+                                                  </h4>
+                                                  Cras sit amet nibh rinchiuso, in gravida tanto. Tutto vel fetus scelerisque ante sollicitudine comoda...<br>
+                                            </div>
+                                        </div>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                <img class="img-circle media-object" alt="thumb 64x64" src="http://placezombies.com/65x64">
+                                            </a>
+                                            <div class="media-body">
+                                                  <h4 class="media-heading">
+                                                      <i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-half-empty"></i>
+                                                  </h4>
+                                                  Cras sit amet nibh rinchiuso, in gravida tanto. Tutto vel fetus scelerisque ante sollicitudine comoda...<br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="pane4" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 class="underline">Latest Interactions</h4>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                <h5><i class="icon-star"></i></h5>
+                                            </a>
+                                            <div class="media-body">
+                                                  <h4 class="media-heading">Clicked on <a href="#">a website section</a></h4>
+                                                  <h6 class="media-heading"><i class="icon-time"></i> <em>Wednesday 14 July 2016 14:51</em></h6>
+                                            </div>
+                                        </div>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                <h5><i class="icon-wrench"></i></h5>
+                                            </a>
+                                            <div class="media-body">
+                                                  <h4 class="media-heading">Modified Profile info</h4>
+                                                  <h6 class="media-heading"><i class="icon-time"></i> <em>Wednesday 18 July 2016 22:51</em></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="underline">Last Week Clicked Profiles</h4>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                <img class="img-circle media-object" alt="thumb 64x64" src="http://placezombies.com/64x65">
+                                            </a>
+                                            <div class="media-body">
+                                                  <h4 class="media-heading">Clicked on <a href="#">John Zombie</a></h4>
+                                                  <h6 class="media-heading"><i class="icon-time"></i> <em>Wednesday 14 July 2016 14:51</em></h6>
+                                            </div>
+                                        </div>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                <img class="img-circle media-object" alt="thumb 64x64" src="http://placezombies.com/65x65">
+                                            </a>
+                                            <div class="media-body">
+                                                  <h4 class="media-heading">Sent a <a href="#">Message</a> to <a href="#">Rock Bottom</a></h4>
+                                                  <h6 class="media-heading"><i class="icon-time"></i> <em>Wednesday 18 July 2016 22:51</em></h6>
+                                                  <i class="icon-quote-left"></i> Hello Rock! Wanna be friends? I've seen you on the webs...<a class="pull-right" href="#">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+
+                      </div><!-- /.tab-content -->
+                    </div><!-- /.tabbable -->
+                    <br><br><br><br><br><br><br><br><br>
+                        <h4>Do you like this layout? <a href="/">download HTML5 Admin now!</a></h4>
+                    <br><br><br><br><br><br><br><br><br>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- JS → jQuery core (from cdn) -->
+        <!-- dependencies: none -->
+        <script src="../js/vendor/jquery.min.js"></script>
+        
+        <!-- JS → Bootstrap core -->
+        <!-- dependencies: jquery -->
+        <script src="../js/vendor/bootstrap.min.js"></script>
+        
+        
+        
+<!-- **************************************************************************** -->
+        <!-- ************************************************** -->
+        <!-- ************************ JS → E X T R A S ******** -->
+
+            <!-- JS → Tags Manager v3 (http://welldonethings.com/tags/manager/v3) -->
+            <!-- dependencies: jquery -->
+            <script src="../js/vendor/tags-manager.min.js"></script>
+
+            <!-- JS → jQuery multiselect (http://loudev.com/) -->
+            <!-- dependencies: jquery -->
+            <script src="../js/vendor/jquery.multiselect.min.js"></script>
+            
+        <!-- **************** JS → E N D    E X T R A S ******** -->
+        <!-- *************************************************** -->
+<!-- **************************************************************************** -->
+        
+        
+        <!-- JS → HTML5Admin core -->
+        <script src="../js/pages/card.js"></script>
+        
+    </body>
+</html>

@@ -39,10 +39,11 @@ $(function() {
 				title += " " + wordArray[i];
 			}
 			if (wordArray[i][0] === "#") {
-				return wordArray[i].substr(1,wordArray[i].length);;
+				title = wordArray[i].substr(1,wordArray[i].length);
+				break
 			}
 		}
-		return title;
+		return "<B style='color:blue'>"+title+"</B>";
 	}
 	function textForNode(node) {
 		if (node.text.split(" ").length <= 2) {

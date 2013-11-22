@@ -43,7 +43,7 @@ $(function() {
 				break
 			}
 		}
-		return "<B style='color:blue'>"+title+"</B>";
+		return "<B style='color:green'>"+title+"</B>";
 	}
 	function textForNode(node) {
 		if (node.text.split(" ").length <= 2) {

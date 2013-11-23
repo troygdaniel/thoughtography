@@ -1,7 +1,4 @@
-{
-  "_id": 1,
-  "title": "PrintrBot Plus",
-  "body": [{
+[{
     "text": "Overview",
     "children": [{
         "text": "While the #Repetier-Host software has built-in SD card support, it’s slow and buggy; don’t use it to transfer your G-code. Instead, unchain your computer with the following steps."
@@ -41,4 +38,3 @@
       }]
     }]
   }]
-}

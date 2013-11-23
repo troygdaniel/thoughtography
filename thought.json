@@ -14,9 +14,6 @@
     "children": [{
       "text": "As well, if no bolded items are found, #hastags will be used",
       "children": []
-    }, {
-      "text": "If you prefer you can just write plain text with no title or bolding. No biggie.",
-      "children": []
     }]
   }, {
     "text": "*Children please*",

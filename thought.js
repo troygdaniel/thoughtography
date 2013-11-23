@@ -56,7 +56,7 @@ $(function() {
         title += " " + wordArray[i];
       }
       if (wordArray[i][0] === "#") {
-        title = wordArray[i].substr(1, wordArray[i].length);
+        title = wordArray[i].substr(0, wordArray[i].length);
         return title;        
       }
     }

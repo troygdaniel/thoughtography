@@ -8,10 +8,22 @@ $(function() {
     $("#topic-tree").empty();
     if (json.length) {
       for (var i = 0; i < json.length; i++) {
-        $("#topic-tree").append(ulTextForNode(json[i]));
+        $("#topic-tree").append(titleTextForNode(json[i]));
       };
     }
     bindClickableToTree();
+  }
+
+  function titleTextForNode(node) {
+    var openUL = '<h2>' + textForNode(node) + '</h2>';
+    var childUL = "";
+    if (node.children) {
+      for (var i = 0; i < node.children.length; i++) {
+        childUL += ulTextForNode(node.children[i]);
+      }
+    }
+    var closeUL = '</li></ul>';
+    return openUL + childUL + closeUL;
   }
 
   function ulTextForNode(node) {
@@ -27,8 +39,8 @@ $(function() {
   }
 
   function folderIcon(node) {
-    // if (node.children)
-    //   return '<i class="icon-folder-open"></i>';
+    if (node.children)
+      return '<i class="icon-folder-open"></i>';
     return "";
   }
 

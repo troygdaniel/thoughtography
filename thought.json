@@ -1,28 +1,55 @@
 [{
-    "text": "Overview",
-    "children": [{
-        "text": "While the #Repetier-Host software has built-in SD card support, it’s slow and buggy; don’t use it to transfer your G-code. Instead, unchain your computer with the following steps."
-      }, {
-        "text": "Use your #LaptopSD SD slot or a card reader to copy the G-code directly from the computer to the card."
-      }]
+  "text": "*Thoughtography*",
+  "children": []
+}, {
+  "text": "",
+  "children": []
+}, {
+  "text": "What is it?",
+  "children": [{
+    "text": "*Basics* Type and tab.  That's pretty much it.  You're colleagues will see your changes in real time.",
+    "children": []
   }, {
-    "text": "Untethered Printing Possible",
+    "text": "*Formatting* Place an asterick around words you wish to bold.",
     "children": [{
-      "text": "The Printrbot Plus is able to print untethered, although it’s not a completely straightforward process. #PrintUntethered"
+      "text": "As well, if no bolded items are found, #hastags will be used",
+      "children": []
     }, {
-      "text": "PRINTING UNTETHERED: THE MISSING #CHAPTER",
-      "children": [{
-        "text": "While the #Repetier-Host software has built-in SD card support, it’s slow and buggy; don’t use it to transfer your G-code. Instead, unchain your computer with the following steps."
-      }, {
-        "text": "Use your laptop’s #SDslot or a card reader to copy the G-code directly from the computer to the card."
-      }, {
-        "text": "Install the SD card into the printer, and connect the laptop."
-      }, {
-        "text": "Select the file to print in Repetier from the SD card manager, and initiate printing."
-      }, {
-        "text": "Click Disconnect in Repetier and unplug the USB cable. The printer will continue to run."
-      }, {
-        "text": "To resume control of your bot, simply plug the laptop in with USB and click Connect."
-      }]
+      "text": "If you prefer you can just write plain text with no title or bolding. No biggie.",
+      "children": []
+    }]
+  }, {
+    "text": "*Children please*",
+    "children": [{
+      "text": "*Folder icons* Elements with children automatically appear with a folder icon",
+      "children": []
+    }, {
+      "text": "*Collapsable* \tAny text with a folder is collapsable",
+      "children": []
     }]
   }]
+}, {
+  "text": "How does it work?",
+  "children": [{
+    "text": "For now, it's not *Real-time* but that is in the works.",
+    "children": []
+  }, {
+    "text": "*PoC* As a PoC (Proof Of Concept)",
+    "children": []
+  }]
+}, {
+  "text": "What's next?",
+  "children": [{
+    "text": "*Mind reading* Or at least, mind-blowing functionality.  Its cu",
+    "children": []
+  }, {
+    "text": "*Bugs* For some reason \".\" screw up the sentence after bolded text",
+    "children": []
+  }]
+}, {
+  "text": "",
+  "children": []
+}, {
+  "text": "",
+  "children": []
+}]

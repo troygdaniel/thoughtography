@@ -38,7 +38,26 @@
 
 
             
-<textarea class="braindump" rows="10" cols="80" autofocus="autofocus"></textarea>
+<textarea class="braindump" rows="10" cols="80" autofocus="autofocus">
+*Thoughtography*
+
+What is it?
+	*Basics* Type and tab.  That's pretty much it.  You're colleagues will see your changes in real time.
+	*Formatting* Place an asterick around words you wish to bold.  
+		As well, if no bolded items are found, #hastags will be used
+		If you prefer you can just write plain text with no title or bolding. No biggie.
+	*Children please*
+		*Folder icons* Elements with children automatically appear with a folder icon
+		*Collapsable*   Any text with a folder is collapsable 
+How does it work?
+	For now, it's not *Real-time* but that is in the works.
+	*PoC* As a PoC (Proof Of Concept)
+What's next?
+	*Mind reading* Or at least, mind-blowing functionality.  Its cu
+	*Bugs* For some reason "." screw up the sentence after bolded text	
+
+
+</textarea>
 
     </div>
 
@@ -177,6 +196,7 @@
     $(".braindump").keyup(function() {
         var p = new Parser();
         var jsonValue = p.serialize($(this).val());
+        window.json = jsonValue;
         renderJsonAsTree(jsonValue);
     });
     </script>

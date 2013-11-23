@@ -26,6 +26,18 @@ $(function() {
     return openUL + childUL + closeUL;
   }
 
+  function firstLevelForNode(node) {
+    var openUL = '<ul><li><span>' + folderIcon(node) + titleForNode(node) + '</span>&nbsp;' + textForNode(node);
+    var childUL = "";
+    if (node.children) {
+      for (var i = 0; i < node.children.length; i++) {
+        childUL += ulTextForNode(node.children[i]);
+      }
+    }
+    var closeUL = '</li></ul>';
+    return openUL + childUL + closeUL;
+  }
+
   function ulTextForNode(node) {
     var openUL = '<ul><li><span>' + folderIcon(node) + titleForNode(node) + '</span>&nbsp;' + textForNode(node);
     var childUL = "";
@@ -39,7 +51,8 @@ $(function() {
   }
 
   function folderIcon(node) {
-    if (node.children)
+    
+    if (node.children && node.children.length > 0)
       return '<i class="icon-folder-open"></i>';
     return "";
   }

@@ -24,7 +24,7 @@
       "text": "*Folder icons* Elements with children automatically appear with a folder icon",
       "children": []
     }, {
-      "text": "*Collapsable* \tAny text with a folder is collapsable",
+      "text": "*Collapsable*   Any text with a folder is collapsable",
       "children": []
     }]
   }]
@@ -34,7 +34,10 @@
     "text": "For now, it's not *Real-time* but that is in the works.",
     "children": []
   }, {
-    "text": "*PoC* As a PoC (Proof Of Concept)",
+    "text": "*Data with meaning* #hashtags and @identity will pull the tagged items and display relevant info on to the right gutter.  This is planned for the first iteration of the PoC - even if it's not fully functional.",
+    "children": []
+  }, {
+    "text": "*PoC* As a PoC (Proof Of Concept) the current goal is to get a fairly close-to-life feeling of how the basic experience would feel, for all partipants of the app.  For example, right now only one person is viewing the content.",
     "children": []
   }]
 }, {

@@ -15,7 +15,7 @@ $(function() {
   }
 
   function titleTextForNode(node) {
-    var openUL = '<h2>' + textForNode(node) + '</h2>';
+    var openUL = '<h3>' + titleForNode(node) +" "+ textForNode(node) + '</h3>';
     var childUL = "";
     if (node.children) {
       for (var i = 0; i < node.children.length; i++) {

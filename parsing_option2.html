@@ -208,7 +208,7 @@ What's next?
         var p = new Parser();
         var jsonValue = p.serialize($(this).val());
         window.json = jsonValue;
-        renderJsonAsTree(jsonValue);
+        MeetingNotesView.render(jsonValue);
     });
     </script>
 

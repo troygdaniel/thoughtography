@@ -7,9 +7,11 @@ $(function() {
     if ($leftpanel.is(":visible")) {
       $(".toggle-writer").html("Hide writer");
       $("#mid-panel").css("width","40%");
+      $("#mid-panel").css("font-size","10px");
     } else {
       $(".toggle-writer").html("Show writer");
       $("#mid-panel").css("width","100%");
+      $("#mid-panel").css("font-size","14px");
     }
   });
 

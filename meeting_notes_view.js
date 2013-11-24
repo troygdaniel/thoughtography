@@ -12,13 +12,21 @@ MeetingNotesView.makeId = function() {
 
 MeetingNotesView.ulTextForNode = function(node) {
   var openUL = '<ul><li><span>' + MeetingNotes.folderIcon(node) + MeetingNotes.titleForNode(node) + '</span>&nbsp;' + MeetingNotes.textForNode(node);
+  var wikiText = MeetingNotes.wikiFromText(node.text);
+
+  var iFrameTag = '<br/><iframe width="500px" height="200px" src="http://en.m.wikipedia.org/wiki/'+wikiText+'"></iframe>';
   var childUL = "";
+  var completeTag = ""
   if (node.children) {
     for (var i = 0; i < node.children.length; i++) {
       childUL += MeetingNotesView.ulTextForNode(node.children[i]);
     }
   }
-  return openUL + childUL + '</li></ul>';
+  // if (wikiText)
+  //   completeTag = openUL + iFrameTag + childUL + '</li></ul>';
+  // else 
+    completeTag = openUL + childUL + '</li></ul>';
+  return completeTag;
 }
 MeetingNotesView.render = function(json) {
   $("#topic-tree").empty();

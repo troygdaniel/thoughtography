@@ -15,7 +15,7 @@
     <script src="meeting_notes_view.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
-	var socket = io.connect('http://10.0.1.9');
+	var socket = io.connect('http://'+document.domain);//('http://10.0.1.9');
 	
 	// subscribe to "meeting_notes:render" event
 	socket.on('meeting_notes:render', function(data) {

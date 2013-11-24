@@ -19,9 +19,11 @@
 	
 	// subscribe to "meeting_notes:render" event
 	socket.on('meeting_notes:render', function(data) {
-	    console.log(data);
-        MeetingNotesView.render(data);
-
+        var p = new Parser();
+        $(".braindump").val(data);
+        var jsonValue = p.serialize(data);
+        window.json = jsonValue;
+        MeetingNotesView.render(jsonValue);
 	});
 	</script>
 </head>
@@ -200,10 +202,11 @@ What's next?
 
         $(".braindump").keyup(function() {
             var p = new Parser();
-            var jsonValue = p.serialize($(this).val());
+            var braindumpText = $(this).val();
+            var jsonValue = p.serialize(braindumpText);
             window.json = jsonValue;
             MeetingNotesView.render(jsonValue);
-    		socket.emit('meeting_notes:change', jsonValue);
+    		socket.emit('meeting_notes:change', braindumpText);
 
         });
         </script>

@@ -9,3 +9,6 @@ index.html:18 var socket = io.connect('http://10.0.1.9');
 
 Step 3. Run the app
 $ node app.js 
+
+Step 4. Access locally at:
+http://<yourip>:3000/index.html

@@ -1,6 +1,6 @@
 thoughtography
 ==============
-Simple collobartive meeting notes.  Very rough and PoC-like.
+Simple collaborative meeting notes.  Very rough and PoC-like.
 
 Step 1. Clone the repo locally
 

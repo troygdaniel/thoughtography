@@ -55,6 +55,10 @@
   			title = wordArray[i].substr(0, wordArray[i].length);
   			return title;
   		}
+  		if (MeetingNotes.lastChar(wordArray[i]) === ":") {
+  			title = wordArray[i].substr(0, wordArray[i].length-1);
+  			return title;
+  		}
   	}
   	return "";
   }
@@ -77,17 +81,20 @@
   	var theLastWord = false;
   	var newWordArray = [];
 
-  	if (words[0][0] != "*") {
-  		return text;
-  	}
-
   	for (i = 0; i < words.length; i++) {
   		if (theLastWord === true) {
   			newWordArray.push(words[i]);
   		}
 
+  		if (MeetingNotes.lastChar(words[i]) === ":") {
+  			theLastWord = true;
+  		}
+
   		if (words[i][words[i].length - 1] === "*")
   			theLastWord = true;
+  	}
+  	if (theLastWord === false) {
+  		return text;
   	}
   	return newWordArray.join(" ");
   }

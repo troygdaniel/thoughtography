@@ -4,7 +4,7 @@ $(function() {
     $leftpanel.toggle();
     if ($leftpanel.is(":visible")) {
       $(".toggle-writer").html("Hide writer");
-      $("#mid-panel").css("width","60%");
+      $("#mid-panel").css("width","50%");
     } else {
       $(".toggle-writer").html("Show writer");
       $("#mid-panel").css("width","100%");
@@ -25,15 +25,17 @@ $(function() {
     bindClickableToTree();
   }
 
+
   function titleTextForNode(node) {
-    var openUL = '<h3>' + titleForNode(node) +" "+ textForNode(node) + '</h3>';
+    var headerId = makeId();
+    var openUL = '<h3 class='+headerId+'>' + titleForNode(node) +' '+ textForNode(node) + '</h3><span id="'+headerId+'">';
     var childUL = "";
     if (node.children) {
       for (var i = 0; i < node.children.length; i++) {
         childUL += ulTextForNode(node.children[i]);
       }
     }
-    var closeUL = '</li></ul>';
+    var closeUL = '</span>';
     return openUL + childUL + closeUL;
   }
 
@@ -135,6 +137,11 @@ $(function() {
   function bindClickableToTree() {
 
     $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+    $('h3').on('click', function(e) {
+      var headerClass = $(this).attr("class");
+      $("#"+headerClass).slideToggle('fast');
+    });
+
     $('.tree li.parent_li > span').on('click', function(e) {
       var children = $(this).parent('li.parent_li').find(' > ul > li');
       if (children.is(":visible")) {
@@ -148,4 +155,14 @@ $(function() {
     });
   }
 
+  function makeId()
+  {
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+      for( var i=0; i < 15; i++ )
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+      return text;
+  }
 });

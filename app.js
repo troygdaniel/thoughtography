@@ -25,12 +25,12 @@ function handler(req, res) {
 }
 
 io.sockets.on('connection', function(socket) {
-  // subscribe to "meeting_notes:send"
-  socket.on('meeting_notes:send', function(data) {
+  // subscribe to "meeting_notes:change"
+  socket.on('meeting_notes:change', function(data) {
     console.log(data);
   
-    // publish message to "meeting_notes:receive" event
-    socket.emit('meeting_notes:receive', data);
+    // publish message to "meeting_notes:render" event
+    socket.broadcast.emit('meeting_notes:render', data);
   
   });
 });

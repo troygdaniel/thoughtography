@@ -15,11 +15,13 @@
     <script src="meeting_notes_view.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
-	var socket = io.connect('http://localhost');
+	var socket = io.connect('http://10.0.1.9');
 	
-	// subscribe to "meeting_notes:share" event
-	socket.on('meeting_notes:receive', function(data) {
+	// subscribe to "meeting_notes:render" event
+	socket.on('meeting_notes:render', function(data) {
 	    console.log(data);
+        MeetingNotesView.render(data);
+
 	});
 	</script>
 </head>
@@ -207,8 +209,8 @@ What's next?
             var jsonValue = p.serialize($(this).val());
             window.json = jsonValue;
             MeetingNotesView.render(jsonValue);
-
-    		socket.emit('meeting_notes:send', jsonValue);
+            console.log(">> about to emit changes");
+    		socket.emit('meeting_notes:change', jsonValue);
 
         });
         </script>

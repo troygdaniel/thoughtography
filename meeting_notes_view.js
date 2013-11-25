@@ -42,7 +42,7 @@ MeetingNotesView.titleTextForNode = function(node) {
   var headerId = MeetingNotesView.makeId();
   var headerStyle = "";
   if (node.hasChanged === true) {
-    headerStyle = 'style="background-color:yellow"';
+    headerStyle = 'style="background-color:#F5F6CE"';
   }
   var openTag = '<h3 '+headerStyle+' class="header-line-num-' + parentNum + '">' + MeetingNotes.titleForNode(node) + ' ' + MeetingNotes.textForNode(node) + '</h3><span style="display: block;" id="header-line-num-' + parentNum + '">';
   var childUL = "";
@@ -61,7 +61,7 @@ MeetingNotesView.ulTextForNode = function(node, parentLine) {
 
   var headerStyle = "";
   if (node.hasChanged === true) {
-    headerStyle = 'style="background-color:yellow"';
+    headerStyle = 'style="background-color:#F5F6CE"';
   }
   var parentNum = MeetingNotesView.lineCounter;
   var lineNumClass = "line-num-" + MeetingNotesView.lineCounter;

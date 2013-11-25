@@ -11,7 +11,7 @@ $(function() {
     } else {
       $(".toggle-writer").html("Show writer");
       $("#mid-panel").css("width","100%");
-      $("#mid-panel").css("font-size","14px");
+      $("#mid-panel").css("font-size","18px");
     }
   });
 

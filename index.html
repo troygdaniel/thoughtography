@@ -13,22 +13,14 @@
 
     <link rel="stylesheet" href="css/html5admin.css" />
     <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/parser.js"></script>
     <script src="thought.js"></script>
-    <script src="meeting_notes.js"></script>
-    <script src="meeting_notes_view.js"></script>
+    <script src="js/note.js"></script>
+    <script src="js/note_view.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
-	<script>
-	var socket = io.connect('http://'+document.domain);//('http://10.0.1.9');
-	
-	// subscribe to "meeting_notes:render" event
-	socket.on('meeting_notes:render', function(data) {
-        var p = new Parser();
-        $(".braindump").val(data);
-        var jsonValue = p.serialize(data);
-        window.json = jsonValue;
-        MeetingNotesView.render(jsonValue);
-	});
-	</script>
+    <script>
+    var socket = socket  || io.connect('http://'+document.domain);
+    </script>
 </head>
 
 <body style="">
@@ -71,146 +63,8 @@ What's next?
         </div>
 
         <script type="text/javascript">
-        function ParsedLine(level, text, previous) {
-            this.level = level;
-            this.text = text;
-            this.previous = previous;
-            this.children = [];
-        }
-
-        ParsedLine.prototype.adjustLevel = function() {
-            if (this.previous === null) {
-                return this.level = 0;
-            } else if (this.level - this.previous.level > 1) {
-                return this.level = this.previous.level + 1;
-            }
-        };
-
-        ParsedLine.prototype.parentOf = function(child) {
-            return (child.level - this.level) === 1;
-        };
-
-        ParsedLine.prototype.addChild = function(child) {
-            return this.children.push(child);
-        };
-
-        ParsedLine.prototype.linkToParent = function() {
-            var prev;
-            if (this.previous == null) {
-                return null;
-            }
-            prev = this.previous;
-            while (prev) {
-                if (prev.parentOf(this)) {
-                    prev.addChild(this);
-                    return prev;
-                } else {
-                    prev = prev.previous;
-                }
-            }
-        };
-
-        ParsedLine.prototype.serialize = function() {
-            var child;
-            return {
-                text: this.text,
-                children: (function() {
-                    var _i, _len, _ref, _results;
-                    _ref = this.children;
-                    _results = [];
-                    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-                        child = _ref[_i];
-                        _results.push(child.serialize());
-                    }
-                    return _results;
-                }).call(this)
-            };
-        };
-
-        ParsedLine.analyze = function(line) {
-            var r;
-            r = line.match(/^(\t+)(.*)/);
-            if (r != null) {
-                return {
-                    level: r[1].length,
-                    text: r[2].trim()
-                };
-            } else {
-                return {
-                    level: 0,
-                    text: line.trim()
-                };
-            }
-        };
-
-        ParsedLine.build = function(rawText, previous) {
-            var level, line, text, _ref;
-            this.previous = previous;
-            _ref = this.analyze(rawText), level = _ref.level, text = _ref.text;
-            line = new ParsedLine(level, text, this.previous);
-            line.adjustLevel();
-            line.linkToParent();
-            return line;
-        };
-
-        function Parser() {}
-
-        Parser.prototype.toLines = function(content) {
-            var prevLine;
-            prevLine = null;
-            return content.split('\n').map(function(line) {
-                var current;
-                current = ParsedLine.build(line, prevLine);
-                return prevLine = current;
-            });
-        };
-
-        Parser.prototype.serialize = function(content) {
-            var line, _i, _len, _ref, _results;
-            _ref = this.toLines(content);
-            _results = [];
-            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-                line = _ref[_i];
-                if (line.level === 0) {
-                    _results.push(line.serialize());
-                }
-            }
-            return _results;
-        };
-
-
-        $(".braindump").keydown(function(e) {
-            var content;
-            var $this = $(this);
-            var value = $this.val();
-            if (e.keyCode === 9) { // tab was pressed
-                // get caret position/selection
-                var start = this.selectionStart;
-                var end = this.selectionEnd;
-
-                // set textarea value to: text before caret + tab + text after caret
-                content = value.substring(0, start) + "\t" + value.substring(end);
-                $this.val(content);
-
-                // put caret at right position again (add one for the tab)
-                this.selectionStart = this.selectionEnd = start + 1;
-
-                // prevent the focus lose
-                e.preventDefault();
-            } else {
-                content = value;
-            };
-        });
-
-        $(".braindump").keyup(function() {
-            var p = new Parser();
-            var braindumpText = $(this).val();
-            var jsonValue = p.serialize(braindumpText);
-            window.json = jsonValue;
-            MeetingNotesView.render(jsonValue);
-    		socket.emit('meeting_notes:change', braindumpText);
-
-        });
+        
+        
         </script>
 
 

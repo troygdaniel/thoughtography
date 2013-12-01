@@ -26,7 +26,6 @@ MeetingNotesView.compareJson = function(json, prevJson) {
     if (prevJson && prevJson[i] && json[i].text != "") {
       if (prevJson[i].text.toString() != json[i].text.toString()) {
         json[i].hasChanged=true;
-        console.log(">> '" + json[i].text + "' vs '" + prevJson[i].text+"'");        
       }
     }
     if (prevJson[i] && prevJson[i].children)
@@ -76,9 +75,9 @@ MeetingNotesView.ulTextForNode = function(node, parentLine) {
       childUL += MeetingNotesView.ulTextForNode(node.children[i], parentNum);
     }
   }
-  // if (wikiText)
-  //   completeTag = openUL + iFrameTag + childUL + '</li></ul>';
-  // else 
+  if (wikiText)
+    completeTag = openUL + iFrameTag + childUL + '</li></ul>';
+  else 
   completeTag = openUL + childUL + '</li></ul>';
   return completeTag;
 }

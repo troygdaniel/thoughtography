@@ -1,13 +1,33 @@
+$(function() {
+
+
+  $(".toggle-writer").click(function() {
+    var $leftpanel = $("#left-panel");
+    $leftpanel.toggle();
+    if ($leftpanel.is(":visible")) {
+      $(".toggle-writer").html("Hide writer");
+      $("#mid-panel").css("width","40%");
+    } else {
+      $(".toggle-writer").html("Show writer");
+      $("#mid-panel").css("width","100%");
+    }
+  });
+
+  var $braindump = $(".braindump")
+  var p = new Parser();
+  var jsonValue = p.serialize($braindump.val());
+  window.json = jsonValue;
+  MeetingNotesView.render(jsonValue);
+
+});
+
+/*
 var note, noteView;
 
 $(function() {
-  note = new Take.Note({id: 1234, socket: socket});
-  noteView = new Take.NoteView({note: note, el: "#topic-tree", socket: socket});
-
-  $(".braindump").keyup(function() {
-    note.shareChanges($(this).val());
-    noteView.render($(this).val());    
-  });
+    
+  note = new Take.Note({id: 1234});
+  noteView = new Take.NoteView({note: note, el: "#topic-tree"});
 
   $(".toggle-writer").click(function() {
     var $leftpanel = $("#left-panel");
@@ -48,3 +68,4 @@ $(function() {
   });
 
 });
+*/

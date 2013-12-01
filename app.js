@@ -25,12 +25,22 @@ function handler(req, res) {
 }
 
 io.sockets.on('connection', function(socket) {
-  // subscribe to "meeting_notes:change"
-  socket.on('meeting_notes:change', function(data) {
-    console.log(data);
+  // subscribe to "share_note:1234"
+  socket.on('share_note:1234', function(data) {
   
-    // publish message to "meeting_notes:render" event
-    socket.broadcast.emit('meeting_notes:render', data);
+    // publish message to "shared_note_changes:1234" event
+    socket.broadcast.emit('shared_note_changes:1234', data);
   
   });
+
+/*
+io.sockets.on('connection', function(socket) {
+  // subscribe to "share_note:change"
+  socket.on('share_note:1234', function(data) {
+    // publish message to "shared_note_changes:1234" data
+    socket.broadcast.emit('shared_note_changes:1234', data);
+
+  });
+*/
+
 });

@@ -56,7 +56,10 @@ Take.Note = function (options) {
   function setId(v) {
     id = v;
   }
-  function getJSON() {
+  function getJSON(v) {
+    if (v) {
+      setContent(v);
+    }
     return json;
   }
   function setJSON(v) {

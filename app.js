@@ -6,41 +6,39 @@ var express = require('express');
 var app = require('http').createServer(handler),
   io = require('socket.io').listen(app),
   fs = require('fs')
-
+  url = require('url')
   app.listen(3000);
 
+
 function handler(req, res) {
+  var roomId="";
   var filePath = req.url;
-  console.log(req.url);
-  fs.readFile(__dirname + filePath,
+  var parsedURL = url.parse(req.url);
+  var hash = parsedURL.hash;
+  var queryString = roomId = parsedURL.query;
+  console.log("roomId = " + roomId);
+  if (roomId) createSocketForRoom(roomId);
+  fs.readFile(__dirname + parsedURL.pathname,
     function(err, data) {
       if (err) {
         res.writeHead(500);
-        return res.end('Error loading ' + filePath);
+        return res.end('Error loading ' + parsedURL.pathname);
       }
-
       res.writeHead(200);
       res.end(data);
-    });
+  });
 }
 
-io.sockets.on('connection', function(socket) {
-  // subscribe to "share_note:1234"
-  socket.on('share_note:1234', function(data) {
-  
-    // publish message to "shared_note_changes:1234" event
-    socket.broadcast.emit('shared_note_changes:1234', data);
-  
+function createSocketForRoom(roomId) {
+  io.sockets.on('connection', function(socket) {
+      // subscribe to "share_note:1234"
+      console.log("> roomId = " + roomId);
+      socket.on('share_note:'+roomId, function(data) {
+        console.log("data = " + data);
+        console.log(">> roomId = " + roomId);
+        // publish message to "shared_note_changes:1234" event
+        socket.broadcast.emit('shared_note_changes:'+roomId, data);
+
+      });
   });
-
-/*
-io.sockets.on('connection', function(socket) {
-  // subscribe to "share_note:change"
-  socket.on('share_note:1234', function(data) {
-    // publish message to "shared_note_changes:1234" data
-    socket.broadcast.emit('shared_note_changes:1234', data);
-
-  });
-*/
-
-});
+}

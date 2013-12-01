@@ -1,12 +1,16 @@
 var note, noteView;
 
 $(function() {
-  note = new Take.Note({id: 1234, socket: socket});
-  noteView = new Take.NoteView({note: note, el: "#topic-tree", socket: socket});
-
+  var noteId;
+  if (location.search) {
+    noteId = location.search.substr(1,location.search.length);
+  }
+  note = new Take.Note({id: noteId,socket: socket});
+  noteView = new Take.NoteView({note: note,el: "#topic-tree",socket: socket});
+  console.log("noteId = " + noteId);
   $(".braindump").keyup(function() {
     note.shareChanges($(this).val());
-    noteView.render($(this).val());    
+    noteView.render($(this).val());
   });
 
   $(".toggle-writer").click(function() {
@@ -46,5 +50,4 @@ $(function() {
       content = value;
     };
   });
-
 });

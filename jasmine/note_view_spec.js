@@ -25,15 +25,6 @@ describe("Take.NoteView spec", function() {
   });
 
   describe("#render()", function() {
-    
-    it("should have json resulting from shared note changes", function() {
-
-      note = new Take.Note({id:123});
-      noteView = new Take.NoteView({note:note, socket: socket});
-      noteView.render(tabText);
-      expect(noteView.getJSON()).toEqual(tabJSON);
-
-    });
 
     it("should have generated html", function() {
 
@@ -41,8 +32,13 @@ describe("Take.NoteView spec", function() {
       noteView = new Take.NoteView({note:note, socket: socket});
       noteView.render(tabText);
       // expect(noteView.html).toEqual(expectedHtml);
-      
-    });    
-
+    });
   });
+
+  describe("#topLevelHTMLForNode()", function() {
+    it("pending...", function() {
+    });
+  });
+
+
 });

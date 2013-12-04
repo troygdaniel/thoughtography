@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://appcabinet.com/parsing.html -->
+<html>
+
+<head>
+<link rel="stylesheet" href="css/vendor/bootstrap.css" />
+    <link rel="stylesheet" href="css/overrides/bootstrap-overrides.css" />
+
+</head>
+
+<body style="font-size:22px">
+<script src="js/vendor/jquery.min.js"></script>
+<br/>
+<center><input type="button" id="create-room-button" value="Create room"></input>
+<br/><br/>
+<input type="button" id="join-room-button" value="Join a room"></input>
+<br/><br/>
+<input type="textfield" value="" size="50" id="room-id" size="5" />
+<br/>
+</center>
+</body>
+<script>
+function s4() {
+  return Math.floor((1 + Math.random()) * 0x10000)
+             .toString(16)
+             .substring(1);
+};
+
+function guid() {
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+         s4() + '-' + s4() + s4() + s4();
+}
+
+$(function() {
+    $("#create-room-button").click(function() {
+        var roomId = guid();
+        location.href = "room?"+roomId;
+    });
+    $("#join-room-button").click(function() {
+        location.href = "room?"+$("#room-id").val();
+    });
+});
+
+</script>
+</html>

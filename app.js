@@ -9,36 +9,41 @@ var app = require('http').createServer(handler),
   url = require('url')
   app.listen(3000);
 
-
+// Handle HTTP request/response
 function handler(req, res) {
-  var roomId="";
-  var filePath = req.url;
   var parsedURL = url.parse(req.url);
-  var hash = parsedURL.hash;
-  var queryString = roomId = parsedURL.query;
-  console.log("roomId = " + roomId);
+  var roomId = parsedURL.query;
+  var pathName = parsedURL.pathname;
+
+  // Create a websocket if a room/noteid was provided
   if (roomId) createSocketForRoom(roomId);
-  fs.readFile(__dirname + parsedURL.pathname,
-    function(err, data) {
+  if (pathName === "/room") {
+    pathName = "/room.html";
+    roomId = parsedURL.query;
+  }
+  console.log("roomId = " + roomId);
+  if (pathName === "/") pathName = "/create_or_join.html";
+  // Read the request and respond with file 
+  fs.readFile(__dirname + pathName, function(err, data) {
       if (err) {
         res.writeHead(500);
-        return res.end('Error loading ' + parsedURL.pathname);
+        return res.end('Error loading ' + pathName);
       }
       res.writeHead(200);
       res.end(data);
   });
 }
 
+// Create a web socket binding for a given room/noteId
 function createSocketForRoom(roomId) {
+  console.log("> roomId = " + roomId);
   io.sockets.on('connection', function(socket) {
+      console.log(">> roomId = " + roomId);
       // subscribe to "share_note:1234"
-      console.log("> roomId = " + roomId);
       socket.on('share_note:'+roomId, function(data) {
-        console.log("data = " + data);
-        console.log(">> roomId = " + roomId);
         // publish message to "shared_note_changes:1234" event
+        console.log(">>> roomId = " + roomId);
         socket.broadcast.emit('shared_note_changes:'+roomId, data);
-
       });
   });
 }

@@ -1,12 +1,11 @@
 var Take = Take || {};
 
 Take.NoteView = function(options) {
-  var note = options.note;
-  var el = options.el;
-  var socket = options.socket;
-  var json;
   var prevJson = {};
+  var el = options.el;
+  var note = options.note;
   var collapsedHeaders = [];
+  var socket = options.socket;
 
   var markupParser = new Take.MarkupParser({
     textData: note.getContent(),
@@ -31,7 +30,7 @@ Take.NoteView = function(options) {
 
   function bindClickableToTree() {
     $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
-    $('h3').on('click', function(e) {
+    $('h3').on('click', function() {
       var headerClass = $(this).attr("class");
       var $headerChild = $("#" + headerClass);
 
@@ -90,4 +89,4 @@ Take.NoteView = function(options) {
     render: render,
     getJSON: getJSON
   };
-}
+};

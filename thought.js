@@ -1,16 +1,18 @@
 var note, noteView;
 
 $(function() {
+  window.knwl = new Knwl();
   var noteId;
   if (location.search) {
     noteId = location.search.substr(1,location.search.length);
   }
   note = new Take.Note({id: noteId,socket: socket});
   noteView = new Take.NoteView({note: note,el: "#topic-tree",socket: socket});
-  console.log("noteId = " + noteId);
+
   $(".braindump").keyup(function() {
     note.shareChanges($(this).val());
     noteView.render($(this).val());
+    knwl.init($(this).val());
   });
 
   $(".toggle-writer").click(function() {
@@ -51,3 +53,7 @@ $(function() {
     };
   });
 });
+
+window.onload = function () {
+  var area = new AutoSuggestControl("text-area");    
+}

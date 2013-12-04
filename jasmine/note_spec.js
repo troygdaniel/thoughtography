@@ -5,8 +5,6 @@ describe("Take.Note spec", function() {
   var socket = socket || io.connect('http://' + document.domain);
   var note = new Take.Note({id: 123,socket: socket});
 
-  beforeEach(function() {});
-
   describe("Constructor", function() {
     it("should be constructed with an id", function() {
       expect(note.getId()).toEqual(123);

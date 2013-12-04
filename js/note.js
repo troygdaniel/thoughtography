@@ -7,26 +7,21 @@ Take.Note = function (options) {
   var onSharedChanges;
 
   initialize(options);
-  
-  // Listen for changes
-  var that = this;
 
   // Private methods
   // ---------------
 
   function initialize(options) {
-    var _id;
     // initialize with options
     if (options) {
       if (options.id) {
-        _id = options.id;
+        setId(options.id);
         onSharedChanges = options.onSharedChanges;
       } else {
         // assume the id alone was passed in as a param
-        _id = options;
+        setId(options);
       }
     }
-    setId(_id);
   }
 
   // Public methods
@@ -76,4 +71,4 @@ Take.Note = function (options) {
     shareChanges: shareChanges,
     onSharedChanges: onSharedChanges
   };
-}
+};

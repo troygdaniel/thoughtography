@@ -6,7 +6,11 @@ $(function() {
   if (location.search) {
     noteId = location.search.substr(1,location.search.length);
   }
+
+  // Create a note model that binds to a websocket connection 
   note = new Take.Note({id: noteId,socket: socket});
+
+  // Create a view that updates the DOM when receiving updates for a given note
   noteView = new Take.NoteView({note: note,el: "#topic-tree",socket: socket});
 
   $(".braindump").keyup(function() {

@@ -1,24 +1,51 @@
+
 <!DOCTYPE html>
-<!-- saved from url=(0034)http://appcabinet.com/parsing.html -->
-<html>
+<html lang="en">
+    <head>
+        <!-- META TAGS → All you meta tags go here -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <!-- Favicon → Yes, the favicon -->
+        <link rel="shortcut icon" href="images/favicon.png">
 
-<head>
-<link rel="stylesheet" href="css/vendor/bootstrap.css" />
-    <link rel="stylesheet" href="css/overrides/bootstrap-overrides.css" />
+        <!-- Title → Yes, the title of the page -->
+        <title>Take-note</title>
 
-</head>
+        <!-- CSS → Bootstrap core -->
+        <link rel="stylesheet" href="../css/vendor/bootstrap.css" />
+        
+        <!-- CSS → Font Awesome -->
+        <!-- dependencies: bootstrap -->
+        <link rel="stylesheet" href="../css/vendor/font-awesome.css" />
+        <link rel="stylesheet" href="../css/vendor/font-awesome-ie7.css" />
+        
+        <!-- CSS → Bootstrap Overrides (changing main bootstrap CSS) -->
+        <!-- dependencies: bootstrap3 -->
+        <link rel="stylesheet" href="../css/overrides/bootstrap-overrides.css" />
 
-<body style="font-size:22px">
-<script src="js/vendor/jquery.min.js"></script>
-<br/>
-<center><input type="button" id="create-room-button" value="Create room"></input>
-<br/><br/>
-<input type="button" id="join-room-button" value="Join a room"></input>
-<br/><br/>
-<input type="textfield" value="" size="50" id="room-id" size="5" />
-<br/>
-</center>
-</body>
+        <!-- CSS → HTML5 Admin_ core -->
+        <!-- dependencies: bootstrap3, font-awesome + others depending on which plugins are used in the page -->
+        <link rel="stylesheet" href="../css/html5admin.css" />
+        <script src="js/vendor/jquery.min.js"></script>        
+
+<!-- **************************************************************************** -->
+        <!-- ************************************************** -->
+        <!-- ************************ CSS → E X T R A S ******** -->
+
+        <!-- all your extra CSS will go here -->
+        
+        <!-- **************** CSS → E N D    E X T R A S ******** -->
+        <!-- *************************************************** -->
+<!-- **************************************************************************** -->
+
+        
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="../js/utils/html5shiv.js"></script>
+          <script src="../js/utils/respond.min.js"></script>
+        <![endif]-->
 <script>
 function s4() {
   return Math.floor((1 + Math.random()) * 0x10000)
@@ -27,8 +54,8 @@ function s4() {
 };
 
 function guid() {
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-         s4() + '-' + s4() + s4() + s4();
+  return s4() + s4() + s4() + s4() +
+         s4() + s4() + s4() + s4();
 }
 
 $(function() {
@@ -42,4 +69,94 @@ $(function() {
 });
 
 </script>
+    </head>
+
+
+
+
+
+
+
+
+
+
+    <body>
+
+        <!-- Fixed navbar -->
+        <header class="navbar navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img src="../images/take-note-logo.png" alt="Brand Name Here"/> 
+                        <span class="" style='font-size:12px;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;position:relative;top:10px;left:20px'>Elegant real-time note-taking</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- NEW CONTAINERS - For New Content -->
+        <div class="container h5a-container">
+            <div class="row">
+                <div class="col-md-2"></div> <!-- no offset (empty col) -->
+                <div class="col-md-10">
+                    <h1>Start a meeting <small>as the note-taker</small></h1>
+                    <p>
+                        Take-note is an elegant and simple way to take notes, share them in real-time and allow multiple participants to interact with the flow of data as fluidly as the conversation flows.  Every keystroke that you enter will be rendered as quickly as you change your notes.  Any changes to the notes will be hilighted so participants can see where the conversation is currently active.  As well, any top-level sections that are discussed can be easily collapsed allowing viewers to choose what the focus of their experience is.<br/><br/>
+                        1. Click "Start"<br/>
+                        2. Start typing<br/>
+                        3. Share your work by sharing your link<br/>
+                    </p>
+                    <input type="submit" id="create-room-button" style="width:200px;position:relative;left:0px" class="h5a-btn btn  btn-lg btn-primary full" value="Start">
+                </div>
+            </div>
+<br/><br/>
+
+        </div>
+        <div class="container h5a-container gray">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-2"> <!-- offset (because of side nav) --> 
+                    <h1>Join a meeting <small>and view real-time notes</small></h1>
+                    <p>
+                        Tenderloin pastrami shank filet mignon sirloin jerky leberkas meatball pork tail rump capicola frankfurter flank. Corned beef pig pastrami, tenderloin jerky turkey ribeye pork belly chicken fatback. Turkey beef venison kielbasa capicola. Sausage shank ribeye short ribs drumstick, fatback chuck tri-tip strip steak biltong beef kielbasa pastrami sirloin ground round. Shankle kielbasa beef ribs chicken pork loin jerky. Shankle beef ribs pig, spare ribs meatball capicola turkey fatback kielbasa brisket.
+                    </p>
+                    <input type="text" style="width:400px;float:left;font-size:22px;height:42px;" id="room-id" placeholder="Enter code" class="h5a-input form-control input-sm ">
+                    <input type="submit" id="join-room-button" style="width:200px" class="h5a-btn btn  btn-success btn-lg full" value="Join">
+<br/><br/>
+                </div>
+            </div>
+        </div> 
+
+
+        
+        <!-- JS → jQuery core (from cdn) -->
+        <!-- dependencies: none -->
+        <script src="../js/vendor/jquery.min.js"></script>
+        
+        <!-- JS → Bootstrap core -->
+        <!-- dependencies: jquery -->
+        <script src="../js/vendor/bootstrap.min.js"></script>
+        
+        
+        
+<!-- **************************************************************************** -->
+        <!-- ************************************************** -->
+        <!-- ************************ JS → E X T R A S ******** -->
+
+        <!-- all your extra JS will go here -->
+            
+        <!-- **************** JS → E N D    E X T R A S ******** -->
+        <!-- *************************************************** -->
+<!-- **************************************************************************** -->
+        
+        
+        <!-- JS → HTML5Admin core -->
+        <script src="../js/pages/boilerplate.js"></script>
+        
+    </body>
 </html>

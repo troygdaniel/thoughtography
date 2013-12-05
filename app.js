@@ -16,12 +16,13 @@ function handler(req, res) {
   var pathName = parsedURL.pathname;
 
   // Create a websocket if a room/noteid was provided
-  if (roomId) createSocketForRoom(roomId);
   if (pathName === "/room") {
     pathName = "/room.html";
     roomId = parsedURL.query;
+    createSocketForRoom(roomId);
+    console.log("roomId = " + roomId);
   }
-  console.log("roomId = " + roomId);
+  
   if (pathName === "/") pathName = "/create_or_join.html";
   // Read the request and respond with file 
   fs.readFile(__dirname + pathName, function(err, data) {

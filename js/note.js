@@ -34,7 +34,6 @@ Take.Note = function (options) {
     socket.emit('share_note:'+getId(), getContent());
   }
 
-
   // Setters / getters
   // -----------------
   

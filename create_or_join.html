@@ -28,24 +28,7 @@
         <!-- CSS → HTML5 Admin_ core -->
         <!-- dependencies: bootstrap3, font-awesome + others depending on which plugins are used in the page -->
         <link rel="stylesheet" href="../css/html5admin.css" />
-        <script src="js/vendor/jquery.min.js"></script>        
-
-<!-- **************************************************************************** -->
-        <!-- ************************************************** -->
-        <!-- ************************ CSS → E X T R A S ******** -->
-
-        <!-- all your extra CSS will go here -->
-        
-        <!-- **************** CSS → E N D    E X T R A S ******** -->
-        <!-- *************************************************** -->
-<!-- **************************************************************************** -->
-
-        
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-          <script src="../js/utils/html5shiv.js"></script>
-          <script src="../js/utils/respond.min.js"></script>
-        <![endif]-->
+        <script src="js/vendor/jquery.min.js"></script>         
 <script>
 function s4() {
   return Math.floor((1 + Math.random()) * 0x10000)
@@ -59,9 +42,9 @@ function guid() {
 }
 
 $(function() {
-    $("#create-room-button").click(function() {
+    $(".create-room-button").click(function() {
         var roomId = guid();
-        location.href = "room?"+roomId;
+        location.href = "room?"+roomId+"#creator";
     });
     $("#join-room-button").click(function() {
         location.href = "room?"+$("#room-id").val();
@@ -93,9 +76,13 @@ $(function() {
                     </button>
                     <a class="navbar-brand" href="/">
                         <img src="../images/take-note-logo.png" alt="Brand Name Here"/> 
-                        <span class="" style='font-size:12px;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;position:relative;top:10px;left:20px'>Elegant real-time note-taking</span>
                     </a>
                 </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" id="h5a-navbar">
+                        <li class=""><a href="#" class="create-room-button"><i class="icon-edit"></i> Start a meeting</a></li>
+                    </ul>                    
+                </div><!--/.nav-collapse -->                
             </div>
         </header>
 
@@ -107,12 +94,12 @@ $(function() {
                 <div class="col-md-10">
                     <h1>Start a meeting <small>as the note-taker</small></h1>
                     <p>
-                        Take-note is an elegant and simple way to take notes, share them in real-time and allow multiple participants to interact with the flow of data as fluidly as the conversation flows.  Every keystroke that you enter will be rendered as quickly as you change your notes.  Any changes to the notes will be hilighted so participants can see where the conversation is currently active.  As well, any top-level sections that are discussed can be easily collapsed allowing viewers to choose what the focus of their experience is.<br/><br/>
+                        Take-note is an elegant and simple way to take notes, share them in real-time and allow multiple participants to interact with the flow of data as fluidly as the conversation flows.<br/><br/>
                         1. Click "Start"<br/>
                         2. Start typing<br/>
                         3. Share your work by sharing your link<br/>
                     </p>
-                    <input type="submit" id="create-room-button" style="width:200px;position:relative;left:0px" class="h5a-btn btn  btn-lg btn-primary full" value="Start">
+                    <input type="submit" style="width:200px;position:relative;left:0px" class="create-room-button h5a-btn btn  btn-lg btn-primary full" value="Start">
                 </div>
             </div>
 <br/><br/>
@@ -123,9 +110,9 @@ $(function() {
                 <div class="col-md-10 col-md-offset-2"> <!-- offset (because of side nav) --> 
                     <h1>Join a meeting <small>and view real-time notes</small></h1>
                     <p>
-                        Tenderloin pastrami shank filet mignon sirloin jerky leberkas meatball pork tail rump capicola frankfurter flank. Corned beef pig pastrami, tenderloin jerky turkey ribeye pork belly chicken fatback. Turkey beef venison kielbasa capicola. Sausage shank ribeye short ribs drumstick, fatback chuck tri-tip strip steak biltong beef kielbasa pastrami sirloin ground round. Shankle kielbasa beef ribs chicken pork loin jerky. Shankle beef ribs pig, spare ribs meatball capicola turkey fatback kielbasa brisket.
+                        Join a meeting and watch keystrokes rendered in real-time and changes highlighted on the lines they are made.  Open and close sections to easily choose where you focus your attention.
                     </p>
-                    <input type="text" style="width:400px;float:left;font-size:22px;height:42px;" id="room-id" placeholder="Enter code" class="h5a-input form-control input-sm ">
+                    <input type="text" style="width:300px;float:left;font-size:22px;height:42px;" id="room-id" placeholder="Enter code" class="h5a-input form-control input-sm ">
                     <input type="submit" id="join-room-button" style="width:200px" class="h5a-btn btn  btn-success btn-lg full" value="Join">
 <br/><br/>
                 </div>
@@ -141,20 +128,6 @@ $(function() {
         <!-- JS → Bootstrap core -->
         <!-- dependencies: jquery -->
         <script src="../js/vendor/bootstrap.min.js"></script>
-        
-        
-        
-<!-- **************************************************************************** -->
-        <!-- ************************************************** -->
-        <!-- ************************ JS → E X T R A S ******** -->
-
-        <!-- all your extra JS will go here -->
-            
-        <!-- **************** JS → E N D    E X T R A S ******** -->
-        <!-- *************************************************** -->
-<!-- **************************************************************************** -->
-        
-        
         <!-- JS → HTML5Admin core -->
         <script src="../js/pages/boilerplate.js"></script>
         

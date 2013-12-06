@@ -98,7 +98,7 @@ Take.MarkupParser = function(options) {
     if (title === "") {
       title = titleFromText(node.text);
     }
-    return "<B style='color:green'>" + title + "</B>";
+    return "<B style='color:#0283A4'>" + title + "</B>";
   }
 
   function textForNode(node) {

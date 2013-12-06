@@ -6,7 +6,7 @@ $(function() {
   if (location.search) {
     noteId = location.search.substr(1,location.search.length);
   }
-
+  $("#roomIdHeader").val(noteId);
   // Create a note model that binds to a websocket connection 
   note = new Take.Note({id: noteId,socket: socket});
 
@@ -19,20 +19,16 @@ $(function() {
     knwl.init($(this).val());
   });
 
-  $(".toggle-writer").click(function() {
+  if (location.hash === "#creator") {
     var $leftpanel = $("#left-panel");
-    $leftpanel.toggle();
-    if ($leftpanel.is(":visible")) {
-      $(".toggle-writer").html("Hide writer");
-      $("#mid-panel").css("width", "40%");
-      $("#mid-panel").css("font-size", "10px");
-    } else {
-      $(".toggle-writer").html("Show writer");
-      $("#mid-panel").css("width", "100%");
-      $("#mid-panel").css("font-size", "18px");
-    }
-  });
-
+    $leftpanel.show();
+    $("#temp-content-reader").hide();
+    $("#temp-content-creator").show();
+    $(".toggle-writer").html("Hide writer");
+    $("#mid-panel").css("width", "40%");
+    $("#mid-panel").css("font-size", "10px");
+  }
+  $(".braindump").focus();
   // Handle the tab key event in the textarea
   $(".braindump").keydown(function(e) {
     var content;
@@ -59,5 +55,5 @@ $(function() {
 });
 
 window.onload = function () {
-  var area = new AutoSuggestControl("text-area");    
+  // var area = new AutoSuggestControl("text-area");    
 }

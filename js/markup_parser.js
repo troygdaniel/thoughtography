@@ -3,10 +3,13 @@ var Take = Take || {};
 Take.MarkupParser = function(options) {
   var json = options.json;
   var textData = options.textData;
+  this.hasChanges = false;
 
   // Public methods
   // --------------
   function prepare(json, prevJson, lineNum) {
+    this.hasChanges = false;
+
     if (typeof lineNum === "undefined") lineNum = 0;
 
     for (var i = 0; i < json.length; i++) {
@@ -18,6 +21,7 @@ Take.MarkupParser = function(options) {
       if (prevJson && prevJson[i] && json[i].text != "") {
         if (prevJson[i].text.toString() != json[i].text.toString()) {
           json[i].hasChanged = true;
+          this.hasChanges = true;
         }
       }
       // Check if there are any diffs from previous children edits
@@ -33,9 +37,10 @@ Take.MarkupParser = function(options) {
     var lineNumClass = "line-num-" + node.lineNum;
     var headerStyle = "";
     if (node.hasChanged === true) {
-      headerStyle = 'style="background-color:#F5F6CE"';
+      return '<h3 style="background-color:#F5F6CE" class="header-line-num-' + node.lineNum + '">' + titleForNode(node) + ' ' + textForNode(node) + '</h3><span style="display: block;" id="header-line-num-' + node.lineNum + '">';
+    } else {
+      return '<h3 style="background-color:#FFF"  class="header-line-num-' + node.lineNum + '">' + titleForNode(node) + ' ' + textForNode(node) + '</h3><span style="display: block;" id="header-line-num-' + node.lineNum + '">';   
     }
-    return '<h3 ' + headerStyle + ' class="header-line-num-' + node.lineNum + '">' + titleForNode(node) + ' ' + textForNode(node) + '</h3><span style="display: block;" id="header-line-num-' + node.lineNum + '">';
   }
 
   function buildChildrenULTags(node, parentLine) {
@@ -60,7 +65,7 @@ Take.MarkupParser = function(options) {
     }
     var lineNumClass = "line-num-" + node.lineNum;
     var openUL = '<ul ' + headerStyle + '><li class="' + parentNumClass + ' ' + lineNumClass + '"><span class="' + parentNumClass + ' ' + lineNumClass + '">' + titleForNode(node) + '</span>&nbsp;' + textForNode(node);
-    return openUL;    
+    return openUL;
   }
 
   function titleFromText(text) {

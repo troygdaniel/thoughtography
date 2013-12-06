@@ -1,7 +1,7 @@
 var Take = Take || {};
 
 Take.NoteView = function(options) {
-  var prevJson = {};
+  var prevJson;
   var el = options.el;
   var note = options.note;
   var collapsedHeaders = [];
@@ -62,6 +62,7 @@ Take.NoteView = function(options) {
   // Public methods
   // --------------
   function render(textData) {
+    if (note.getContent() === textData) return;
     var json = getJSON(textData);
     markupParser.prepare(json, prevJson);
 
@@ -74,6 +75,7 @@ Take.NoteView = function(options) {
     bindClickableToTree();
     hideCollapsedHeaders();
     prevJson = json;
+
   }
 
   function getJSON(v) {

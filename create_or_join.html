@@ -54,20 +54,16 @@ $(function() {
     $("#join-room-button").click(function() {
         location.href = "room?"+$("#room-id").val();
     });
+    $('#room-id').keypress(function (e) {
+      if (e.which == 13) {
+        location.href = "room?"+$("#room-id").val();
+      }
+    });    
 });
 
 </script>
     </head>
-
-
-
-
-
-
-
-
-
-
+ 
     <body>
 
         <!-- Fixed navbar -->
@@ -80,7 +76,7 @@ $(function() {
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="/">
-                        <img src="../images/take-note-logo.png" alt="Brand Name Here"/> 
+                        <img src="../images/take-note-logo.png" alt="Take-note"/> 
                     </a>
                 </div>
                 <div class="navbar-collapse collapse">

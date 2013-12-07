@@ -11,12 +11,12 @@ Take.NoteView = function(options) {
   var socket = options.socket;
   var markupParser;
 
-  initalize();
+  initialize();
 
   // Private methods
   // ---------------
 
-  function initalize() {
+  function initialize() {
 
     markupParser = new Take.MarkupParser({
       textData: note.getContent(),
@@ -55,7 +55,6 @@ Take.NoteView = function(options) {
         console.log("13 is enter");
         var start = this.selectionStart;
         var end = this.selectionEnd;        
-        debugger
         content = value.substring(0, start) + "\n\t" + value.substring(end);
         $this.val(content);
         this.selectionStart = this.selectionEnd = end+2;

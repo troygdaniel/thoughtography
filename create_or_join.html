@@ -35,6 +35,11 @@ function s4() {
              .toString(16)
              .substring(1);
 };
+function s3() {
+  return Math.floor((1 + Math.random()) * 0x1000)
+             .toString(16)
+             .substring(1);
+};
 
 function guid() {
   return s4() + s4() + s4() + s4() +
@@ -43,7 +48,7 @@ function guid() {
 
 $(function() {
     $(".create-room-button").click(function() {
-        var roomId = guid();
+        var roomId = s3()+s3(); //guid();
         location.href = "room?"+roomId+"#creator";
     });
     $("#join-room-button").click(function() {

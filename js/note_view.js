@@ -3,8 +3,11 @@ var Take = Take || {};
 Take.NoteView = function(options) {
   var prevJson;
   var el = options.el;
+  var $el = $(el);
   var note = options.note;
   var collapsedHeaders = [];
+  var textarea = options.textarea;
+  var $textarea = $(textarea);
   var socket = options.socket;
 
   var markupParser = new Take.MarkupParser({
@@ -61,15 +64,20 @@ Take.NoteView = function(options) {
 
   // Public methods
   // --------------
-  function render(textData) {
-    if (note.getContent() === textData) return;
+  function preview(textData) {
+    render(textData, true);
+  }
+  function render(textData, forceUpdate) {
+    if (typeof forceUpdate === "undefined") forceUpdate = false;
+    if (forceUpdate === false && note.getContent() === textData) return;
+    $textarea.val(textData);
     var json = getJSON(textData);
     markupParser.prepare(json, prevJson);
 
-    $(el).empty();
+    $el.empty();
     if (json.length) {
       for (var i = 0; i < json.length; i++) {
-        $(el).append(generateHTML(json[i]));
+        $el.append(generateHTML(json[i]));
       }
     }
     bindClickableToTree();
@@ -88,6 +96,7 @@ Take.NoteView = function(options) {
   return {
     note: note,
     el: el,
+    preview: preview,
     render: render,
     getJSON: getJSON
   };

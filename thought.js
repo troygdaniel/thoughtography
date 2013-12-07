@@ -11,11 +11,11 @@ $(function() {
   note = new Take.Note({id: noteId,socket: socket});
 
   // Create a view that updates the DOM when receiving updates for a given note
-  noteView = new Take.NoteView({note: note,el: "#topic-tree",socket: socket});
+  noteView = new Take.NoteView({note: note,el: "#topic-tree",socket: socket, textarea: ".braindump"});
 
   $(".braindump").keyup(function() {
     note.shareChanges($(this).val());
-    noteView.render($(this).val());
+    noteView.preview($(this).val());
     knwl.init($(this).val());
   });
 

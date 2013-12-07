@@ -103,14 +103,14 @@ Take.MarkupParser = function(options) {
     if (title === "") {
       title = hashTagFromText(node.text);
     }
-    return "<B style='color:#0283A4'>" + title + "</B>";
+    return "<B style='color:#0283A4'>" + title.trim() + "</B>";
   }
 
   function textForNode(node) {
     if (wordCount(node.text) <= 2) {
       return "";
     } else {
-      return stripFirstBoldedText(node.text);
+      return stripFirstBoldedText(node.text).trim();
     }
   }
   function stripFirstBoldedText(text) {

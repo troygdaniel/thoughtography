@@ -21,4 +21,24 @@ describe("Take.MarkupParser spec", function() {
     });
   });
 
+  describe("#titleFromText()", function() {
+    it("should parse out the title from the text", function() {
+      var example = "This: would have a title of 'This'";
+      expect(markupParser.titleFromText(example)).toEqual("This:");
+      example = "This example: would have a title of 'This example:'";
+      expect(markupParser.titleFromText(example)).toEqual("This example:");
+    });
+  });
+
+  describe("#hashTagFromText()", function() {
+    it("should parse out the hash tag substring from the text", function() {
+      var example = "This would return a #title value of '#title'";
+      expect(markupParser.hashTagFromText(example)).toEqual("#title");
+      
+      example = "This example #would have a title of '#would'";
+      expect(markupParser.hashTagFromText(example)).toEqual("#would");
+    });
+  });
+
+
 });

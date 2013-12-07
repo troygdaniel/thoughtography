@@ -68,25 +68,20 @@ Take.MarkupParser = function(options) {
     return openUL;
   }
 
-  function titleFromText(text) {
-    if (typeof text === "undefined") return;
+  function hashTagFromText(text) {
     var wordArray = text.split(" ");
-    var title = ""
+
     for (var i = 0; i < wordArray.length; i++) {
-      if (i <= 2) {
-        title += " " + wordArray[i];
-      }
       if (wordArray[i][0] === "#") {
-        title = wordArray[i].substr(0, wordArray[i].length);
-        return title;
-      }
-      if (lastChar(wordArray[i]) === ":") {
-        title = wordArray[i].substr(0, wordArray[i].length - 1);
-        return title;
+        return wordArray[i].substr(0, wordArray[i].length);
       }
     }
     return "";
   }
+  
+  function titleFromText(text) {
+    return text.substr(0,text.indexOf(":")+1);
+  }  
 
   function lastChar(word) {
     if (word)
@@ -95,6 +90,7 @@ Take.MarkupParser = function(options) {
   }
 
   function titleForNode(node) {
+    if (typeof node.text === "undefined") return;
     var title = "";
 
     if (boldedText(node.text))
@@ -102,6 +98,10 @@ Take.MarkupParser = function(options) {
 
     if (title === "") {
       title = titleFromText(node.text);
+    }
+
+    if (title === "") {
+      title = hashTagFromText(node.text);
     }
     return "<B style='color:#0283A4'>" + title + "</B>";
   }
@@ -147,6 +147,8 @@ Take.MarkupParser = function(options) {
       return source.substr(source.indexOf("*") + 1, (source.lastIndexOf("*") - source.indexOf("*") - 1));
   }
   return {
+    hashTagFromText: hashTagFromText,
+    titleFromText: titleFromText,
     json: json,
     textData: textData,
     prepare: prepare,

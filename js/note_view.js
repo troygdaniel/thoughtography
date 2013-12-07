@@ -9,16 +9,63 @@ Take.NoteView = function(options) {
   var textarea = options.textarea;
   var $textarea = $(textarea);
   var socket = options.socket;
+  var markupParser;
 
-  var markupParser = new Take.MarkupParser({
-    textData: note.getContent(),
-    json: note.getJSON()
-  });
-
-  socket.on('shared_note_changes:' + note.getId(), render);
+  initalize();
 
   // Private methods
   // ---------------
+
+  function initalize() {
+
+    markupParser = new Take.MarkupParser({
+      textData: note.getContent(),
+      json: note.getJSON()
+    });
+
+    socket.on('shared_note_changes:' + note.getId(), render);
+
+    $textarea.keyup(function(e) {
+      note.shareChanges($(this).val());
+      preview($(this).val());
+      // knwl.init($(this).val());
+    });
+
+    $textarea.focus();
+    // Handle the tab key event in the textarea
+    $textarea.keydown(function(e) {
+      var content;
+      var $this = $(this);
+      var value = $this.val();
+      if (e.keyCode === 9) { // tab was pressed
+        // get caret position/selection
+        var start = this.selectionStart;
+        var end = this.selectionEnd;
+
+        // set textarea value to: text before caret + tab + text after caret
+        content = value.substring(0, start) + "\t" + value.substring(end);
+        $this.val(content);
+
+        // put caret at right position again (add one for the tab)
+        this.selectionStart = this.selectionEnd = start + 1;
+
+        // prevent the focus lose
+        e.preventDefault();
+      } else if (e.keyCode === 13) { // enter key was pressed
+        console.log("13 is enter");
+        var start = this.selectionStart;
+        var end = this.selectionEnd;        
+        debugger
+        content = value.substring(0, start) + "\n\t" + value.substring(end);
+        $this.val(content);
+        this.selectionStart = this.selectionEnd = end+2;
+        e.preventDefault();        
+      } else {
+        content = value;
+      };
+    });
+  }
+
   function generateHTML(node) {
     var h3Tag = markupParser.h3TagForNode(node);
     var parentNum = node.lineNum;

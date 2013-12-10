@@ -1,6 +1,7 @@
 var Take = Take || {};
 
 Take.NoteView = function(options) {
+  var events = [];
   var prevJson;
   var el = options.el;
   var $el = $(el);
@@ -11,23 +12,26 @@ Take.NoteView = function(options) {
   var socket = options.socket;
   var markupParser;
 
-  initialize();
+  initialize(options);
 
   // Private methods
   // ---------------
 
-  function initialize() {
+  function initialize(options) {
 
     markupParser = new Take.MarkupParser({
       textData: note.getContent(),
       json: note.getJSON()
     });
 
+    if (options.keydown) { events["keydown"] = options.keydown; }
+
     socket.on('shared_note_changes:' + note.getId(), render);
 
     $textarea.keyup(function(e) {
       note.shareChanges($(this).val());
       preview($(this).val());
+      events["keydown"](e);
       // knwl.init($(this).val());
     });
 
@@ -136,12 +140,17 @@ Take.NoteView = function(options) {
     return note.getJSON(v);
   }
 
+  function on(k, callblack) {
+    events[k] = callblack;
+  }
+
   // Setters / getters
   // -----------------
 
   return {
     note: note,
     el: el,
+    on: on,
     preview: preview,
     render: render,
     getJSON: getJSON

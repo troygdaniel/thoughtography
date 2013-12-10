@@ -50,8 +50,7 @@ Take.Insights = function (options) {
   function wordsArray(v) {
     var retVal = v;
     if (retVal) {
-      retVal = retVal.split("\n").join(" ");
-      retVal = retVal.split("\t").join(" ");
+      retVal = retVal.split("\n").join(" ").split("\t").join(" ");
     }
     return retVal.split(' ');;
   }
@@ -60,9 +59,7 @@ Take.Insights = function (options) {
   function sanitizedWords(v) {
     var retVal = v;
     if (retVal) {
-      retVal = retVal.split(".").join(" ");
-      retVal = retVal.split("\n").join(" ");
-      retVal = retVal.split("\t").join(" ");
+      retVal = retVal.split(".").join(" ").split("\n").join(" ").split("\t").join(" ");
     }
     return retVal.split(' ');;
   }
@@ -78,7 +75,7 @@ Take.Insights = function (options) {
 
   function getParticipants() {
     var words = sanitizedWords(note.getContent());
-
+    participants = [];
     for (var i = 0; i < words.length; i++) {
       var word = words[i];
       if (isNewParticipant(word)) { 
@@ -90,6 +87,7 @@ Take.Insights = function (options) {
 
   function getTags() {
     var words = sanitizedWords(note.getContent());
+    tags = [];
     for (var i = 0; i < words.length; i++) {
       var word = words[i];
       if (isNewTag(word)) { 
@@ -102,6 +100,7 @@ Take.Insights = function (options) {
   function getWikis() {
     var words = sanitizedWords(note.getContent());
     var href="http://en.m.wikipedia.org/w/index.php?title=";
+    wikis = [];
     for (var i = 0; i < words.length; i++) {
         if (words[i] === "wiki") {
           var wikiHash = {};
@@ -112,7 +111,7 @@ Take.Insights = function (options) {
     return wikis; 
   }
 
-  function wikiWord(words, startIndx) {
+  function wikiWord(words, startIndx) {    
     for (var i = startIndx+1; i < words.length; i++) {
       var word = words[i];
       

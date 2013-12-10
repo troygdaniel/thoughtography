@@ -27,7 +27,7 @@ describe("Take.Insights spec", function() {
       expect(insights.getParticipants()).toEqual(array);
 
       txt += "and @daniel will ask @george is the requirements were correct"
-      note.setContent(txt);
+      note.setContent(txt);      
       array.push("@george");      
       expect(insights.getParticipants()).toEqual(array);
 
@@ -86,18 +86,29 @@ describe("Take.Insights spec", function() {
   });
 
   describe("#actionItems", function() {
-    it("should associate the line note with a participant", function() {
+    it("should find an action item for a participant", function() {
       var items = {"@troy": ["order lunch tomorrow."]};
-      var txt = noteContent;
-
-      note.setContent(txt);
+      note.setContent(noteContent);
       expect(insights.actionItems()).toEqual(items);
+    });
 
-      txt += "and @daniel will ask @george if the requirements were correct."
+    it("should handle multiple participant action items", function() {
+      var items = {"@troy": ["order lunch tomorrow."]};
+      var txt = noteContent + "and @daniel will ask @george if the requirements were correct."
       note.setContent(txt);
       
       items["@daniel"] = ["ask @george if the requirements were correct."];
+      expect(insights.actionItems()).toEqual(items);
+    });
+
+    it("should handle multiple action items for a participant", function() {
+      var items = {"@troy": ["order lunch tomorrow."]};
+      var txt = noteContent + "and @troy will follow up with a report."
+      note.setContent(txt);
+      
+      items["@troy"].push("follow up with a report.");
       expect(insights.actionItems()).toEqual(items);      
+
     });
    });
 

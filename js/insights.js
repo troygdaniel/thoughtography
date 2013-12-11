@@ -104,22 +104,27 @@ Take.Insights = function (options) {
     for (var i = 0; i < words.length; i++) {
         if (words[i] === "wiki") {
           var wikiHash = {};
-          wikiHash[wikiWord(words,i)] = href+wikiWord(words,i);
-          wikis.push(wikiHash);
+          var key = wikiWord(words,i)
+          if (key) {
+            wikiHash[key] = href+wikiWord(words,i);
+            wikis.push(wikiHash);
+          }
         }
     }
     return wikis; 
   }
 
   function wikiWord(words, startIndx) {    
-    for (var i = startIndx+1; i < words.length; i++) {
-      var word = words[i];
-      
-      if (quoted(word) === true) { 
-        return quoteless(word);
-      } 
-      return nextTwoWords(words, i);
+    var word = words[startIndx+1];
+    var nextWord = words[startIndx+2];
+
+    if (quoted(word) === true) { 
+      return quoteless(word);
     }
+    // console.log(nextTwoWords(words, startIndx+1));
+    if (nextWord[nextWord.length-1] === "\"")
+      return nextTwoWords(words, startIndx+1);
+    return false;
   }
 
   function actionItems() {

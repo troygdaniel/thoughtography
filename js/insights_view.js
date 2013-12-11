@@ -2,7 +2,8 @@ var Take = Take || {};
 
 Take.InsightsView = function(options) {
   var insights = new Take.Insights({note: options.note});
-  var elementHtml = html = '<span style="padding:5px;"><a href="#">#content</a></span>'
+  var html = '<span style="padding:5px;"><a href="#">#content</a></span>'
+  var elementHtml = '<span class="rounded-borders" style="padding:5px;"><a href="#">#content</a></span>'
   var note = options.note;
   var el = options.el;
   var $el = $(el);
@@ -24,9 +25,31 @@ Take.InsightsView = function(options) {
     return pplHtml;
   }
 
+  function renderWikis() {
+    var wikis = insights.getWikis();
+    var wikiHtml = "";
+    for (var i = 0; i < wikis.length; i++) {
+      for (key in wikis[i]) {
+        var partial = new String(elementHtml).replace("#content", "["+key+"]");
+        partial = partial.replace('href="#"','href="'+wikis[i][key]+'" target="_new"');
+        wikiHtml += partial;
+      }
+    }
+
+    return wikiHtml;
+  }
+
+  function renderTags() {
+    var tag = insights.getTags();
+    var tagHtml = "";
+    for (var i = 0; i < tag.length; i++) {
+      tagHtml += new String(elementHtml).replace("#content", tag[i]);
+    }
+    return tagHtml;
+  }
+  
   function render() {
-    console.log(renderParticipants());
-    $el.html(renderParticipants());
+    $el.html(renderParticipants() + renderTags() + renderWikis());
   }
 
   return {

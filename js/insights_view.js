@@ -2,8 +2,8 @@ var Take = Take || {};
 
 Take.InsightsView = function(options) {
   var insights = new Take.Insights({note: options.note});
-  var html = '<span style="padding:5px;"><a href="#">#content</a></span>'
-  var elementHtml = '<span class="rounded-borders" style="padding:5px;"><a href="#">#content</a></span>'
+  var html = '<span><a href="#">#content</a></span>'
+  var elementHtml = '<span class="rounded-corners" style="padding:5px;"><a href="#">#content</a></span>&nbsp;&nbsp;&nbsp;'
   var note = options.note;
   var el = options.el;
   var $el = $(el);
@@ -30,7 +30,7 @@ Take.InsightsView = function(options) {
     var wikiHtml = "";
     for (var i = 0; i < wikis.length; i++) {
       for (key in wikis[i]) {
-        var partial = new String(elementHtml).replace("#content", "["+key+"]");
+        var partial = new String(elementHtml).replace("#content", "wiki "+key);
         partial = partial.replace('href="#"','href="'+wikis[i][key]+'" target="_new"');
         wikiHtml += partial;
       }

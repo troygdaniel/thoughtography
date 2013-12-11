@@ -25,9 +25,12 @@ Take.Insights = function (options) {
   }
 
   function quoted(word) {
-    var firstChar = word[0];
-    var lastChar = word[word.length-1];    
-    return (firstChar === "\"" && lastChar === "\"");
+    if (word) {
+      var firstChar = word[0];
+      var lastChar = word[word.length-1];    
+      return (firstChar === "\"" && lastChar === "\"");        
+    }
+    return false;
   }
 
   function quoteless(word) {
@@ -36,7 +39,7 @@ Take.Insights = function (options) {
 
   function nextTwoWords(words, i) {
     var word = words[i];
-    return words[i].substr(1,word.length-1)+"_"+words[i+1].substr(0,word.length-1)
+    return words[i].substr(1,word.length-1)+"_"+words[i+1].substr(0,words[i+1].length-1)
   }
 
   function addParticipant(v) {
@@ -122,7 +125,7 @@ Take.Insights = function (options) {
       return quoteless(word);
     }
     // console.log(nextTwoWords(words, startIndx+1));
-    if (nextWord[nextWord.length-1] === "\"")
+    if (nextTwoWords && nextWord[nextWord.length-1] === "\"")
       return nextTwoWords(words, startIndx+1);
     return false;
   }

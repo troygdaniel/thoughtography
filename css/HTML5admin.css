@@ -2416,3 +2416,15 @@ table.item tr:nth-child(even) {
 .note-editor .note-color-palette div .note-color-btn:hover {
   border: 1px solid #000;
 }
+
+.rounded-corners {
+     -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    padding: 5px;
+    border-radius: 20px;
+    border: solid;
+    border-color: white;
+    border-width: 1px;
+    background-color: #D6EFF5;
+}

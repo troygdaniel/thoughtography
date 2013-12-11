@@ -56,7 +56,6 @@ Take.NoteView = function(options) {
         // prevent the focus lose
         e.preventDefault();
       } else if (e.keyCode === 13) { // enter key was pressed
-        console.log("13 is enter");
         var start = this.selectionStart;
         var end = this.selectionEnd;        
         content = value.substring(0, start) + "\n\t" + value.substring(end);

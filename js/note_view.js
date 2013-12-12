@@ -24,14 +24,14 @@ Take.NoteView = function(options) {
       json: note.getJSON()
     });
 
-    if (options.keydown) { events["keydown"] = options.keydown; }
+    if (options.changes) { events["changes"] = options.changes; }
 
     socket.on('shared_note_changes:' + note.getId(), render);
 
     $textarea.keyup(function(e) {
       note.shareChanges($(this).val());
       preview($(this).val());
-      events["keydown"](e);
+      events["changes"](e);
       // knwl.init($(this).val());
     });
 
@@ -129,6 +129,7 @@ Take.NoteView = function(options) {
         $el.append(generateHTML(json[i]));
       }
     }
+    events["changes"]();
     bindClickableToTree();
     hideCollapsedHeaders();
     prevJson = json;

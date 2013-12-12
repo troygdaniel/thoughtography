@@ -20,7 +20,7 @@ function handler(req, res) {
     pathName = "/room.html";
     roomId = parsedURL.query;
     createSocketForRoom(roomId);
-    console.log("roomId = " + roomId);
+    // console.log("roomId = " + roomId);
   }
   
   if (pathName === "/") pathName = "/create_or_join.html";
@@ -37,13 +37,13 @@ function handler(req, res) {
 
 // Create a web socket binding for a given room/noteId
 function createSocketForRoom(roomId) {
-  console.log("> roomId = " + roomId);
+  // console.log("> roomId = " + roomId);
   io.sockets.on('connection', function(socket) {
       console.log(">> roomId = " + roomId);
       // subscribe to "share_note:1234"
       socket.on('share_note:'+roomId, function(data) {
         // publish message to "shared_note_changes:1234" event
-        console.log(">>> roomId = " + roomId);
+        // console.log(">>> roomId = " + roomId);
         socket.broadcast.emit('shared_note_changes:'+roomId, data);
       });
   });

@@ -21,7 +21,7 @@ $(function() {
   // Create a view that updates the DOM when receiving updates for a given note
   insightsView = new Take.InsightsView({note: note, el: "#top-header"});
   noteView = new Take.NoteView({note: note, el: "#topic-tree", socket: socket, textarea: ".braindump"});
-  noteView.on("keydown", function() {
+  noteView.on("changes", function() {
       insightsView.render();
   });
 

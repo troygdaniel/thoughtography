@@ -31,7 +31,7 @@ Take.InsightsView = function(options) {
     for (var i = 0; i < wikis.length; i++) {
       for (key in wikis[i]) {
         var partial = new String(elementHtml).replace("#content", "wiki "+key);
-        partial = partial.replace('href="#"','href="'+wikis[i][key]+'" target="_new"');
+        partial = partial.replace('href="#"','class="wiki-link" href="'+wikis[i][key]+'" target="_iframe"');
         wikiHtml += partial;
       }
     }
@@ -43,13 +43,20 @@ Take.InsightsView = function(options) {
     var tag = insights.getTags();
     var tagHtml = "";
     for (var i = 0; i < tag.length; i++) {
-      tagHtml += new String(elementHtml).replace("#content", tag[i]);
+      var partial = new String(elementHtml).replace("#content", tag[i]);
+      var str = tag[i].replace("#",'');
+      partial = partial.replace('href="#"','href="https://twitter.com/search?q=%23'+str+'" target="_twitter"');
+      tagHtml += partial;
     }
     return tagHtml;
   }
   
   function render() {
+    console.log("insightsView.render");
     $el.html(renderParticipants() + renderTags() + renderWikis());
+    $(".wiki-link").click(function (){
+      $("#_iframe").toggle();
+    });
   }
 
   return {

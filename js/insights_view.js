@@ -52,7 +52,6 @@ Take.InsightsView = function(options) {
   }
   
   function render() {
-    console.log("insightsView.render");
     $el.html(renderParticipants() + renderTags() + renderWikis());
     $(".wiki-link").click(function (){
       $("#_iframe").toggle();

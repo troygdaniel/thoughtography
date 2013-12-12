@@ -1,34 +1,39 @@
 var note, noteView;
 
 $(function() {
-  var noteId;
-  if (location.search) {
-    noteId = location.search.substr(1, location.search.length);
+  var note_id = getRoomId();
+  bindHeaderLinks();
+  render(note_id);
+
+  function getRoomId() {
+    if (location.search) {
+      _id = location.search.substr(1, location.search.length);
+    }
+    $("#roomIdHeader").text(_id);
+    return _id;
   }
-  $("#roomIdHeader").text(noteId);
-  $("#view-link").click(function() {
-    showRightPanel();
-  });
-  $("#create-link").click(function() {
-    showLeftPanel();
-  });
-
-  // Create a note model that binds to a websocket connection 
-  note = new Take.Note({
-    id: noteId,
-    socket: socket
-  });
-  // Create a view that updates the DOM when receiving updates for a given note
-  insightsView = new Take.InsightsView({note: note, el: "#top-header"});
-  noteView = new Take.NoteView({note: note, el: "#topic-tree", socket: socket, textarea: ".braindump"});
-  noteView.on("changes", function() {
-      insightsView.render();
-  });
-
-  if (location.hash === "#creator") {
-    showLeftPanel();
+  function bindHeaderLinks() {
+    $("#view-link").click(function() {
+      showRightPanel();
+    });
+    $("#create-link").click(function() {
+      showLeftPanel();
+    });
   }
+  function render(_id) {
+    if (location.hash === "#creator") {
+      showLeftPanel();
+    }
+    // Create a note model that binds to a websocket connection 
+    note = new Take.Note({ id: _id, socket: socket });
 
+    // Create a view that updates the DOM when receiving updates for a given note
+    insightsView = new Take.InsightsView({note: note, el: "#note-insights-header"});
+    noteView = new Take.NoteView({note: note, el: "#topic-tree", socket: socket, textarea: ".braindump"});
+    noteView.on("changes", function() {
+        insightsView.render();
+    });
+  }
   function showLeftPanel() {
     $("#left-panel").show();
     $("#temp-content-reader").hide();
@@ -43,9 +48,5 @@ $(function() {
     $("#temp-content-creator").hide();
     $("#mid-panel").css("width", "100%");
     $("#mid-panel").css("font-size", "18px");
-  }
+  } 
 });
-
-window.onload = function() {
-  // var area = new AutoSuggestControl("text-area");    
-}

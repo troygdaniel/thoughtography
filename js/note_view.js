@@ -129,7 +129,7 @@ Take.NoteView = function(options) {
         $el.append(generateHTML(json[i]));
       }
     }
-    events["changes"]();
+    if (events["changes"]) events["changes"]();
     bindClickableToTree();
     hideCollapsedHeaders();
     prevJson = json;

@@ -51,8 +51,12 @@ $(function() {
         var roomId = s3()+s3(); //guid();
         location.href = "room?"+roomId+"#creator";
     });
-    $("#join-room-button").click(function() {
+    $(".join-room-link").click(function() {
         var roomId=prompt("Please enter the meeting code.","");
+        if (roomId) location.href = "room?"+roomId;
+    });
+    $(".join-room-button").click(function() {
+        var roomId = $("#room-id").val();
         if (roomId) location.href = "room?"+roomId;
     });
     $('#room-id').keypress(function (e) {
@@ -82,7 +86,7 @@ $(function() {
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" id="h5a-navbar">
-                        <li class=""><a href="#join" id="join-room-button"><i class="icon-cloud"></i> Join</a></li>
+                        <li class=""><a href="#join" class="join-room-link"><i class="icon-cloud"></i> Join</a></li>
                     </ul>                    
                     <ul class="nav navbar-nav" id="h5a-navbar">
                         <li class=""><a href="#" class="create-room-button"><i class="icon-pencil"></i> Start</a></li>
@@ -100,7 +104,7 @@ $(function() {
                         Join a meeting and watch keystrokes rendered in real-time and changes highlighted on the lines they are made.  Open and close sections to easily choose where you focus your attention.
                     </p>
                     <a id='#join'><input type="text" style="width:300px;float:left;font-size:22px;height:42px;" id="room-id" placeholder="Enter code" class="h5a-input form-control input-sm ">
-                    <input type="submit" id="join-room-button" style="width:200px" class="h5a-btn btn  btn-success btn-lg full" value="Join"></a>
+                    <input type="submit" style="width:200px" class="h5a-btn btn join-room-button btn-success btn-lg full" value="Join"></a>
 <br/><br/>
                 </div>
             </div>

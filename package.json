@@ -1,6 +1,6 @@
 {
     "name": "App",
-    "version": "0.0.1",
+    "version": "0.0.1-4",
     "description": "App",
     "dependencies": {
         "socket.io": "latest",

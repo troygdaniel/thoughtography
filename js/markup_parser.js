@@ -33,6 +33,18 @@ Take.MarkupParser = function(options) {
     return lineNum;
   }
 
+  function generateHTML(node) {
+    var h3Tag = h3TagForNode(node);
+    var parentNum = node.lineNum;
+    var childUL = "";
+    if (node.children) {
+      for (var i = 0; i < node.children.length; i++) {
+        childUL += buildChildrenULTags(node.children[i], parentNum);
+      }
+    }
+    return h3Tag + childUL + '</span>';
+  }
+
   function h3TagForNode(node) {    
     var lineNumClass = "line-num-" + node.lineNum;
     var headerStyle = "";
@@ -150,6 +162,7 @@ Take.MarkupParser = function(options) {
     hashTagFromText: hashTagFromText,
     titleFromText: titleFromText,
     json: json,
+    generateHTML: generateHTML,
     textData: textData,
     prepare: prepare,
     h3TagForNode: h3TagForNode,

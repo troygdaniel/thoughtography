@@ -7,77 +7,124 @@ Take.NoteView = function(options) {
   var $el = $(el);
   var note = options.note;
   var collapsedHeaders = [];
-  var textarea = options.textarea;
-  var $textarea = $(textarea);
+  var $textarea = $(options.textarea);
   var socket = options.socket;
-  var markupParser;
+  var markupParser = new Take.MarkupParser({ textData: note.getContent(), json: note.getJSON() });
 
   initialize(options);
 
-  // Private methods
-  // ---------------
-
   function initialize(options) {
 
-    markupParser = new Take.MarkupParser({
-      textData: note.getContent(),
-      json: note.getJSON()
-    });
+    bindChangesEvent(options.changes);
+    bindWebSocketToRender();
 
-    if (options.changes) { events["changes"] = options.changes; }
+    onKeyUp();
+    onKeyDown();
 
+    $textarea.focus();
+  }
+
+  function bindChangesEvent(callblack) {
+    if (callblack) { events["changes"] = callblack; }
+  }
+
+  function bindWebSocketToRender() {
     socket.on('shared_note_changes:' + note.getId(), render);
+  }
 
+  function onKeyUp() {
     $textarea.keyup(function(e) {
       note.shareChanges($(this).val());
       preview($(this).val());
       events["changes"](e);
       // knwl.init($(this).val());
     });
+  }
 
-    $textarea.focus();
-    // Handle the tab key event in the textarea
+  function onKeyDown() {
     $textarea.keydown(function(e) {
-      var content;
-      var $this = $(this);
-      var value = $this.val();
-      if (e.keyCode === 9) { // tab was pressed
-        // get caret position/selection
-        var start = this.selectionStart;
-        var end = this.selectionEnd;
-
-        // set textarea value to: text before caret + tab + text after caret
-        content = value.substring(0, start) + "\t" + value.substring(end);
-        $this.val(content);
-
-        // put caret at right position again (add one for the tab)
-        this.selectionStart = this.selectionEnd = start + 1;
-
-        // prevent the focus lose
+            
+      if (e.keyCode === 9) {
+        onTabDown(this);
         e.preventDefault();
-      } else if (e.keyCode === 13) { // enter key was pressed
-        var start = this.selectionStart;
-        var end = this.selectionEnd;        
-        content = value.substring(0, start) + "\n\t" + value.substring(end);
-        $this.val(content);
-        this.selectionStart = this.selectionEnd = end+2;
-        e.preventDefault();        
-      } else {
-        content = value;
-      };
+      } 
+      
+      if (e.keyCode === 13) { 
+        onEnterDown(this);
+        e.preventDefault();    
+      }
     });
   }
 
-  function generateHTML(node) {
-    var h3Tag = markupParser.h3TagForNode(node);
-    var parentNum = node.lineNum;
-    var childUL = "";
-    if (node.children) {
-      for (var i = 0; i < node.children.length; i++) {
-        childUL += markupParser.buildChildrenULTags(node.children[i], parentNum);
+  function onTabDown(txtArea) { 
+    var orginalStart = txtArea.selectionStart;
+    insertIntoTextArea("\t", txtArea);
+    // reset caret at correct position 
+    txtArea.selectionStart = txtArea.selectionEnd = orginalStart + 1;
+  }
+
+  function onEnterDown(txtArea) {
+    var originalEnd = txtArea.selectionEnd;
+    insertIntoTextArea("\n\t", txtArea);
+    // reset caret at correct position 
+    txtArea.selectionStart = txtArea.selectionEnd = originalEnd + 2;    
+  }
+
+  function insertIntoTextArea(str, txtArea) {
+    var value = $textarea.val();    
+    var content = value.substring(0, txtArea.selectionStart) + str + value.substring(txtArea.selectionEnd);
+    $textarea.val(content);
+  }
+
+  function addCollapsedHeader(headerClass) {
+    if ($.inArray(headerClass, collapsedHeaders))
+      collapsedHeaders.push(headerClass);
+  }
+
+  function removeCollapsedHeader(headerClass) {
+    collapsedHeaders.pop(headerClass);
+  } 
+
+  function hideCollapsedHeaders() {
+    for (var i = 0; i < collapsedHeaders.length; i++) {
+      $("#" + collapsedHeaders[i]).hide();
+    }
+  }
+
+  function skipRender(textData, forceUpdate) {
+    if (typeof forceUpdate === "undefined") forceUpdate = false;
+    if (forceUpdate === false && note.getContent() === textData) return true;
+    return false;
+  }
+
+  function preview(textData) {
+    render(textData, true);
+  }
+
+  function render(textData, forceUpdate) {
+    if (skipRender(textData, forceUpdate) === true) return;
+
+    $textarea.val(textData);
+
+    // Prepare the JSON and update the DOM
+    var json = getJSON(textData);
+    markupParser.prepare(json, prevJson);
+    updateDOMWithHtml(json);
+
+    // Manage and trigger events
+    if (events["changes"]) events["changes"]();
+    bindClickableToTree();
+    hideCollapsedHeaders();
+    prevJson = json;
+  }
+
+  function updateDOMWithHtml(json) {
+    $el.empty();
+    if (json.length) {
+      for (var i = 0; i < json.length; i++) {
+        $el.append(markupParser.generateHTML(json[i]));
       }
     }
-    return h3Tag + childUL + '</span>';
   }
 
   function bindClickableToTree() {
@@ -96,46 +143,6 @@ Take.NoteView = function(options) {
     });
   }
 
-  function addCollapsedHeader(headerClass) {
-    if ($.inArray(headerClass, collapsedHeaders))
-      collapsedHeaders.push(headerClass);
-  }
-
-  function removeCollapsedHeader(headerClass) {
-    collapsedHeaders.pop(headerClass);
-  } 
-
-  function hideCollapsedHeaders() {
-    for (var i = 0; i < collapsedHeaders.length; i++) {
-      $("#" + collapsedHeaders[i]).hide();
-    }
-  }
-
-  // Public methods
-  // --------------
-  function preview(textData) {
-    render(textData, true);
-  }
-  function render(textData, forceUpdate) {
-    if (typeof forceUpdate === "undefined") forceUpdate = false;
-    if (forceUpdate === false && note.getContent() === textData) return;
-    $textarea.val(textData);
-    var json = getJSON(textData);
-    markupParser.prepare(json, prevJson);
-
-    $el.empty();
-    if (json.length) {
-      for (var i = 0; i < json.length; i++) {
-        $el.append(generateHTML(json[i]));
-      }
-    }
-    if (events["changes"]) events["changes"]();
-    bindClickableToTree();
-    hideCollapsedHeaders();
-    prevJson = json;
-
-  }
-
   function getJSON(v) {
     return note.getJSON(v);
   }
@@ -143,9 +150,6 @@ Take.NoteView = function(options) {
   function on(k, callblack) {
     events[k] = callblack;
   }
-
-  // Setters / getters
-  // -----------------
 
   return {
     note: note,

@@ -3,10 +3,12 @@ thoughtography
 Simple collaborative meeting notes.  Very rough and PoC-like.
 
 ## Run the app
+~~~
 $ node app.js 
+~~~
 
 Access locally at:
-http://<yourip>:3000/index.html
+http://localhost:3000/index.html
 
 
 ## Documentation

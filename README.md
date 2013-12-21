@@ -25,16 +25,17 @@ The parent view that grabs the roomId from the URL, and creates a note, note_vie
 var note_id = getRoomId();
 bindHeaderLinks();
 render(note_id);
-note.js
 ~~~
+
+### note.js
 
 The object that contains the text, JSON and publishes over a websocket.
 
 ~~~
 note = new Take.Note({ id: _id, socket: socket });
-note_view.js
 ~~~
 
+### note_view.js
 View object that has a note, a textfield and renders HTML receives changes from a websocket. Requires additional work to become more maintainable.
 
 ~~~
@@ -44,6 +45,7 @@ noteView.on("changes", function() {
 });
 ~~~
 
-The insights_view.js view object that parses out the #twitter, @participants and wiki "hyperlinks".
+### insights_view.js
+The view object that parses out the #twitter, @participants and wiki "hyperlinks".
 
 insightsView = new Take.InsightsView({note: note, el: "#note-insights-header"});

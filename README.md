@@ -45,5 +45,6 @@ noteView.on("changes", function() {
 
 ### insights_view.js
 The view object that parses out the #twitter, @participants and wiki "hyperlinks".
-
+~~~
 insightsView = new Take.InsightsView({note: note, el: "#note-insights-header"});
+~~~

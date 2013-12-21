@@ -35,7 +35,7 @@ Take.NoteView = function(options) {
   function onKeyUp() {
     $textarea.keyup(function(e) {
       note.shareChanges($(this).val());
-      preview($(this).val());
+      localPreview($(this).val());
       events["changes"](e);
       // knwl.init($(this).val());
     });
@@ -76,12 +76,12 @@ Take.NoteView = function(options) {
     $textarea.val(content);
   }
 
-  function addCollapsedHeader(headerClass) {
+  function markHeaderAsHidden(headerClass) {
     if ($.inArray(headerClass, collapsedHeaders))
       collapsedHeaders.push(headerClass);
   }
 
-  function removeCollapsedHeader(headerClass) {
+  function removeHeaderAsHidden(headerClass) {
     collapsedHeaders.pop(headerClass);
   } 
 
@@ -97,7 +97,7 @@ Take.NoteView = function(options) {
     return false;
   }
 
-  function preview(textData) {
+  function localPreview(textData) {
     render(textData, true);
   }
 
@@ -106,9 +106,9 @@ Take.NoteView = function(options) {
 
     $textarea.val(textData);
 
-    // Prepare the JSON and update the DOM
+    // identifyChanges made in the JSON and update the DOM
     var json = getJSON(textData);
-    markupParser.prepare(json, prevJson);
+    markupParser.identifyChanges(json, prevJson);
     updateDOMWithHtml(json);
 
     // Manage and trigger events
@@ -120,11 +120,7 @@ Take.NoteView = function(options) {
 
   function updateDOMWithHtml(json) {
     $el.empty();
-    if (json.length) {
-      for (var i = 0; i < json.length; i++) {
-        $el.append(markupParser.generateHTML(json[i]));
-      }
-    }
+    $el.append(markupParser.toHtml(json));
   }
 
   function bindClickableToTree() {
@@ -135,10 +131,10 @@ Take.NoteView = function(options) {
 
       if ($headerChild.is(":visible")) {
         $headerChild.hide('fast');
-        addCollapsedHeader(headerClass);
+        markHeaderAsHidden(headerClass);
       } else {
         $headerChild.show('fast');
-        removeCollapsedHeader(headerClass);
+        removeHeaderAsHidden(headerClass);
       }
     });
   }
@@ -155,7 +151,7 @@ Take.NoteView = function(options) {
     note: note,
     el: el,
     on: on,
-    preview: preview,
+    localPreview: localPreview,
     render: render,
     getJSON: getJSON
   };

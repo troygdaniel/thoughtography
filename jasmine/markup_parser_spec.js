@@ -13,9 +13,9 @@ describe("Take.MarkupParser spec", function() {
     });
   });
 
-  describe("#prepare()", function() {
-    it("should pre-parse and prepare the json.", function() {
-      markupParser.prepare(tabJSON, tabJSONChanged);
+  describe("#identifyChanges()", function() {
+    it("should pre-parse and identifyChanges the json.", function() {
+      markupParser.identifyChanges(tabJSON, tabJSONChanged);
       expect(tabJSON).toEqual(tabJSONWithChanges);
       expect(markupParser.textData).toEqual(tabText);
     });

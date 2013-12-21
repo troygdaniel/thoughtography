@@ -3,60 +3,71 @@ var Take = Take || {};
 Take.MarkupParser = function(options) {
   var json = options.json;
   var textData = options.textData;
-  this.hasChanges = false;
 
-  // Public methods
-  // --------------
-  function prepare(json, prevJson, lineNum) {
-    this.hasChanges = false;
+  function identifyChanges(json, prevJson, lineNum) {
 
     if (typeof lineNum === "undefined") lineNum = 0;
 
     for (var i = 0; i < json.length; i++) {
-      // Set the absolute line number
-      lineNum++;
-      json[i].lineNum = lineNum;
+      json[i].lineNum = ++lineNum;
 
-      // Check if there are any diffs from previous edits
-      if (prevJson && prevJson[i] && json[i].text != "") {
-        if (prevJson[i].text.toString() != json[i].text.toString()) {
-          json[i].hasChanged = true;
-          this.hasChanges = true;
-        }
-      }
-      // Check if there are any diffs from previous children edits
-      var prevChildren;
-      if (prevJson && prevJson[i] && prevJson[i].children)
-        prevChildren = prevJson[i].children;
-      lineNum = prepare(json[i].children, prevChildren, lineNum);
+      if (prevJson && jsonHasChanges(json[i], prevJson[i]) === true) 
+        json[i].hasChanged = true;
+
+      lineNum = identifyChanges(json[i].children, hasChildren(prevJson), lineNum);
     }
     return lineNum;
   }
 
-  function generateHTML(node) {
-    var h3Tag = h3TagForNode(node);
+  function jsonHasChanges (json, prevJson) {
+    if (prevJson && json.text != "") {
+      if (prevJson.text.toString() != json.text.toString()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function hasChildren(prevJson) {
+    if (prevJson && prevJson[i] && prevJson[i].children)
+      return prevJson[i].children;
+    return false;
+  }
+
+  function toHtml(json) {
+    var html = "";
+    if (json.length) {
+      for (var i = 0; i < json.length; i++) {
+        html += buildHTML(json[i]);
+      }
+    }
+    return html;
+  }
+
+  // Build the top-level HTML and the recursive children
+  function buildHTML(node) {
     var parentNum = node.lineNum;
     var childUL = "";
+
     if (node.children) {
       for (var i = 0; i < node.children.length; i++) {
         childUL += buildChildrenULTags(node.children[i], parentNum);
       }
     }
-    return h3Tag + childUL + '</span>';
+    return h3TagForNode(node) + childUL + '</span>';
   }
 
   function h3TagForNode(node) {    
-    var lineNumClass = "line-num-" + node.lineNum;
-    var headerStyle = "";
-    if (node.hasChanged === true) {
-      return '<h3 style="background-color:#F5F6CE" class="header-line-num-' + node.lineNum + '">' + titleForNode(node) + ' ' + textForNode(node) + '</h3><span style="display: block;" id="header-line-num-' + node.lineNum + '">';
-    } else {
-      return '<h3 style="background-color:#FFF"  class="header-line-num-' + node.lineNum + '">' + titleForNode(node) + ' ' + textForNode(node) + '</h3><span style="display: block;" id="header-line-num-' + node.lineNum + '">';   
-    }
+    var bgColor = "#FFF";
+
+    if (node.hasChanged === true)
+      bgColor = "#F5F6CE";      
+
+    return '<h3 style="background-color:'+bgColor+'" class="header-line-num-' + node.lineNum + '">' + titleForNode(node) + ' ' + textForNode(node) + '</h3><span style="display: block;" id="header-line-num-' + node.lineNum + '">';
   }
 
+  // TODO: Consider a simplier string search/replace implementation
   function buildChildrenULTags(node, parentLine) {
-    var openUL = openULTag(node, parentLine);
     var childUL = "";
 
     if (node.children) {
@@ -64,29 +75,33 @@ Take.MarkupParser = function(options) {
         childUL += buildChildrenULTags(node.children[i], node.lineNum);
       }
     }
-    return openUL + childUL + '</li></ul>';
+    return openULTag(node, parentLine) + childUL + '</li></ul>';
   }
 
-  // Private methods
-  // ---------------
+  // TODO: Consider a simplier string search/replace implementation
   function openULTag(node, parentLine) {
-    var parentNumClass = "parent-line-num-" + parentLine;
-    var headerStyle = "", childUL = "";
-    if (node.hasChanged === true) {
-      headerStyle = 'style="background-color:#F5F6CE"';
-    }
+    var parentNumClass = "parent-line-num-" + parentLine;    
     var lineNumClass = "line-num-" + node.lineNum;
-    var openUL = '<ul ' + headerStyle + '><li class="' + parentNumClass + ' ' + lineNumClass + '"><span class="' + parentNumClass + ' ' + lineNumClass + '">' + titleForNode(node) + '</span>&nbsp;' + textForNode(node);
-    return openUL;
+
+    var openUL = '<ul ' + headerStyleForNode(node) + '>';
+    var openLI = '<li class="' + parentNumClass + ' ' + lineNumClass + '">';
+    var openSpan = '<span class="' + parentNumClass + ' ' + lineNumClass + '">';
+    
+    return openUL + openLI + openSpan + titleForNode(node) + '</span>&nbsp;' + textForNode(node);
+  }
+
+  function headerStyleForNode(node) {
+   if (node.hasChanged === true) 
+      headerStyle = 'style="background-color:#F5F6CE"';
+    return ""; 
   }
 
   function hashTagFromText(text) {
     var wordArray = text.split(" ");
 
     for (var i = 0; i < wordArray.length; i++) {
-      if (wordArray[i][0] === "#") {
+      if (wordArray[i][0] === "#") 
         return wordArray[i].substr(0, wordArray[i].length);
-      }
     }
     return "";
   }
@@ -105,48 +120,44 @@ Take.MarkupParser = function(options) {
     if (typeof node.text === "undefined") return;
     var title = "";
 
-    if (boldedText(node.text))
-      title = boldedText(node.text);
+    if (boldedText(node.text)) title = boldedText(node.text);
+    if (title === "") title = titleFromText(node.text);
+    if (title === "") title = hashTagFromText(node.text);
 
-    if (title === "") {
-      title = titleFromText(node.text);
-    }
-
-    if (title === "") {
-      title = hashTagFromText(node.text);
-    }
     return "<B style='color:#0283A4'>" + title.trim() + "</B>";
   }
 
   function textForNode(node) {
-    if (wordCount(node.text) <= 2) {
+    if (wordCount(node.text) <= 2)
       return "";
-    } else {
-      return stripFirstBoldedText(node.text).trim();
-    }
+    return stripFirstBoldedText(node.text).trim();
   }
+
   function stripFirstBoldedText(text) {
     if (typeof text === "undefined") return;
     var words = text.split(" ");
     var theLastWord = false;
-    var newWordArray = [];
+    var boldWordArray = [];
 
     for (i = 0; i < words.length; i++) {
-      if (theLastWord === true) {
-        newWordArray.push(words[i]);
-      }
 
-      if (lastChar(words[i]) === ":") {
-        theLastWord = true;
-      }
+      // Can we exit the loop?
+      if (theLastWord === true) { boldWordArray.push(words[i]) }
 
-      if (words[i][words[i].length - 1] === "*")
-        theLastWord = true;
+      // Did we find a QuickWord: to be bolded?
+      if (lastChar(words[i]) === ":") { theLastWord = true; }
+
+      // Did we find *The last word* having a closing '*'?
+      if (words[i][words[i].length - 1] === "*") { theLastWord = true; }
     }
+
+    // Did we find a bolded string?
     if (theLastWord === false) {
       return text;
     }
-    return newWordArray.join(" ");
+
+    // Return the bolded word 
+    return boldWordArray.join(" ");
   }
 
   function wordCount(txt) {
@@ -158,13 +169,14 @@ Take.MarkupParser = function(options) {
     if (source)
       return source.substr(source.indexOf("*") + 1, (source.lastIndexOf("*") - source.indexOf("*") - 1));
   }
+
   return {
     hashTagFromText: hashTagFromText,
     titleFromText: titleFromText,
     json: json,
-    generateHTML: generateHTML,
+    toHtml: toHtml,
     textData: textData,
-    prepare: prepare,
+    identifyChanges: identifyChanges,
     h3TagForNode: h3TagForNode,
     buildChildrenULTags: buildChildrenULTags
   };

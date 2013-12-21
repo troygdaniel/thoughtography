@@ -15,9 +15,7 @@ http://localhost:3000/index.html
 
 NodeJS server loads "create_or_join.html" initially NodeJS server handles requests for "/room?{roomId}" and loads room.html
 
-~~~
-room.html / room_view.js
-~~~
+### room.html / room_view.js
 
 The parent view that grabs the roomId from the URL, and creates a note, note_view and an insightsView.
 

@@ -1,4 +1,4 @@
-var note, noteView, fullname, note_id, $appendTextField, $textarea, textarea;
+var note, noteView, fullname, note_id, $appendTextField, $textarea, textarea, localNote;
 
 $(function() {
   $appendTextField = $("#appendTextField");  
@@ -9,6 +9,12 @@ $(function() {
 
   fullname=prompt("Please enter your name","BillyBob");
   resetAppendTextField();
+  localNote = localStorage.getItem(note_id);
+  console.log(localNote);
+  if (localNote) {
+    note.setContent(localNote);
+    noteView.render(localNote,true);
+  }
 
   function getRoomId() {
     if (location.search) {
@@ -34,7 +40,14 @@ $(function() {
     });
 
     $appendTextField.keydown(function(e) {
-      if (e.keyCode === 13) { 
+      if (e.keyCode === 13) {
+        if ($appendTextField.val() === "edit") {
+          showLeftPanel();
+          return;
+        } else if ($appendTextField.val().trim() === "@"+fullname+":"){
+          return;
+        }
+
         noteView.append($appendTextField.val());
         resetAppendTextField();
         e.preventDefault();    
@@ -56,6 +69,7 @@ $(function() {
     noteView.on("changes", function() {
         insightsView.render();
         $appendTextField.show();
+        localStorage.setItem(_id, note.getContent());
     });
   }
 

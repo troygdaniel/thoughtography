@@ -63,7 +63,7 @@ Take.MarkupParser = function(options) {
     if (node.hasChanged === true)
       bgColor = "#F5F6CE";      
 
-    return '<h3 style="font-weight:bold;color:#0283A4;background-color:'+bgColor+'" class="header-line-num-' + node.lineNum + '">' + titleForNode(node) + ' ' + textForNode(node) + '</h3><span style="display: block;" id="header-line-num-' + node.lineNum + '">';
+    return '<h3 style="font-weight:normal;color:#0283A4;background-color:'+bgColor+'" class="header-line-num-' + node.lineNum + '">' + titleForNode(node) + ' ' + textForNode(node) + '</h3><span style="display: block;" id="header-line-num-' + node.lineNum + '">';
   }
 
   // TODO: Consider a simplier string search/replace implementation
@@ -157,7 +157,7 @@ Take.MarkupParser = function(options) {
     if (title === "") title = titleFromText(node.text);
     if (title === "") title = hashTagFromText(node.text);
 
-    return "<B style='color:#0283A4'>" + title.trim() + "</B>";
+    return "<span style='color:#0283A4'>" + title.trim() + "</span>";
   }
 
   function textForNode(node) {

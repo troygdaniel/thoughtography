@@ -8,8 +8,6 @@ Take.InsightsView = function(options) {
   var el = options.el;
   var $el = $(el);
 
-  // Public methods
-
   function getNote() {
     return note;
   }

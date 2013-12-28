@@ -56,7 +56,7 @@
                     <li class=""><a href="#creator" id="create-link" class="create-room-button"><i class="icon-pencil"></i> Edit</a></li>
                 </ul>                    
                 <ul class="nav navbar-nav" >
-                    <li class=""><a href="#" class="create-room-button"><i class="icon-eye-open"></i> Insights</a></li>
+                    <li class=""><a href="#" class="insights-room-button"><i class="icon-eye-open"></i> Share</a></li>
                 </ul>                    
                 <ul class="nav navbar-nav navbar-right" >
                     <span title="This is your shareable meeting code" style="position:relative;top:1px;color:gray" id="roomIdHeader"></span>
@@ -69,15 +69,11 @@
     <!-- NEW CONTAINERS - For New Content -->
     <div class="container" style="width:60%;float:left;position:relative;top:0px">
         <div id="left-panel" style="border-style:none;border-width:12px;display: none">
-            <textarea class="braindump" id="text-area" style="font-size:14px;position:relative;left:1px;width:100%;height:600px;border:dashed;border-width:1px;">
-*Title*
-
-Open Discussion
+            <textarea class="braindump" id="text-area" style="font-size:14px;position:relative;left:1px;width:100%;height:600px;border:solid;border-width:1px;border-color:#FAFAFA">
+*Open Discussion*
 	Purpose: openly discuss all possible ideas
 
-Action items
-	Research discover new ways to come up with ideas
-	Look up #funstuff
+Chatter
 </textarea>
         </div>
     </div>
@@ -93,62 +89,21 @@ Action items
                 <div id="topic-container" class="tree-container">
                 </div>
 
-                <div id="topic-tree" class="tree">
-                    <div id="temp-content-reader">
+                <div id="topic-tree" class="tree"><div id="temp-content-reader">
                     <center><br/><br/><font style="color:gray">Waiting for note taker to type something</font>
                     <br/><br/><img src="images/throbber.gif">
                     </center>
                     </div>
                     <div id="temp-content-creator" style="display:none"> 
-                    <h3 style="background-color:#FFF" class="header-line-num-1"><b style="color:#0283A4">Title</b> 
-                    </h3>
-                    <span style="display: block;" id="header-line-num-1"></span>
-                    <h3 style="background-color:#FFF" class="header-line-num-2"><b style="color:#0283A4"></b> 
-                    </h3>
-                    <span style="display: block;" id="header-line-num-2"></span>
-                    <h3 style="background-color:#FFF" class="header-line-num-3"><b style="color:#0283A4"></b> Open Discussion</h3>
-                    <span style="display: block;" id="header-line-num-3">
-                        <ul>
-                            <li class="parent-line-num-3 line-num-4">
-                                <span class="parent-line-num-3 line-num-4"><b style="color:#0283A4">Purpose:</b>
-                                </span>&nbsp;openly discuss all possible ideas</li>
-                        </ul>
-                    </span>
-                    <h3 style="background-color:#FFF" class="header-line-num-5"><b style="color:#0283A4"></b> 
-                    </h3>
-                    <span style="display: block;" id="header-line-num-5"></span>
-                    <h3 style="background-color:#FFF" class="header-line-num-6"><b style="color:#0283A4"></b> Action items</h3>
-                    <span style="display: block;" id="header-line-num-6">
-                        <ul style="background-color:#F5F6CE">
-                            <li class="parent-line-num-6 line-num-7">
-                                <span class="parent-line-num-6 line-num-7"><b style="color:#0283A4"></b>
-                                </span>&nbsp;Research new ways to come up with ideas</li>
-                        </ul>
-                        <ul>
-                            <li class="parent-line-num-6 line-num-8">
-                                <span class="parent-line-num-6 line-num-8"><b style="color:#0283A4">#funstuff</b>
-                                </span>&nbsp;Look up #funstuff</li>
-                        </ul>
-                    </span>
-                    <h3 style="background-color:#FFF" class="header-line-num-9"><b style="color:#0283A4"></b> 
-                    </h3>
-                    <span style="display: block;" id="header-line-num-9"></span>
-                    </div>
+                    <h3 style="background-color:#FFF" class="header-line-num-1"><b style="color:#0283A4">Open Discussion</b> </h3><span style="display: block;" id="header-line-num-1"><ul><li class="parent-line-num-1 line-num-2"><span class="parent-line-num-1 line-num-2"><b style="color:#0283A4">Purpose:</b></span>&nbsp;openly discuss all possible ideas</li></ul></span></div>                    
                 </div>
             </div>
-
         </div>
+        <input type="text" name="appendTextField" id="appendTextField" style="display:none;width:93%;position:relative;left:10px;color:gray">
     </div>
     </div>
-
 
     <script src="../js/vendor/bootstrap.min.js"></script>
-
-
-
-
-    <!-- JS → HTML5Admin core -->
-    <script src="../js/pages/boilerplate.js"></script>
 
 </body>
 

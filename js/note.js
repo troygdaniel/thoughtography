@@ -8,9 +8,6 @@ Take.Note = function (options) {
 
   initialize(options);
 
-  // Private methods
-  // ---------------
-
   function initialize(options) {
     // initialize with options
     if (options) {
@@ -24,9 +21,6 @@ Take.Note = function (options) {
     }
   }
 
-  // Public methods
-  // --------------
-
   function shareChanges(textData) {
     if (textData) {
       setContent(textData);
@@ -34,9 +28,6 @@ Take.Note = function (options) {
     socket.emit('share_note:'+getId(), getContent());
   }
 
-  // Setters / getters
-  // -----------------
-  
   function setContent(v) {
     content = v;
     setJSON(parser.serialize(content));
@@ -59,8 +50,13 @@ Take.Note = function (options) {
   function setJSON(v) {
     json = v;
   }
+  function append(txt) {
+    setContent(content + "\n\t"+txt);
+    return getContent();
+  }
 
   return {
+    append: append,
     getId: getId,
     setId: setId,
     getContent: getContent,

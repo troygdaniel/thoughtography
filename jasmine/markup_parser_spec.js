@@ -22,11 +22,17 @@ describe("Take.MarkupParser spec", function() {
   });
 
   describe("#titleFromText()", function() {
-    it("should parse out the title from the text", function() {
+    it("should parse out the title from the start of the text", function() {
       var example = "This: would have a title of 'This'";
       expect(markupParser.titleFromText(example)).toEqual("This:");
+    });
+    it("should parse out the title from the end text", function() {
       example = "This example: would have a title of 'This example:'";
       expect(markupParser.titleFromText(example)).toEqual("This example:");
+    });
+    it("should parse out the title using a @persons name", function() {
+      example = "@troy would have a title of 'troy'";
+      expect(markupParser.titleFromText(example)).toEqual("@troy");
     });
   });
 

@@ -7,9 +7,6 @@ Take.Insights = function (options) {
 
   initialize(options);
 
-  // Private methods
-  // ---------------
-
   function initialize(options) {
     setNote(options.note);
   }
@@ -81,8 +78,10 @@ Take.Insights = function (options) {
     participants = [];
     for (var i = 0; i < words.length; i++) {
       var word = words[i];
+      if (word[word.length-1] === ":")
+        word = word.substr(0,word.length-1);
       if (isNewParticipant(word)) { 
-        addParticipant(word) 
+        addParticipant(word);
       }
     }
     return participants;

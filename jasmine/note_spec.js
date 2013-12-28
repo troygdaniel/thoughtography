@@ -15,6 +15,15 @@ describe("Take.Note spec", function() {
     });
   });
 
+  describe("#append()", function() {
+    it("appends content to the end of the note", function() {
+      note.setContent("this is a showdown.");
+      var expectedContent = "this is a showdown.\n\t@troy: what is a showdown?";
+
+      expect(note.append("@troy: what is a showdown?")).toEqual(expectedContent);
+    });
+  });
+
   describe("#setContent()", function() {
     it("retain content set by the mutator method", function() {
       note.setContent("this is a showdown.");

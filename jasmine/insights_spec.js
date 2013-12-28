@@ -26,7 +26,7 @@ describe("Take.Insights spec", function() {
       note.setContent(txt);
       expect(insights.getParticipants()).toEqual(array);
 
-      txt += "and @daniel will ask @george is the requirements were correct"
+      txt += "@daniel: I will ask @george is the requirements were correct"
       note.setContent(txt);      
       array.push("@george");      
       expect(insights.getParticipants()).toEqual(array);

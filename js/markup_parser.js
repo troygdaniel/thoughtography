@@ -107,7 +107,13 @@ Take.MarkupParser = function(options) {
   }
   
   function titleFromText(text) {
-    return text.substr(0,text.indexOf(":")+1);
+    var hasColon = text.indexOf(":");
+    if (hasColon > 0)
+      return text.substr(0,hasColon+1);
+    var hasName = text[0] === "@";
+    if (hasName)
+      return text.split(' ')[0];
+    return "";
   }  
 
   function lastChar(word) {
@@ -146,6 +152,9 @@ Take.MarkupParser = function(options) {
 
       // Did we find a QuickWord: to be bolded?
       if (lastChar(words[i]) === ":") { theLastWord = true; }
+
+      // Did we find a @person to be bolded?
+      if (words[i][0] === "@") { theLastWord = true; }
 
       // Did we find *The last word* having a closing '*'?
       if (words[i][words[i].length - 1] === "*") { theLastWord = true; }

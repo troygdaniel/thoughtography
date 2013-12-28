@@ -20,6 +20,19 @@ describe("Take.NoteView spec", function() {
     });
   });
 
+  describe("#append()", function() {
+
+    it("should append content to the note and the view", function() {
+      var appendText = "@troy: what was that?";
+      var expectedContent = tabText + "\n\t"+appendText;
+
+      noteView.render(tabText);
+
+      noteView.append(appendText);
+      expect(noteView.note.getContent()).toEqual(expectedContent);
+    });
+  });
+
   describe("#render()", function() {
 
     it("should have generated html", function() {

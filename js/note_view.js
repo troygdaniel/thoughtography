@@ -16,6 +16,7 @@ Take.NoteView = function(options) {
   function initialize(options) {
 
     bindChangesEvent(options.changes);
+    this.fullname = options.fullname;
     bindWebSocketToRender();
 
     onKeyUp();
@@ -101,10 +102,21 @@ Take.NoteView = function(options) {
     render(textData, true);
   }
 
+  function updateTextArea(textData) {
+    var txtArea = $textarea.get(0);
+    var selectionStart = txtArea.selectionStart;
+    var selectionEnd = txtArea.selectionEnd;
+    $textarea.val(textData);
+    txtArea.selectionStart = selectionStart;
+    txtArea.selectionEnd = selectionEnd;
+  }
+
   function render(textData, forceUpdate) {
     if (skipRender(textData, forceUpdate) === true) return;
-
-    $textarea.val(textData);
+    
+    if ($textarea && $textarea.get(0)) {
+      updateTextArea(textData);
+    }
 
     // identifyChanges made in the JSON and update the DOM
     var json = getJSON(textData);
@@ -138,7 +150,11 @@ Take.NoteView = function(options) {
       }
     });
   }
-
+  function append(txt) {
+    note.append(txt);
+    render(note.getContent(), true);
+    note.shareChanges();
+  }
   function getJSON(v) {
     return note.getJSON(v);
   }
@@ -148,8 +164,10 @@ Take.NoteView = function(options) {
   }
 
   return {
+    append: append,
     note: note,
     el: el,
+    $textarea: $textarea,
     on: on,
     localPreview: localPreview,
     render: render,

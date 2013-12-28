@@ -47,14 +47,14 @@ Take.MarkupParser = function(options) {
   // Build the top-level HTML and the recursive children
   function buildHTML(node) {
     var parentNum = node.lineNum;
-    var childUL = "";
+    var childrenHTML = "";
 
     if (node.children) {
       for (var i = 0; i < node.children.length; i++) {
-        childUL += buildChildrenULTags(node.children[i], parentNum);
+        childrenHTML += buildChildrenText(node.children[i], parentNum);
       }
     }
-    return h3TagForNode(node) + childUL + '</span>';
+    return h3TagForNode(node) + childrenHTML + '</span>';
   }
 
   function h3TagForNode(node) {    
@@ -63,7 +63,34 @@ Take.MarkupParser = function(options) {
     if (node.hasChanged === true)
       bgColor = "#F5F6CE";      
 
-    return '<h3 style="background-color:'+bgColor+'" class="header-line-num-' + node.lineNum + '">' + titleForNode(node) + ' ' + textForNode(node) + '</h3><span style="display: block;" id="header-line-num-' + node.lineNum + '">';
+    return '<h3 style="font-weight:bold;color:#0283A4;background-color:'+bgColor+'" class="header-line-num-' + node.lineNum + '">' + titleForNode(node) + ' ' + textForNode(node) + '</h3><span style="display: block;" id="header-line-num-' + node.lineNum + '">';
+  }
+
+  // TODO: Consider a simplier string search/replace implementation
+  function buildChildrenText(node, parentLine) {
+    var childHTML = "";
+
+    if (node.children && node.children.length > 0) {
+      for (var i = 0; i < node.children.length; i++) {
+        childHTML += buildChildrenULTags(node.children[i], node.lineNum);
+      }
+      return plainChild(node, parentLine) + childHTML + '</span></span>';
+    } else {
+      return plainChild(node, parentLine) + childHTML + '</span></span><br/>';
+    }
+    
+  }
+
+  // TODO: Consider a simplier string search/replace implementation
+  function plainChild(node, parentLine) {
+    var parentNumClass = "parent-line-num-" + parentLine;    
+    var lineNumClass = "line-num-" + node.lineNum;
+
+    var openUL = '<span style="position:relative;left:10px" ' + headerStyleForNode(node) + '>';
+    var openLI = '<span class="' + parentNumClass + ' ' + lineNumClass + '">';
+    var openSpan = '<span class="' + parentNumClass + ' ' + lineNumClass + '">';
+    
+    return openUL + openLI + openSpan + titleForNode(node) + '</span>&nbsp;' + textForNode(node);
   }
 
   // TODO: Consider a simplier string search/replace implementation

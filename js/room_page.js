@@ -1,15 +1,27 @@
 var roomPage;
 
 $(function() {
-  roomPage = new RoomPage();
+  var note_id = getRoomId();  
+  roomPage = new RoomPage({note_id: note_id, socket: socket});
 });
 
-function RoomPage() {
-  var note, noteView, fullname, note_id, $appendTextField, $textarea, textarea, localNote;
+function getRoomId() {
+  if (location.search) {
+    _id = location.search.substr(1, location.search.length);
+  }
+  $("#roomIdHeader").text(_id);
+  return _id;
+}
+
+
+function RoomPage (options) {
+  var note, socket, noteView, fullname, note_id, $appendTextField, $textarea, textarea, localNote;
 
   $appendTextField = $("#appendTextField");  
 
-  note_id = getRoomId();
+  note_id = options.note_id;
+  socket = options.socket;
+
   bindUIEvents();
   render(note_id);
   fullname = localStorage.getItem("fullname");
@@ -23,14 +35,6 @@ function RoomPage() {
   if (localNote) {
     note.setContent(localNote);
     noteView.render(localNote,true);
-  }
-
-  function getRoomId() {
-    if (location.search) {
-      _id = location.search.substr(1, location.search.length);
-    }
-    $("#roomIdHeader").text(_id);
-    return _id;
   }
 
   function bindUIEvents() {

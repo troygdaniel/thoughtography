@@ -1,13 +1,22 @@
-var note, noteView, fullname, note_id, $appendTextField, $textarea, textarea, localNote;
+var roomPage;
 
 $(function() {
+  roomPage = new RoomPage();
+});
+
+function RoomPage() {
+  var note, noteView, fullname, note_id, $appendTextField, $textarea, textarea, localNote;
+
   $appendTextField = $("#appendTextField");  
 
   note_id = getRoomId();
   bindUIEvents();
   render(note_id);
-
-  fullname=prompt("Please enter your name","BillyBob");
+  fullname = localStorage.getItem("fullname");
+  if (!fullname) {
+    fullname = prompt("Please enter your name","BillyBob");
+    fullname = localStorage.setItem("fullname", fullname);
+  }
   resetAppendTextField();
   localNote = localStorage.getItem(note_id);
   console.log(localNote);
@@ -40,11 +49,17 @@ $(function() {
     });
 
     $appendTextField.keydown(function(e) {
+      var txtVal = $appendTextField.val().trim();
+      if (txtVal[0] === "@") {        
+        fullname = txtVal.substr(1, txtVal.indexOf(":")-1);
+        localStorage.setItem("fullname", fullname);
+      }
+
       if (e.keyCode === 13) {
-        if ($appendTextField.val() === "edit") {
+        if (txtVal === "edit") {
           showLeftPanel();
           return;
-        } else if ($appendTextField.val().trim() === "@"+fullname+":"){
+        } else if (txtVal === "@"+fullname+":"){
           return;
         }
 
@@ -93,4 +108,4 @@ $(function() {
   function resetAppendTextField() {
     $appendTextField.val("@"+fullname+": ");
   }
-});
+}

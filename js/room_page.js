@@ -21,6 +21,7 @@ function RoomPage (options) {
   var $clock_interval = $("#clock-interval");
   var $appendTextField = $("#appendTextField");  
   var $minutes_remaining = $("#minutes-remaining");
+  var minInterval = 15;
 
   note_id = options.note_id;
   socket = options.socket;
@@ -87,10 +88,14 @@ function RoomPage (options) {
     return clockTxt;
   };
 
-  this.findNextTick = function(min) {
-    // var t = [00,10,20,30,40,50];
+  this.findNextTick = function(min) {    
     var t = [00,15,30,45];
-    // var t = [30,00];
+    if (minInterval === 10) {
+      t = [00,10,20,30,40,50];  
+    }
+    if (minInterval === 30) {
+      t = [30];
+    }
 
     for (var i=0; i < t.length; i++) 
       if (min < t[i]) return t[i]; 
@@ -99,6 +104,15 @@ function RoomPage (options) {
   };
 
   function bindUIEvents() {
+    $(".navbar-brand").click(function () {
+      if (minInterval === 15) { 
+        minInterval = 30;
+      } else if (minInterval === 30) {
+        minInterval = 10;
+      } else if (minInterval === 10) {
+         minInterval = 15;
+      }
+    });
 
     $("#view-link").click(function() {
       showRightPanel();

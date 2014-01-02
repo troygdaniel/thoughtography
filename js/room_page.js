@@ -1,11 +1,13 @@
 var roomPage;
 
 $(function() {
-  var note_id = getRoomId();  
-  roomPage = new RoomPage({note_id: note_id, socket: socket});
+  var note_id = getRoomId();
+  if (!(typeof socket === "undefined"))
+    roomPage = new RoomPage({note_id: note_id, socket: socket});
 });
 
 function getRoomId() {
+  var _id;
   if (location.search) {
     _id = location.search.substr(1, location.search.length);
   }
@@ -15,9 +17,10 @@ function getRoomId() {
 
 
 function RoomPage (options) {
-  var note, socket, noteView, fullname, note_id, $appendTextField, $textarea, textarea, localNote;
-
-  $appendTextField = $("#appendTextField");  
+  var note, socket, noteView, fullname, note_id, $textarea, textarea, localNote;
+  var $clock_interval = $("#clock-interval");
+  var $appendTextField = $("#appendTextField");  
+  var $minutes_remaining = $("#minutes-remaining");
 
   note_id = options.note_id;
   socket = options.socket;
@@ -31,11 +34,69 @@ function RoomPage (options) {
   }
   resetAppendTextField();
   localNote = localStorage.getItem(note_id);
-  console.log(localNote);
+
   if (localNote) {
     note.setContent(localNote);
     noteView.render(localNote,true);
   }
+  var that = this;
+  this.heartBeat = function () {
+    that.setClockInterval();
+    that.setMinRemaining();
+  }
+  setInterval(this.heartBeat,1000);
+  
+  this.setMinRemaining = function (d) {
+    var now = new Date();
+    if (d)  now = d; // allows the function to be testable
+    var mnTick = this.findNextTick(now.getMinutes());
+    if (mnTick === 0) mnTick = 60;  
+
+    var remaining = ""+(mnTick - now.getMinutes());
+
+    if ($minutes_remaining) { 
+      $minutes_remaining.text(remaining);
+      $clock_interval.removeClass("orange blue red");
+      if (parseInt(remaining) <= 2 ) {
+        $clock_interval.addClass("red");      
+      } else if (parseInt(remaining) <= 5 ) {
+        $clock_interval.addClass("orange");      
+      } else {
+        $clock_interval.addClass("blue"); 
+      }
+
+    }
+
+    return remaining;
+  };
+
+  this.setClockInterval = function (d) {
+    var now = new Date();
+    if (d)  now = d; // allows the function to be testable
+    var hrs = now.getHours();
+    var mns = now.getMinutes();
+    var mnTick = this.findNextTick(mns);
+    
+    if (mnTick === 0 ) { hrs=hrs+1; mnTick = "00"; }
+    if (hrs > 12) hrs = hrs-12;
+    if (hrs === 0) hrs = 12;
+    
+    var clockTxt = ""+hrs+":"+mnTick;    
+    if ($clock_interval) { $clock_interval.text(clockTxt); }
+    
+    return clockTxt;
+  };
+
+  this.findNextTick = function(min) {
+    // var t = [00,10,20,30,40,50];
+    var t = [00,15,30,45];
+    // var t = [30,00];
+
+    for (var i=0; i < t.length; i++) 
+      if (min < t[i]) return t[i]; 
+
+    return 00;
+  };
 
   function bindUIEvents() {
 
@@ -112,4 +173,5 @@ function RoomPage (options) {
   function resetAppendTextField() {
     $appendTextField.val("@"+fullname+": ");
   }
+  this.setClockInterval();
 }

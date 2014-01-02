@@ -41,6 +41,7 @@ function RoomPage (options) {
     noteView.render(localNote,true);
   }
   var that = this;
+
   this.heartBeat = function () {
     that.setClockInterval();
     that.setMinRemaining();
@@ -185,6 +186,7 @@ function RoomPage (options) {
   }
 
   function resetAppendTextField() {
+    fullname = localStorage.getItem("fullname");
     $appendTextField.val("@"+fullname+": ");
   }
   this.setClockInterval();

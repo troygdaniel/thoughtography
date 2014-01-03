@@ -113,6 +113,7 @@ function RoomPage (options) {
       } else if (minInterval === 10) {
          minInterval = 15;
       }
+      this.heartBeat();
     });
 
     $("#view-link").click(function() {

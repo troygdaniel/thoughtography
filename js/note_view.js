@@ -45,8 +45,18 @@ Take.NoteView = function(options) {
   function onKeyDown() {
     $textarea.keydown(function(e) {
       
-      // Is the key a tab or '-' char?
-      if (e.keyCode === 9 || e.keyCode === 189) {
+      // Was a '-' char pressed?
+      if (e.keyCode === 189) {        
+        var sel = $textarea.get(0).selectionStart;
+        var lastChar = $textarea.val().substr(sel-1,1);
+
+        if (lastChar === '\t' || lastChar === '\n') {
+          onTabDown(this);
+          e.preventDefault();
+        }
+      }
+      // Is the key a tab?
+      if (e.keyCode === 9) {
         onTabDown(this);
         e.preventDefault();
       } 

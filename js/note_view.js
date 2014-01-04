@@ -44,12 +44,13 @@ Take.NoteView = function(options) {
 
   function onKeyDown() {
     $textarea.keydown(function(e) {
-            
-      if (e.keyCode === 9) {
+      
+      // Is the key a tab or '-' char?
+      if (e.keyCode === 9 || e.keyCode === 189) {
         onTabDown(this);
         e.preventDefault();
       } 
-      
+      // Is the key <enter> ?
       if (e.keyCode === 13) { 
         onEnterDown(this);
         e.preventDefault();    

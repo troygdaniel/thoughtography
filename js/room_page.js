@@ -58,19 +58,51 @@ function RoomPage (options) {
 
     if ($minutes_remaining) { 
       $minutes_remaining.text(remaining);
+      var isOrange = $clock_interval.hasClass("orange");
+      var isBlue = $clock_interval.hasClass("blue");
+      var isRed = $clock_interval.hasClass("red");
+
       $clock_interval.removeClass("orange blue red");
-      if (parseInt(remaining) <= 2 ) {
-        $clock_interval.addClass("red");      
-      } else if (parseInt(remaining) <= 5 ) {
-        $clock_interval.addClass("orange");      
-      } else {
+      
+      if (parseInt(remaining) <= 1 ) {
+        if (isRed === false)
+          shakeClock();
+        $clock_interval.addClass("red"); 
+      } 
+      else if (parseInt(remaining) <= 2 ) {
+        if (isOrange === false)
+          shakeClock();
+        $clock_interval.addClass("orange");
+      } 
+      else {
+        if (isBlue === false)
+          shakeClock();
         $clock_interval.addClass("blue"); 
       }
 
     }
-
     return remaining;
   };
+
+  // TODO: Promise to make it right
+  function shakeClock() {
+    $clock_interval.animate({left: "+5"}, 75, function() {
+      $clock_interval.animate({left: "0"}, 75, function() {
+        $clock_interval.animate({left: "+5"}, 75, function() { 
+          $clock_interval.animate({left: "0"}, 75, function() {
+            $clock_interval.animate({left: "+5"}, 75, function() { 
+              $clock_interval.animate({left: "0"}, 75, function() {
+                $clock_interval.animate({left: "+5"}, 75, function() { 
+                  $clock_interval.animate({left: "0"}, 75, function() {
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  }
 
   this.setClockInterval = function (d) {
     var now = new Date();
@@ -80,6 +112,7 @@ function RoomPage (options) {
     var mnTick = this.findNextTick(mns);
     
     if (mnTick === 0 ) { hrs=hrs+1; mnTick = "00"; }
+    if (mnTick === 5 ) { mnTick = "05"; }
     if (hrs > 12) hrs = hrs-12;
     if (hrs === 0) hrs = 12;
     
@@ -90,9 +123,15 @@ function RoomPage (options) {
   };
 
   this.findNextTick = function(min) {    
-    var t = [00,15,30,45];
+    var t = [];    
+    if (minInterval === 5) {
+      t = [00,05, 10,15,20,25,30,35,40,45,50,55];  
+    }
     if (minInterval === 10) {
       t = [00,10,20,30,40,50];  
+    }
+    if (minInterval === 15) {
+      t = [00,15,30,45];
     }
     if (minInterval === 30) {
       t = [30];
@@ -104,16 +143,32 @@ function RoomPage (options) {
     return 00;
   };
 
+  function findNextMinInterval() {
+    var now = new Date();
+    var curTick = that.findNextTick(now.getMinutes());;
+    var intervals = [30, 15, 10, 5, 30, 15, 10, 5];
+    var t = [00,10,15,20,25,30,35,40,45,50,55]; 
+    var i=0;
+    if (minInterval === 30) i = 0;
+    if (minInterval === 15) i = 1;
+    if (minInterval === 10) i = 2;
+    if (minInterval === 5) i = 3;
+
+    // loop through minInterals until nextTick differs
+    for (i; i < intervals.length; i++) {
+      minInterval = intervals[i];
+      var nextTick = that.findNextTick(now.getMinutes());;
+      if (nextTick != curTick) break;
+    }
+  }
+
   function bindUIEvents() {
     $(".navbar-brand").click(function () {
-      if (minInterval === 15) { 
-        minInterval = 30;
-      } else if (minInterval === 30) {
-        minInterval = 10;
-      } else if (minInterval === 10) {
-         minInterval = 15;
-      }
-      this.heartBeat();
+      var now = new Date();
+      var curTick = that.findNextTick(now.getMinutes());;
+
+      findNextMinInterval();
+      that.heartBeat();
     });
 
     $("#view-link").click(function() {

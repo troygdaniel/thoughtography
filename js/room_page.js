@@ -18,7 +18,7 @@ function getRoomId() {
 
 function RoomPage (options) {
   var note, socket, noteView, fullname, note_id, $textarea, textarea, localNote;
-  var $clock_interval = $("#clock-interval");
+  var $clock_interval = $(".clock-interval");
   var $appendTextField = $("#appendTextField");  
   var $minutes_remaining = $("#minutes-remaining");
   var minInterval = 15;
@@ -49,6 +49,7 @@ function RoomPage (options) {
   setInterval(this.heartBeat,1000);
   
   this.setMinRemaining = function (d) {
+    $clock_interval = $(".clock-interval");
     var now = new Date();
     if (d)  now = d; // allows the function to be testable
     var mnTick = this.findNextTick(now.getMinutes());

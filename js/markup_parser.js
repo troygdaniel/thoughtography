@@ -60,10 +60,18 @@ Take.MarkupParser = function(options) {
   function h3TagForNode(node) {    
     var bgColor = "#FFF";
 
+    // WARN: Coupled with DOM
+    var clock_val = $(".clock-interval").text();
+    var headerContent = node.text.trim();
+    var hasClockVal = headerContent.indexOf(clock_val);
+    
+    if (hasClockVal > 0) {
+      headerContent = headerContent.replace(clock_val, '<span class="clock-interval blue badge">'+clock_val+'</span>');
+    }
     if (node.hasChanged === true)
       bgColor = "#F5F6CE";      
 
-    return '<h3 style="font-weight:normal;color:#0283A4;background-color:'+bgColor+'" class="header-line-num-' + node.lineNum + '">' + node.text.trim() + '</h3><span style="display: block;" id="header-line-num-' + node.lineNum + '">';
+    return '<h3 style="font-weight:normal;color:#0283A4;background-color:'+bgColor+'" class="header-line-num-' + node.lineNum + '">' + headerContent + '</h3><span style="display: block;" id="header-line-num-' + node.lineNum + '">';
   }
 
   // TODO: Consider a simplier string search/replace implementation

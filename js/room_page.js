@@ -19,6 +19,7 @@ function getRoomId() {
 function RoomPage (options) {
   var note, socket, noteView, fullname, note_id, $textarea, textarea, localNote;
   var $clock_interval = $(".clock-interval");
+  var $clock_interval_id = $("#clock-interval");
   var $appendTextField = $("#appendTextField");  
   var $minutes_remaining = $("#minutes-remaining");
   var minInterval = 15;
@@ -48,7 +49,7 @@ function RoomPage (options) {
   }
   setInterval(this.heartBeat,1000);
   
-  this.setMinRemaining = function (d) {
+  this.setMinRemaining = function (d) {    
     $clock_interval = $(".clock-interval");
     var now = new Date();
     if (d)  now = d; // allows the function to be testable
@@ -86,15 +87,15 @@ function RoomPage (options) {
   };
 
   // TODO: Promise to make it right
-  function shakeClock() {
-    $clock_interval.animate({left: "+5"}, 75, function() {
-      $clock_interval.animate({left: "0"}, 75, function() {
-        $clock_interval.animate({left: "+5"}, 75, function() { 
-          $clock_interval.animate({left: "0"}, 75, function() {
-            $clock_interval.animate({left: "+5"}, 75, function() { 
-              $clock_interval.animate({left: "0"}, 75, function() {
-                $clock_interval.animate({left: "+5"}, 75, function() { 
-                  $clock_interval.animate({left: "0"}, 75, function() {
+  function shakeClock() {    
+    $clock_interval_id.animate({left: "+5"}, 75, function() {
+      $clock_interval_id.animate({left: "0"}, 75, function() {
+        $clock_interval_id.animate({left: "+5"}, 75, function() { 
+          $clock_interval_id.animate({left: "0"}, 75, function() {
+            $clock_interval_id.animate({left: "+5"}, 75, function() { 
+              $clock_interval_id.animate({left: "0"}, 75, function() {
+                $clock_interval_id.animate({left: "+5"}, 75, function() { 
+                  $clock_interval_id.animate({left: "0"}, 75, function() {
                   });
                 });
               });
@@ -118,7 +119,7 @@ function RoomPage (options) {
     if (hrs === 0) hrs = 12;
     
     var clockTxt = ""+hrs+":"+mnTick;    
-    if ($clock_interval) { $clock_interval.text(clockTxt); }
+    if ($clock_interval) { $clock_interval_id.text(clockTxt); }
     
     return clockTxt;
   };
@@ -169,6 +170,7 @@ function RoomPage (options) {
       var curTick = that.findNextTick(now.getMinutes());;
 
       findNextMinInterval();
+      $clock_interval = $(".clock-interval");
       that.heartBeat();
     });
 

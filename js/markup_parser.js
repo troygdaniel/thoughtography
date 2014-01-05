@@ -61,13 +61,32 @@ Take.MarkupParser = function(options) {
     var bgColor = "#FFF";
 
     // WARN: Coupled with DOM
-    var clock_val = $(".clock-interval").text();
+    var clockVal = $(".clock-interval").text();
     var headerContent = node.text.trim();
-    var hasClockVal = headerContent.indexOf(clock_val);
-    
+    var hasClockVal = headerContent.indexOf(clockVal);
+    var clockVal_replace = '<span class="clock-interval badge">'+clockVal+'</span>';
+    // does the text has the clock val?
     if (hasClockVal > 0) {
-      headerContent = headerContent.replace(clock_val, '<span class="clock-interval blue badge">'+clock_val+'</span>');
+      headerContent = headerContent.replace(clockVal, '##clockVal_replace##');
     }
+
+    // replace time with badge span html
+    var words = headerContent.split(' ');    
+    for (var i=0; i < words.length; i++) {
+      var indx = words[i].indexOf(":");
+      var word = words[i];
+      if (indx > 0) {
+        console.log("word = " + word + ", indx = " +indx);
+        var v = parseInt(word.substr(indx+1,indx+2));
+        if (isNaN(v) === false) {
+          headerContent = headerContent.replace(word, "<span class='badge blue'>"+word+"</span>");
+        }        
+      }
+    }
+    if (hasClockVal > 0) {
+      headerContent = headerContent.replace("##clockVal_replace##", clockVal_replace);
+    }
+
     if (node.hasChanged === true)
       bgColor = "#F5F6CE";      
 

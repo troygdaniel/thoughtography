@@ -22,7 +22,7 @@ function RoomPage (options) {
   var $clock_interval_id = $("#clock-interval");
   var $appendTextField = $("#appendTextField");  
   var $minutes_remaining = $("#minutes-remaining");
-  var minInterval = 15;
+  var minInterval = 10;
 
   note_id = options.note_id;
   socket = options.socket;
@@ -61,7 +61,7 @@ function RoomPage (options) {
     if ($minutes_remaining) { 
       $minutes_remaining.text(remaining);
       var isOrange = $clock_interval.hasClass("orange");
-      var isBlue = $clock_interval.hasClass("blue");
+      var isblue = $clock_interval.hasClass("blue");
       var isRed = $clock_interval.hasClass("red");
 
       $clock_interval.removeClass("orange blue red");
@@ -77,7 +77,7 @@ function RoomPage (options) {
         $clock_interval.addClass("orange");
       } 
       else {
-        if (isBlue === false)
+        if (isblue === false)
           shakeClock();
         $clock_interval.addClass("blue"); 
       }
@@ -169,9 +169,10 @@ function RoomPage (options) {
       var now = new Date();
       var curTick = that.findNextTick(now.getMinutes());;
 
-      findNextMinInterval();
+      findNextMinInterval();      
       $clock_interval = $(".clock-interval");
       that.heartBeat();
+      noteView.render(localStorage.getItem(note_id),true);
     });
 
     $("#view-link").click(function() {
@@ -188,7 +189,7 @@ function RoomPage (options) {
     });
 
     $appendTextField.keydown(function(e) {
-      var txtVal = $appendTextField.val().trim();
+      var txtVal = $appendTextField.val().trim();      
       if (txtVal[0] === "@") {        
         fullname = txtVal.substr(1, txtVal.indexOf(":")-1);
         localStorage.setItem("fullname", fullname);

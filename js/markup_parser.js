@@ -14,7 +14,7 @@ Take.MarkupParser = function(options) {
       if (prevJson && jsonHasChanges(json[i], prevJson[i]) === true) 
         json[i].hasChanged = true;
 
-      lineNum = identifyChanges(json[i].children, hasChildren(prevJson), lineNum);
+      lineNum = identifyChanges(json[i].children, hasChildren(prevJson, i), lineNum);
     }
     return lineNum;
   }
@@ -28,7 +28,7 @@ Take.MarkupParser = function(options) {
     return false;
   }
 
-  function hasChildren(prevJson) {
+  function hasChildren(prevJson, i) {
     if (prevJson && prevJson[i] && prevJson[i].children)
       return prevJson[i].children;
     return false;
@@ -75,11 +75,10 @@ Take.MarkupParser = function(options) {
     for (var i=0; i < words.length; i++) {
       var indx = words[i].indexOf(":");
       var word = words[i];
-      if (indx > 0) {
-        console.log("word = " + word + ", indx = " +indx);
+      if (indx > 0) {        
         var v = parseInt(word.substr(indx+1,indx+2));
         if (isNaN(v) === false) {
-          headerContent = headerContent.replace(word, "<span class='badge blue'>"+word+"</span>");
+          headerContent = headerContent.replace(word, "<span style='font-size:14px;font-weight:bold'>"+word+"</span>");
         }        
       }
     }
@@ -110,11 +109,13 @@ Take.MarkupParser = function(options) {
 
   // TODO: Consider a simplier string search/replace implementation
   function plainChild(node, parentLine) {
+    var bgColor = "#FFF";
+    if (node.hasChanged) bgColor = "#F5F6CE";
     var parentNumClass = "parent-line-num-" + parentLine;    
     var lineNumClass = "line-num-" + node.lineNum;
 
-    var openUL = '<span style="position:relative;left:10px" ' + headerStyleForNode(node) + '>';
-    var openLI = '<span class="' + parentNumClass + ' ' + lineNumClass + '">';
+    var openUL = '<span style="background-color:'+bgColor+';position:relative;left:10px" ' + headerStyleForNode(node) + '>';
+    var openLI = '<span style="" class="' + parentNumClass + ' ' + lineNumClass + '">';
     var openSpan = '<span class="' + parentNumClass + ' ' + lineNumClass + '">';
     
     return openUL + openLI + openSpan + titleForNode(node) + '</span>&nbsp;' + textForNode(node);
@@ -134,11 +135,13 @@ Take.MarkupParser = function(options) {
 
   // TODO: Consider a simplier string search/replace implementation
   function openULTag(node, parentLine) {
+    var bgColor = "#FFF";
+    if (node.hasChanged) bgColor = "#F5F6CE";
     var parentNumClass = "parent-line-num-" + parentLine;    
     var lineNumClass = "line-num-" + node.lineNum;
 
     var openUL = '<ul ' + headerStyleForNode(node) + '>';
-    var openLI = '<li class="' + parentNumClass + ' ' + lineNumClass + '">';
+    var openLI = '<li style="background-color:'+bgColor+';" class="' + parentNumClass + ' ' + lineNumClass + '">';
     var openSpan = '<span class="' + parentNumClass + ' ' + lineNumClass + '">';
     
     return openUL + openLI + openSpan + titleForNode(node) + '</span>&nbsp;' + textForNode(node);

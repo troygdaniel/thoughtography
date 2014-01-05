@@ -22,7 +22,7 @@ function RoomPage (options) {
   var $clock_interval_id = $("#clock-interval");
   var $appendTextField = $("#appendTextField");  
   var $minutes_remaining = $("#minutes-remaining");
-  var minInterval = 10;
+  var minInterval = 5;
 
   note_id = options.note_id;
   socket = options.socket;
@@ -67,19 +67,27 @@ function RoomPage (options) {
       $clock_interval.removeClass("orange blue red");
       
       if (parseInt(remaining) <= 1 ) {
-        if (isRed === false)
+        if (isRed === false) {
           shakeClock();
+          // noteView.render(localStorage.getItem(note_id),true);
+        }
         $clock_interval.addClass("red"); 
       } 
       else if (parseInt(remaining) <= 2 ) {
-        if (isOrange === false)
+        if (isOrange === false) {
           shakeClock();
+          noteView.render(localStorage.getItem(note_id),true);
+        }
+          
         $clock_interval.addClass("orange");
       } 
       else {
-        if (isblue === false)
+        if (isblue === false) {
           shakeClock();
-        $clock_interval.addClass("blue"); 
+          noteView.render(localStorage.getItem(note_id),true);
+        }
+          
+        $clock_interval.addClass("blue");
       }
 
     }
@@ -232,7 +240,7 @@ function RoomPage (options) {
     $("#left-panel").show();
     $("#temp-content-reader").hide();
     $("#temp-content-creator").show();
-    $("#mid-panel").css("width", "40%");
+    $("#mid-panel").css("width", "30%");
     $("#mid-panel").css("font-size", "10px");
   }
 

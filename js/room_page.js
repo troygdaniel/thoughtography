@@ -56,10 +56,12 @@ function RoomPage (options) {
     var mnTick = this.findNextTick(now.getMinutes());
     if (mnTick === 0) mnTick = 60;  
 
-    var remaining = ""+(mnTick - now.getMinutes());
+    var remaining = ""+(mnTick - now.getMinutes()-1);
+    var justASec = 59-now.getSeconds();
+    if (justASec < 10) justASec = "0"+justASec;
 
     if ($minutes_remaining) { 
-      $minutes_remaining.text(remaining);
+      $minutes_remaining.text(remaining+":"+justASec);
       var isOrange = $clock_interval.hasClass("orange");
       var isblue = $clock_interval.hasClass("blue");
       var isRed = $clock_interval.hasClass("red");
@@ -69,7 +71,7 @@ function RoomPage (options) {
       if (parseInt(remaining) <= 1 ) {
         if (isRed === false) {
           shakeClock();
-          // noteView.render(localStorage.getItem(note_id),true);
+          noteView.render(localStorage.getItem(note_id),true);
         }
         $clock_interval.addClass("red"); 
       } 
@@ -78,7 +80,6 @@ function RoomPage (options) {
           shakeClock();
           noteView.render(localStorage.getItem(note_id),true);
         }
-          
         $clock_interval.addClass("orange");
       } 
       else {

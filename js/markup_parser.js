@@ -5,7 +5,8 @@ Take.MarkupParser = function(options) {
   var textData = options.textData;
 
   function identifyChanges(json, prevJson, lineNum) {
-
+    if (!json) return;
+    
     if (typeof lineNum === "undefined") lineNum = 0;
 
     for (var i = 0; i < json.length; i++) {

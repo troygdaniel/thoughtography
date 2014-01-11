@@ -15,6 +15,7 @@ Take.InsightsView = function(options) {
     note.setContent(v);
   }
   function renderParticipants() {
+    if (!insights.getParticipants()) return;
     var ppl = insights.getParticipants();
     var pplHtml = "";
     for (var i = 0; i < ppl.length; i++) {

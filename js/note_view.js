@@ -44,11 +44,10 @@ Take.NoteView = function(options) {
 
   function onKeyDown() {
     $textarea.keydown(function(e) {
-      
+    var sel = $textarea.get(0).selectionStart;
+    var lastChar = $textarea.val().substr(sel-1,1);
       // Was a '-' char pressed?
       if (e.keyCode === 189) {        
-        var sel = $textarea.get(0).selectionStart;
-        var lastChar = $textarea.val().substr(sel-1,1);
 
         if (lastChar === '\t' || lastChar === '\n') {
           onTabDown(this);
@@ -77,7 +76,15 @@ Take.NoteView = function(options) {
 
   function onEnterDown(txtArea) {
     var originalEnd = txtArea.selectionEnd;
-    insertIntoTextArea("\n\t", txtArea);
+    var lastEnter = ($textarea.val().lastIndexOf('\n',$textarea.get(0).selectionStart-1))+1;
+    var nextChar = $textarea.val().substr(lastEnter,1);
+    var prevLineTabbed = (nextChar === '\t');
+    console.log("nextChar="+nextChar+", lastEnter = " + lastEnter + "," + prevLineTabbed);
+
+    if (prevLineTabbed)
+      insertIntoTextArea("\n\t", txtArea);
+    else
+      insertIntoTextArea("\n", txtArea);
     // reset caret at correct position 
     txtArea.selectionStart = txtArea.selectionEnd = originalEnd + 2;    
   }

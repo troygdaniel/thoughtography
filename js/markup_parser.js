@@ -37,6 +37,7 @@ Take.MarkupParser = function(options) {
 
   function toHtml(json) {
     var html = "";
+    if (!json) return;
     if (json.length) {
       for (var i = 0; i < json.length; i++) {
         html += buildHTML(json[i]);

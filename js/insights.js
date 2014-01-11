@@ -57,6 +57,7 @@ Take.Insights = function (options) {
 
   // Public methods
   function sanitizedWords(v) {
+    if (!v) return;
     var retVal = v;
     if (retVal) {
       retVal = retVal.split(".").join(" ").split("\n").join(" ").split("\t").join(" ");
@@ -74,6 +75,7 @@ Take.Insights = function (options) {
   }
 
   function getParticipants() {
+    if (!note.getContent()) return;
     var words = sanitizedWords(note.getContent());
     participants = [];
     for (var i = 0; i < words.length; i++) {
@@ -88,6 +90,7 @@ Take.Insights = function (options) {
   }
 
   function getTags() {
+    if (!note.getContent()) return;
     var words = sanitizedWords(note.getContent());
     tags = [];
     for (var i = 0; i < words.length; i++) {

@@ -44,6 +44,7 @@ function RoomPage (options) {
   var that = this;
 
   this.heartBeat = function () {
+    
     that.setClockInterval();
     that.setMinRemaining();
   }
@@ -177,7 +178,11 @@ function RoomPage (options) {
     $(".navbar-brand").click(function () {
       var now = new Date();
       var curTick = that.findNextTick(now.getMinutes());;
+      $minutes_remaining.toggle();
+      $clock_interval_id.toggle();
 
+      return;
+      // TODO: consider not osilating the interval 
       findNextMinInterval();      
       $clock_interval = $(".clock-interval");
       that.heartBeat();

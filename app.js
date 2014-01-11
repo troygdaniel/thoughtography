@@ -39,7 +39,7 @@ function handler(req, res) {
 function createSocketForRoom(roomId) {
   // console.log("> roomId = " + roomId);
   io.sockets.on('connection', function(socket) {
-      console.log(">> roomId = " + roomId);
+      // console.log(">> roomId = " + roomId);
       // subscribe to "share_note:1234"
       socket.on('share_note:'+roomId, function(data) {
         // publish message to "shared_note_changes:1234" event

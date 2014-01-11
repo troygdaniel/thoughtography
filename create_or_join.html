@@ -43,12 +43,12 @@ function s3() {
 
 function guid() {
   return s4() + s4() + s4() + s4() +
-         s4() + s4() + s4() + s4();
+         s4() + s4();
 }
 
 $(function() {
     $(".create-room-button").click(function() {
-        var roomId = s3()+s3(); //guid();
+        var roomId = s4(); //guid();
         location.href = "room?"+roomId+"#creator";
     });
     $(".join-room-link").click(function() {
@@ -103,7 +103,7 @@ $(function() {
                     <p>
                         Join a meeting and watch keystrokes rendered in real-time and changes highlighted on the lines they are made.  Open and close sections to easily choose where you focus your attention.
                     </p>
-                    <a id='#join'><input type="text" style="width:300px;float:left;font-size:22px;height:42px;" id="room-id" placeholder="Enter code" class="h5a-input form-control input-sm ">
+                    <a id='#join'><input type="text" style="width:300px;float:left;font-size:22px;height:42px;" id="room-id" placeholder="Enter code" autocapitalize="off" class="h5a-input form-control input-sm ">
                     <input type="submit" style="width:200px" class="h5a-btn btn join-room-button btn-success btn-lg full" value="Join"></a>
 <br/><br/>
                 </div>

@@ -247,7 +247,7 @@ function RoomPage (options) {
     $("#temp-content-reader").hide();
     $("#temp-content-creator").show();
     $("#mid-panel").css("width", "30%");
-    $("#mid-panel").css("font-size", "10px");
+    // $("#mid-panel").css("font-size", "10px");
   }
 
   function showRightPanel() {
@@ -255,7 +255,7 @@ function RoomPage (options) {
     $("#temp-content-reader").show();
     $("#temp-content-creator").hide();
     $("#mid-panel").css("width", "100%");
-    $("#mid-panel").css("font-size", "18px");
+    // $("#mid-panel").css("font-size", "18px");
     noteView.$textarea.focus();
   }
 

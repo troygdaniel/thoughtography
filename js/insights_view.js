@@ -40,6 +40,7 @@ Take.InsightsView = function(options) {
 
   function renderTags() {
     var tag = insights.getTags();
+    if (!insights.getTags()) return;
     var tagHtml = "";
     for (var i = 0; i < tag.length; i++) {
       var partial = new String(elementHtml).replace("#content", tag[i]);

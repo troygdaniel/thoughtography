@@ -81,12 +81,16 @@ Take.NoteView = function(options) {
     var prevLineTabbed = (nextChar === '\t');
     console.log("nextChar="+nextChar+", lastEnter = " + lastEnter + "," + prevLineTabbed);
 
-    if (prevLineTabbed)
+    if (prevLineTabbed) {
       insertIntoTextArea("\n\t", txtArea);
-    else
+      txtArea.selectionStart = txtArea.selectionEnd = originalEnd + 2;    
+
+    }
+    else {
       insertIntoTextArea("\n", txtArea);
+      txtArea.selectionStart = txtArea.selectionEnd = originalEnd + 1;
+    }
     // reset caret at correct position 
-    txtArea.selectionStart = txtArea.selectionEnd = originalEnd + 2;    
   }
 
   function insertIntoTextArea(str, txtArea) {

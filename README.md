@@ -2,8 +2,16 @@ thoughtography
 ==============
 Simple collaborative meeting notes.  Very rough and PoC-like.  
 
-Watch the 1:42 demo here:
+Available here:
+
+http://troygdaniel-thoughtography.jit.su
+
+
+Watch the 1:41 demo here:
+
 http://youtu.be/JLKD3DshikA
+
+
 
 ## Run the app
 ~~~

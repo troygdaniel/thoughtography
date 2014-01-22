@@ -17,26 +17,13 @@
     <link rel="stylesheet" href="css/HTML5admin.css" />
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/auto.max.min.js"></script>
-    <script src="js/knwl.js"></script>
-    <script src="js/parser.js"></script>
-    <!-- room_view.js is the entry point of this page -->
-    <script src="js/room_page.js"></script>
-    <script src="js/note.js"></script>
-    <script src="js/note_view.js"></script>
-    <script src="js/insights.js"></script>
-    <script src="js/insights_view.js"></script>
-    <script src="js/markup_parser.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-    var socket = socket || io.connect('http://' + document.domain);
-    </script>
 
 </head>
 
 <body>
 
     <!-- Fixed navbar -->
-    <header class="navbar navbar-fixed-top">
+     <header class="navbar navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -45,15 +32,12 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">
-                    <span id="minutes-remaining" style="display:none;position:relative;top:5px;font-size:24px;color:#0283A4">12</span><img src="../images/mini_logo.png" alt="minutes" /><span id="clock-interval" style="display:none;position:relative;top:2px;" class="clock-interval badge blue">10:30</span>                    
+                    <img src="../images/mini_logo.png" alt="minutes" /> 
                 </a>            
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" >
-                    <li class=" "><a href="\" id="view-link" class="create-room-button"><i class="icon-home"></i> Home</a></li>
-                </ul>                    
-                <ul class="nav navbar-nav">
-                    <li class=""><a href="#" class="insights-room-button"><i class="icon-cloud"></i> Room <span title="This is your shareable meeting code" style="" id="roomIdHeader"></span></a></li>
+                    <li class=" "><a href="#" id="view-link" class="create-room-button">Help <i class="icon-question-sign"></i></a></li>
                 </ul>                    
             </div><!--/.nav-collapse -->                
 
@@ -61,47 +45,7 @@
     </header>
 
     <!-- NEW CONTAINERS - For New Content -->
-    <div class="container" style="width:70%;float:left;position:relative;top:0px">
-        <div id="left-panel" style="border-style:none;border-width:12px;display: none">
-            <textarea class="braindump" id="text-area" style="font-size:14px;position:relative;left:1px;width:100%;height:600px;border:solid;border-width:1px;border-color:#FAFAFA">
-Getting started
-	Type "helpme" anytime to view this at anytime
-	The <tab> or '-' minus key indents for a topic
-		The second+ tabs are bullets
-
-A topic goes here
-	All topics are clickable to toggle visibility 
-	Wiki lookups can be added anytime with
-		wiki "meeting minutes"
-	Adding a colon: formats important content
-
-Topics can have time 9:00 - 9:20
-	Times will become blue, orange or red relative to the current time
-	Other stuff: The header is clickable
-	Participants can append to the notes when they join the meeting
-	</textarea>
-    <div style="position:absolute;top:0px;right:20px"><a target="_new" href="help.html">help</a></div>
-        </div>
-    </div>
-
-
-    <div id="mid-panel" style="width:100%;float:left;border-style:solid;border-width:0px;overflow-y: scroll;font-size:18px">
-        <span style="position:relative;left:20px;top:10px;z-index:999" id="note-insights-header"></span>
-        <iframe src="blank.html" id="_iframe" style="position:relative;top:10px;width:100%;height:400px;display:none"></iframe>
-        <div class="row" style="position:relative;top;17px;left:20px;width:95%">
-            <!-- <a href="#" class="toggle-writer">Show writer </a> -->
-            <div class="col-md-12">
-
-                <div id="topic-container" class="tree-container">
-                </div>
-
-                <div id="topic-tree" class="tree"><div id="temp-content-reader">
-                    <center><br/><br/><font style="color:gray">Waiting for note taker to type something</font>
-                    <br/><br/><img src="images/throbber.gif">
-                    </center>
-                    </div>
-                    <div id="temp-content-creator" style="display:none"> 
-<div class="row" style="position:relative;top;17px;left:20px;width:95%">
+     <div class="row" style="position:relative;top;17px;left:20px;width:95%">
             <!-- <a href="#" class="toggle-writer">Show writer </a> -->
             <div class="col-md-12">
 
@@ -111,12 +55,6 @@ Topics can have time 9:00 - 9:20
                 <div id="topic-tree" class="tree"><h3 style="font-weight:normal;color:#0283A4;background-color:#FFF" class="header-line-num-1">Getting started</h3><span style="display: block;" id="header-line-num-1"><span style="background-color:#FFF;position:relative;left:10px"><span style="" class="parent-line-num-1 line-num-2"><span class="parent-line-num-1 line-num-2"><span style="color:#0283A4"></span></span>&nbsp;Type "helpme" anytime to view this at anytime</span></span><br><span style="background-color:#FFF;position:relative;left:10px"><span style="" class="parent-line-num-1 line-num-3"><span class="parent-line-num-1 line-num-3"><span style="color:#0283A4"></span></span>&nbsp;The <tab> or '-' minus key indents for a topic<ul><li style="background-color:#FFF;" class="parent-line-num-3 line-num-4"><span class="parent-line-num-3 line-num-4"><span style="color:#0283A4"></span></span>&nbsp;The second+ tabs are bullets</li></ul></tab></span></span></span><h3 style="font-weight:normal;color:#0283A4;background-color:#FFF" class="header-line-num-5"></h3><span style="display: block;" id="header-line-num-5"></span><h3 style="font-weight:normal;color:#0283A4;background-color:#FFF" class="header-line-num-6">A topic goes here</h3><span style="display: block;" id="header-line-num-6"><span style="background-color:#FFF;position:relative;left:10px"><span style="" class="parent-line-num-6 line-num-7"><span class="parent-line-num-6 line-num-7"><span style="color:#0283A4"></span></span>&nbsp;All topics are clickable to toggle visibility</span></span><br><span style="background-color:#FFF;position:relative;left:10px"><span style="" class="parent-line-num-6 line-num-8"><span class="parent-line-num-6 line-num-8"><span style="color:#0283A4"></span></span>&nbsp;Wiki lookups can be added anytime with<ul><li style="background-color:#FFF;" class="parent-line-num-8 line-num-9"><span class="parent-line-num-8 line-num-9"><span style="color:#0283A4"></span></span>&nbsp;wiki "meeting minutes"</li></ul></span></span><span style="background-color:#FFF;position:relative;left:10px"><span style="" class="parent-line-num-6 line-num-10"><span class="parent-line-num-6 line-num-10"><span style="color:#0283A4">Adding a colon:</span></span>&nbsp;formats important content</span></span><br></span><h3 style="font-weight:normal;color:#0283A4;background-color:#FFF" class="header-line-num-11"></h3><span style="display: block;" id="header-line-num-11"></span><h3 style="font-weight:normal;color:#0283A4;background-color:#FFF" class="header-line-num-12">Topics can have time <span style="font-size:14px;font-weight:bold">9:00</span> - <span style="font-size:14px;font-weight:bold">9:20</span></h3><span style="display: block;" id="header-line-num-12"><span style="background-color:#FFF;position:relative;left:10px"><span style="" class="parent-line-num-12 line-num-13"><span class="parent-line-num-12 line-num-13"><span style="color:#0283A4"></span></span>&nbsp;Times will become blue, orange or red relative to the current time</span></span><br><span style="background-color:#FFF;position:relative;left:10px"><span style="" class="parent-line-num-12 line-num-14"><span class="parent-line-num-12 line-num-14"><span style="color:#0283A4">Other stuff:</span></span>&nbsp;The header is clickable</span></span><br><span style="background-color:#FFF;position:relative;left:10px"><span style="" class="parent-line-num-12 line-num-15"><span class="parent-line-num-12 line-num-15"><span style="color:#0283A4"></span></span>&nbsp;Participants can append to the notes when they join the meeting</span></span><br><span style="background-color:#FFF;position:relative;left:10px"><span style="" class="parent-line-num-12 line-num-16"><span class="parent-line-num-12 line-num-16"><span style="color:#0283A4"></span></span>&nbsp;</span></span><br></span></div>
             </div>
         </div>                </div>
-            </div>
-        </div>
-        <br/>
-        <input type="text" name="appendTextField" id="appendTextField" style="display:none;width:93%;position:relative;left:10px;color:gray">
-    </div>
-    </div>
 
     <script src="../js/vendor/bootstrap.min.js"></script>
 

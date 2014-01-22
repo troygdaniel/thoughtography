@@ -27,6 +27,7 @@ Take.InsightsView = function(options) {
   function renderWikis() {
     var wikis = insights.getWikis();
     var wikiHtml = "";
+    if (!wikis) return;
     for (var i = 0; i < wikis.length; i++) {
       for (key in wikis[i]) {
         var partial = new String(elementHtml).replace("#content", "wiki "+key);

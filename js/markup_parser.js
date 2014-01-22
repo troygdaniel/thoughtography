@@ -3,6 +3,7 @@ var Take = Take || {};
 Take.MarkupParser = function(options) {
   var json = options.json;
   var textData = options.textData;
+  var foundTheTime = false;
 
   function identifyChanges(json, prevJson, lineNum) {
     if (!json) return;
@@ -37,6 +38,7 @@ Take.MarkupParser = function(options) {
 
   function toHtml(json) {
     var html = "";
+    foundTheTime = false;
     if (!json) return;
     if (json.length) {
       for (var i = 0; i < json.length; i++) {
@@ -68,7 +70,7 @@ Take.MarkupParser = function(options) {
     var hasClockVal = headerContent.indexOf(clockVal);
     var clockVal_replace = '<span class="clock-interval badge">'+clockVal+'</span>';
     // does the text has the clock val?
-    if (hasClockVal > 0) {
+    if (hasClockVal > 0 && foundTheTime === false) {
       headerContent = headerContent.replace(clockVal, '##clockVal_replace##');
     }
 
@@ -84,8 +86,9 @@ Take.MarkupParser = function(options) {
         }        
       }
     }
-    if (hasClockVal > 0) {
+    if (hasClockVal > 0 && foundTheTime === false) {
       headerContent = headerContent.replace("##clockVal_replace##", clockVal_replace);
+      foundTheTime = true;
     }
 
     if (node.hasChanged === true)

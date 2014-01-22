@@ -104,6 +104,7 @@ Take.Insights = function (options) {
 
   function getWikis() {
     var words = sanitizedWords(note.getContent());
+    if (!words) return;
     var href="http://en.m.wikipedia.org/w/index.php?title=";
     wikis = [];
     for (var i = 0; i < words.length; i++) {

@@ -1,6 +1,7 @@
 thoughtography
 ==============
-Simple collaborative meeting notes.  Very rough and PoC-like.
+Simple collaborative meeting notes.  Very rough and PoC-like.  Watch the 1:42 demo here:
+http://youtu.be/JLKD3DshikA
 
 ## Run the app
 ~~~
